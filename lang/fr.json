@@ -1,0 +1,14 @@
+{
+    "TYPES": {
+        "Actor": {
+            "pj": "Joueur",
+            "pnj": "Personnage Non-Joueur"
+        },
+        "Item": {
+            "objet": "Objet"
+        }
+    },
+    "glyphes": {
+        
+    }
+}

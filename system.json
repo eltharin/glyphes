@@ -1,0 +1,48 @@
+{
+  "id": "glyphes",
+  "title": "glyphes",
+  "description": "Glyphes system for foundryVTT.",
+  "version": "#{VERSION}#",
+  "compatibility": {
+    "minimum": 13,
+    "verified": 13
+  },
+  "authors": [{
+    "name": "eltharin",
+    "url": "https://www.eltharin.fr",
+    "email": "eltharin@eltharin.fr",
+    "discord": "eltharin"
+  }],
+  "esmodules": ["src/main.mjs"],
+  "styles": ["styles/styles.css"],
+  "packs": [],
+  "languages": [{
+    "lang": "fr",
+    "name": "Français",
+    "path": "lang/fr.json"
+  },{
+    "lang": "en",
+    "name": "Français",
+    "path": "lang/fr.json"
+  }],
+  "documentTypes": {
+    "Actor": {
+      "pj": {  },
+      "pnj": {  }
+    },
+    "Item": {
+      "objet": {}
+    }
+  },
+  "socket": false,
+  "grid": {
+    "distance": 1.5,
+    "units": "m"
+  },
+  "url": "#{URL}#",
+  "bugs": "#{URL}#/issues",
+  "readme": "#{URL}#/blob/main/README.md",
+  "license": "https://mit-license.org/",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#"
+}
