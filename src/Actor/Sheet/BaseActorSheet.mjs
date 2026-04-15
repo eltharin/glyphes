@@ -1,25 +1,64 @@
 import * as system  from "../../_helpers.mjs";
+import { ValeurDe } from "../../Common/ValeurDe.mjs";
+import { AptitudeRoller } from "../../DiceRoller/Aptitude/AptitudeRoller.mjs";
 import { BaseSheet } from "../../Models/Sheet/BaseSheet.mjs";
 
 
 export class BaseActorSheet extends BaseSheet (
   foundry.applications.sheets.ActorSheetV2
 ) {
+
+  static PARTIALS = {
+    sidebar: system.Consts.TEMPLATES_PATH + "/actor/parts/sidebar.hbs",
+    topbar: system.Consts.TEMPLATES_PATH + "/actor/parts/topbar.hbs",
+  };
+
   static PARTS = {
     form: { 
       template: system.Consts.TEMPLATES_PATH + "/actor/pj/pj-sheet.hbs",
       templates: [
-
-      ] 
+        "sidebar",
+        "topbar",
+      ]
+    },
+    main: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/perso.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+    },
+    aptitudes: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/aptitudes.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+      scrollable: [".tabscontainer"]
+    },
+    combat: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/combat.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+    },
+    evocation: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/evocation.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+    },
+    fabrication: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/fabrication.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+    },
+    inventaire: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/inventaire.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
     },
   };
 
   static TABS = {
     sheet: {
       tabs: [
-
+        {id: "main", label:"glyphes.sheet.actor.tabs.main"},
+        {id: "aptitudes", label:"glyphes.sheet.actor.tabs.aptitudes"},
+        {id: "combat", label:"glyphes.sheet.actor.tabs.combat"},
+        {id: "evocation", label:"glyphes.sheet.actor.tabs.evocation"},
+        {id: "fabrication", label:"glyphes.sheet.actor.tabs.fabrication"},
+        {id: "inventaire", label:"glyphes.sheet.actor.tabs.inventaire"},
       ],
-      initial: "",
+      initial: "main",
     }
   };
 
@@ -28,6 +67,8 @@ export class BaseActorSheet extends BaseSheet (
     actions: {
       verouillage: this.verouillage,
       deverouillage: this.deverouillage,
+      addRemoveDeCompetence: this.onAddRemoveDeCompetence,
+      aptitudeRoll: this.onAptitudeRoll,
     },
     position: {
       width: 1030,
@@ -88,6 +129,19 @@ export class BaseActorSheet extends BaseSheet (
 
     return context
   }
+
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+    
+    if(partId == "aptitudes") {
+      context.aptitudes = {
+        categories: system.Common.Aptitudes.categories,
+        aptitudes: system.Common.Aptitudes.list,
+      }
+    }
+
+    return context;
+  }  
 
   static async _onSkillRoll(event, target){
     event.preventDefault();
@@ -205,5 +259,43 @@ export class BaseActorSheet extends BaseSheet (
     this.actor.items.get(target.dataset.itemid).update({"system.isEquipe": false});
   } 
 */
-  
+  static async onAddRemoveDeCompetence(event, target)
+  {
+    
+    const oldVal = this.actor.system.competences[target.dataset.competence].value;
+    
+    system.Common.ValeurDe.getNext(5)
+    
+    const newVal = (target.dataset.sens == "+" ? system.Common.ValeurDe.getNext(oldVal) : system.Common.ValeurDe.getPrev(oldVal));
+    
+    let change = {};
+    change["system.competences." + target.dataset.competence + ".value"] = newVal;
+
+    this.actor.update(change);
+  }
+
+  static async onAptitudeRoll(event, target)
+  {
+    const aptitude = target.dataset.aptitude;
+    console.log(aptitude)
+    const competences = system.Common.Aptitudes.getApt(aptitude).competences;
+    
+    const competenceValue = Math.max(...competences.map(c => {
+      console.log(this.actor.system.competences, c)
+      return this.actor.system.competences[c].value;
+    }))
+
+    const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
+
+    const roll = AptitudeRoller.execute({
+      document: this.document,
+      aptitude: aptitude,
+      aptitudeValue: aptitudeValue,
+      competences: competences,
+      competenceValue :competenceValue,
+    });
+
+    console.log(competences, competenceValue, aptitudeValue);
+
+  }
 }

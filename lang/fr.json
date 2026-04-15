@@ -9,6 +9,205 @@
         }
     },
     "glyphes": {
-        
+        "sens": {
+            "titre" : "Sens",
+            "vue" : "Vue",
+            "ouie" : "Ouie",
+            "instinct" : "Instinct",
+            "flux" : "Flux"
+        },
+        "competences" : {
+            "cat": {
+                "corps" : "Corps",
+                "ame": "Ame",
+                "description": ""
+            },
+            "puissance" : {
+                "court" : "PUI",
+                "long": "Puissance",
+                "description": "La puissance incarne les capacités physiques du personnage. C’est la caractéristique utilisée pour les combats au corps à corps par les créatures qui privilégient la force brute."
+            },
+            "souplesse" : {
+                "court" : "SOU",
+                "long": "Souplesse",
+                "description": "La souplesse englobe la dextérité, l'agilité générale et la finesse dont le personnage est capable. La souplesse peut être utilisée comme caractéristique de combat si le personnage préfère une approche plus précise (avec des armes légères par exemple) ou à distance."
+            },
+            "constitution" : {
+                "court" : "CON",
+                "long": "Constitution",
+                "description": "La constitution joue un rôle déterminant dans la capacité du personnage à encaisser les blessures, les empoisonnements, les maladies et tout autre aléa physique et reflète son endurance"
+            },
+            "foi" : {
+                "court" : "FOI",
+                "long": "Foi",
+                "description": "La foi symbolise l‘engagement du personnage envers des concepts divins qui lui sont chers. Un personnage qui ne dédie pas sa foi à un concept divin peut la consacrer à sa propre personne et la matérialiser sous forme de confiance en soi et de courage. Elle peut être utilisée pour gonfler le moral de ses alliés ou diminuer celui de l'ennemi."
+            },
+            "social" : {
+                "court" : "SOC",
+                "long": "Social",
+                "description": "Le social reflète les capacités de tromperie, de charme, de persuasion ou de marchandage. Cette caractéristique peut être déterminante pour éviter les combats, ou les précipiter…"
+            },
+            "esprit" : {
+                "court" : "ESP",
+                "long": "Esprit",
+                "description": "L'esprit représente la capacité intellectuelle du personnage ainsi que la robustesse de son âme. C’est la caractéristique la plus importante des adeptes des arcanes anciennes, matérialisé par des glyphes."
+            }
+        },
+        "aptitudes": {
+            "categories": {
+                "martiales": "Martiales",
+                "furtivite": "Furtivité et Infiltration",
+                "foi": "Foi",
+                "evocation": "Evocation",
+                "physique": "Physique",
+                "survie": "Survie et Récupération",
+                "creation": "Création",
+                "connaissances": "Connaissances",
+                "social": "Social"
+            },
+            "armeslegeresmelee": {
+                "name": "Armes légères de mêlée",
+                "description": "Le personnage à l'aise avec les armes légères de mêlée.Il obtient +1D à ses épreuves d'attaques par niveau d'aptitude en les utilisant, et peut utiliser leurs actions héroïques."
+            },
+            "armeslourdesmelee": {
+                "name": "Armes lourdes de mêlée",
+                "description": ""
+            },
+            "armeslegeresdistance": {
+                "name": "Armes légères à distance",
+                "description": ""
+            },
+            "armeslourdesdistance": {
+                "name": "Armes lourdes à distance",
+                "description": ""
+            },
+            "pugilat": {
+                "name": "Pugilat",
+                "description": ""
+            },
+            "armesjet": {
+                "name": "Armes de jet",
+                "description": ""
+            },
+            "camouflage": {
+                "name": "Camouflage",
+                "description": ""
+            },
+            "mainlegere": {
+                "name": "Main légère",
+                "description": ""
+            },
+            "courageux": {
+                "name": "Courageux",
+                "description": ""
+            },
+            "forgeglyphe": {
+                "name": "Forge-glyphe",
+                "description": ""
+            },
+            "athletique": {
+                "name": "Athlétique",
+                "description": ""
+            },
+            "piedleger": {
+                "name": "Pied léger",
+                "description": ""
+            },
+            "sangpourri": {
+                "name": "Sang pourri",
+                "description": ""
+            },
+            "medecin": {
+                "name": "Médecin",
+                "description": ""
+            },
+            "scout": {
+                "name": "Scout",
+                "description": ""
+            },
+            "vigilant": {
+                "name": "Vigilant",
+                "description": ""
+            },
+            "alchimiste": {
+                "name": "Alchimiste",
+                "description": ""
+            },
+            "ingenieur": {
+                "name": "Ingénieur",
+                "description": ""
+            },
+            "botanique": {
+                "name": "Botanique",
+                "description": ""
+            },
+            "deduction": {
+                "name": "Déduction",
+                "description": ""
+            },
+            "erudition": {
+                "name": "Érudition",
+                "description": ""
+            },
+            "traqueur": {
+                "name": "Traqueur",
+                "description": ""
+            },
+            "charme": {
+                "name": "Charme",
+                "description": ""
+            },
+            "intimidation": {
+                "name": "Intimidation",
+                "description": ""
+            },
+            "negociateur": {
+                "name": "Négociateur",
+                "description": ""
+            },
+            "persuasion": {
+                "name": "Persuasion",
+                "description": ""
+            },
+            "tromperie": {
+                "name": "Tromperie",
+                "description": ""
+            }
+        },
+        "sheet": {
+            "common": {
+                "nom": "Nom"
+            },
+            "actor": {
+                "tabs": {
+                    "main": "Perso",
+                    "aptitudes" : "Aptitudes",
+                    "combat" : "Combat",
+                    "evocation" : "Evocation",
+                    "inventaire" : "Inventaire",
+                    "fabrication" : "Fabrication"
+                }
+            }
+        },
+        "roll": {
+            "common" : {
+                "title": "Lancer de dé",
+                "rolldice": "Lancer le(s) dé(s)",
+                "ajout_de_bonus": "Nombre de dé(s) bonus"
+            },
+            "difficulte": {
+                "select_type" : "Type de difficulté",
+                "commun" : "Commun",
+                "heroique" : "Héroïque",
+                "grandiose" : "Grandiose",
+                "legendaire" : "Légendaire",
+                "mythique" : "Mythique",
+                "select_rang" : "Rang de difficulté"
+            },
+            "result" : {
+                "total": "Total : {total}",
+                "difficulte": "Difficulté : {difficulte}"
+            }
+        }
     }
 }
