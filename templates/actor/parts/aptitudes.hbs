@@ -1,0 +1,27 @@
+<section>
+
+
+    <div class="atitudesContainer">
+    {{#each aptitudes.categories as |categorie| }}
+        <div>
+            <label>{{ localize (concat "glyphes.aptitudes.categories." @key) }}</label>
+        </div>    
+        
+        {{#each categorie as |aptitude| }}
+            {{#if aptitude }}
+                <div class="field">
+                    
+                    <label data-action="aptitudeRoll" data-aptitude="{{ aptitude }}">{{ localize (concat "glyphes.aptitudes." aptitude ".name") }}</label>
+                    {{#with (lookup ../../system.aptitudes aptitude ) as |apt| }}
+                    <div>
+                        
+                        {{ fieldOrInput (concat "system.aptitudes." aptitude ".value") class="pj-sheet-input" value=apt.value}}
+                    </div>
+                    {{/with}}
+                </div>
+            {{/if}}
+        {{/each}}
+    {{/each}}
+
+    </div>
+</section>

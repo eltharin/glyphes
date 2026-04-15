@@ -1,0 +1,52 @@
+
+
+
+.glyphes.actor-sheet {
+    display:flex;
+    flex-direction:row;
+}
+
+.glyphes.actor-sheet > .sidebar {
+    flex: 0 0 200px;
+}
+
+.glyphes.actor-sheet > .content {
+    flex: 1 0 200px;
+}
+
+.tabscontainer{
+    height:500px;
+    overflow-y:auto;
+}
+
+
+.field{
+    flex-wrap: wrap;
+    flex: 1 0 100px;
+    display:flex;
+    margin-top:15px;
+}
+
+
+.field > label{
+    flex: 0 0 150px;
+    align-content: center;
+}
+
+
+ .field > div{
+    flex: 1 0 70px;
+    align-content: center;
+    color: var(--color-light-3);
+    display: inline-block;
+}
+
+.atitudesContainer {
+    column-count: 3;        /* nombre de colonnes */
+  column-gap: 2rem
+}
+
+.atitudesContainer > * {
+    border:1px solid white;
+    break-inside: avoid; 
+}

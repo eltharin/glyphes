@@ -1,9 +1,13 @@
 import * as system  from "../_helpers.mjs";
 
 import { MessageActionResolver } from "../ChatMessage/MessageActionResolver.mjs";
+import { AptitudeRoll } from "./Aptitude/AptitudeRoll.mjs";
+
+
+
 
 export function registerDiceRolls() {
-    CONFIG.Dice.rolls.push(system.DiceRoller.CompetenceRoll);
+    CONFIG.Dice.rolls.push(AptitudeRoll);
 }
 
 export function registerMessageEventListener() {
