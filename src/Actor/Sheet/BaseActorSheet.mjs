@@ -1,4 +1,5 @@
 import * as system  from "../../_helpers.mjs";
+import { Races } from "../../Common/Races.mjs";
 import { ValeurDe } from "../../Common/ValeurDe.mjs";
 import { AptitudeRoller } from "../../DiceRoller/Aptitude/AptitudeRoller.mjs";
 import { BaseSheet } from "../../Models/Sheet/BaseSheet.mjs";
@@ -126,6 +127,9 @@ export class BaseActorSheet extends BaseSheet (
     const context = await super._prepareContext(options)
 
     context.isVerrou = this.actor.system.isLocked;
+    context.lists = {
+      races: Races.list(),
+    };
 
     return context
   }
