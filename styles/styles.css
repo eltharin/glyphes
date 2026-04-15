@@ -19,6 +19,15 @@
     overflow-y:auto;
 }
 
+.glyphes.actor-sheet .topbar {
+    height:200px;
+    display:flex;
+    flex-direction: row;
+}
+
+.glyphes.actor-sheet .topbar > .image > img{
+    height:200px;
+}
 
 .field{
     flex-wrap: wrap;
@@ -42,7 +51,7 @@
 }
 
 .atitudesContainer {
-    column-count: 3;        /* nombre de colonnes */
+    column-count: 4;        /* nombre de colonnes */
   column-gap: 2rem
 }
 

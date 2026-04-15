@@ -1,4 +1,8 @@
 
+<div class="image">
+    <img data-action="editImage" data-edit="img" src="{{document.img}}" alt="Photo de {{document.name}}" />
+</div>
+
 <div class="perso">
     <div class="field">
         <label>{{localize "glyphes.sheet.common.nom"}}</label>
@@ -12,7 +16,16 @@
 
     <div class="field">
         <label>{{localize "glyphes.sheet.actor.race"}}</label>
-        <div>{{ fieldOrInput "system.race" class="pj-sheet-input" value=system.race}}</div>
+        <div>
+            {{#fieldOrInput "system.race" class="pj-sheet-input"}}
+                <select name="system.race">
+                    <option value="">{{localize "glyphes.sheet.actor.raceSelect"}}</option>
+                    {{#each ../lists.races as |race| }}
+                        <option value="{{race.id}}" {{#if (eq race.id ../../system.race) }}selected{{/if}}>{{localize (concat "glyphes.races." race.name) }}</option>
+                    {{/each}}
+                </select>
+            {{/fieldOrInput}}
+        </div>
     </div>
 
 </div>
