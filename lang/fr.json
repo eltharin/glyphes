@@ -229,6 +229,10 @@
                 "rolldice": "Lancer le(s) dé(s)",
                 "ajout_de_bonus": "Nombre de dé(s) bonus"
             },
+            "title": {
+                "sens": "Jet de sens : {sens}",
+                "aptitude": "Jet d'aptitude : {aptitude}"
+            },
             "difficulte": {
                 "select_type" : "Type de difficulté",
                 "commun" : "Commun",

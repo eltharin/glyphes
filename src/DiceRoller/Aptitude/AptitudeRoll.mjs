@@ -15,18 +15,21 @@ export class AptitudeRoll extends Roll{
 
     async _prepareChatRenderContext({flavor, isPrivate=false, ...options}={}) {
         let ret = await super._prepareChatRenderContext({flavor, isPrivate, ...options});
+        ret.title = this.options.title;
         ret.total = this.total;
         ret.result = this.getResult();
         ret.difficulte = this.options.rangDifficulte;
-        ret.ptHeroisme = this.getResult() >= 1 ? this.options.rangDifficulte : 0;
+        ret.ptHeroisme = this.calculResult() >= 1 ? this.options.rangDifficulte : 0;
         return ret;
     }
 
+    calculResult()
+    {
+        return this.total - this.options.rangDifficulte;
+    }
     getResult()
     {
-        const resValue = this.total - this.options.rangDifficulte;
-
-        return resValue < 0 ? "Echec" : "Réussite";
+        return this.calculResult() < 0 ? "Echec" : "Réussite";
     }
 
 }

@@ -40,6 +40,7 @@ export class AptitudeRoller
         }
         
         const myRoll = new AptitudeRoll(nbDe + "d" + nbFace + "cs>=" + dialogData.typeDifficulte + modifiers,{}, {
+            title: options.title,
             typeDifficulte: dialogData.typeDifficulte, 
             rangDifficulte: dialogData.rangDifficulte, 
         });
