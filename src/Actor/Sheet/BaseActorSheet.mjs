@@ -70,6 +70,7 @@ export class BaseActorSheet extends BaseSheet (
       deverouillage: this.deverouillage,
       addRemoveDeCompetence: this.onAddRemoveDeCompetence,
       aptitudeRoll: this.onAptitudeRoll,
+      sensRoll: this.onSensRoll,
     },
     position: {
       width: 1030,
@@ -291,7 +292,8 @@ export class BaseActorSheet extends BaseSheet (
 
     const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
 
-    const roll = AptitudeRoller.execute({
+    AptitudeRoller.execute({
+      title: game.i18n.format("glyphes.roll.title.aptitude" , {aptitude: game.i18n.format("glyphes.aptitudes." + aptitude + ".name")}),
       document: this.document,
       aptitude: aptitude,
       aptitudeValue: aptitudeValue,
@@ -299,7 +301,25 @@ export class BaseActorSheet extends BaseSheet (
       competenceValue :competenceValue,
     });
 
-    console.log(competences, competenceValue, aptitudeValue);
+  }
+
+  static async onSensRoll(event, target)
+  {
+    const sens = target.dataset.sens;
+    console.log(sens)
+    
+    const competenceValue = this.actor.system.sens[sens];
+
+    const aptitudeValue = 1 + (foundry.utils.getProperty(Races.get(this.actor.system.race), "modificateurs.sens." + sens + ".nb") || 0);
+
+    AptitudeRoller.execute({
+      title: game.i18n.format("glyphes.roll.title.sens" , {sens: game.i18n.format("glyphes.sens." + sens)}),
+      document: this.document,
+      aptitude: sens,
+      aptitudeValue: aptitudeValue,
+      competences: "",
+      competenceValue :competenceValue,
+    });
 
   }
 }

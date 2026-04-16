@@ -1,5 +1,7 @@
 
 class Race {
+    modificateurs= {};
+
     get id(){
         return this._id;
     }
@@ -25,71 +27,85 @@ class HumainRace extends Race{
 class GourmetRace extends Race{
     _id = "gourmet";
     name = "gourmet";
-    modificateurs= [
-    ];
+    
 }
 
 class MedeinitesRace extends Race{
     _id = "medeinites";
     name = "medeinites";
-    modificateurs= [
-    ];
+    
 }
 
 class ArboreidesRace extends Race{
     _id = "arboreides";
     name = "arboreides";
-    modificateurs= [
-    ];
+    
 }
 
 class FeeRace extends Race{
     _id = "fee";
     name = "fee";
-    modificateurs= [
-    ];
+    
 }
 
 class OmbreRace extends Race{
     _id = "ombre";
     name = "ombre";
-    modificateurs= [
-    ];
+    modificateurs= {
+        sens: {
+            ouie: {
+                nb: 1
+            }
+        }
+    };
 }
 
 class HybridesRace extends Race{
     _id = "hybrides";
     name = "hybrides";
-    modificateurs= [
-    ];
+    
 }
 
 class CervideRace extends Race{
     _id = "cervide";
     name = "cervide";
-    modificateurs= [
-    ];
+    modificateurs= {
+        sens: {
+            instinct: {
+                nb: 1
+            }
+        }
+    };
 }
 
 class LycanRace extends Race{
     _id = "lycan";
     name = "lycan";
-    modificateurs= [
-    ];
+    modificateurs= {
+        sens: {
+            vue: {
+                nb: 1
+            }
+        }
+    };
 }
 
 class UrsideRace extends Race{
     _id = "urside";
     name = "urside";
-    modificateurs= [
-    ];
+    
 }
 
 class FelinRace extends Race{
     _id = "felin";
     name = "felin";
-    modificateurs= [
-    ];
+    modificateurs= {
+        sens: {
+            vue: {
+                nb: 1
+            }
+        }
+    };
 }
 
 export class Races {
