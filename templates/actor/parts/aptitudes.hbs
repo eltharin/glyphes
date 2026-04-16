@@ -4,8 +4,8 @@
     <div class="atitudesContainer">
     {{#each aptitudes.categories as |categorie| }}
         <div>
-            <label>{{ localize (concat "glyphes.aptitudes.categories." @key) }}</label>
-        </div>    
+            <h2>{{ localize (concat "glyphes.aptitudes.categories." @key) }}</h2>
+           
         
         {{#each categorie as |aptitude| }}
             {{#if aptitude }}
@@ -21,6 +21,7 @@
                 </div>
             {{/if}}
         {{/each}}
+        </div> 
     {{/each}}
 
     </div>
