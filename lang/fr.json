@@ -9,6 +9,11 @@
         }
     },
     "glyphes": {
+        "common": {
+            "dialog": {
+                "askDelete": "Etes vous sur de vouloir supprimer {name} ?"
+            }
+        },
         "sens": {
             "titre" : "Sens",
             "vue" : "Vue",
@@ -25,7 +30,7 @@
             "puissance" : {
                 "court" : "PUI",
                 "long": "Puissance",
-                "description": "La puissance incarne les capacités physiques du personnage. C’est la caractéristique utilisée pour les combats au corps à corps par les créatures qui privilégient la force brute."
+                "description": "La puissance incarne les capacités physiques du personnage. C'est la caractéristique utilisée pour les combats au corps à corps par les créatures qui privilégient la force brute."
             },
             "souplesse" : {
                 "court" : "SOU",
@@ -50,7 +55,7 @@
             "esprit" : {
                 "court" : "ESP",
                 "long": "Esprit",
-                "description": "L'esprit représente la capacité intellectuelle du personnage ainsi que la robustesse de son âme. C’est la caractéristique la plus importante des adeptes des arcanes anciennes, matérialisé par des glyphes."
+                "description": "L'esprit représente la capacité intellectuelle du personnage ainsi que la robustesse de son âme. C'est la caractéristique la plus importante des adeptes des arcanes anciennes, matérialisé par des glyphes."
             }
         },
         "aptitudes": {
@@ -188,22 +193,70 @@
             "felin": "Félin"
         },
         "dons": {
-            "stratege" : "Stratège",
-            "ecorcheur" : "Écorcheur",
-            "combattant" : "Combattant",
-            "fidelecompagnon" : "Fidèle compagnon",
-            "courageradiant" : "Courage radiant",
-            "choisi" : "Choisi",
-            "toujourspret" : "Toujours prêt",
-            "evocateurofficiel" : "Évocateur officiel",
-            "evocateursauvage" : "Évocateur sauvage",
-            "marque" : "Marqué",
-            "araignee" : "Araignée",
-            "reveur" : "Réveur",
-            "visage" : "Visage",
-            "linguiste" : "Linguiste",
-            "expertcreature" : "Expert en créature",
-            "insaisissable" : "Insaisissable"
+            "stratege" : {
+                "name": "Stratège",
+                "description": "Le personnage est un stratège né. Il possède la capacité de s'adapter à n'importe quelle situations, même les plus imprévues. Il peut offrir ses propres réussites à l'épreuve d'initiative à une ou plusieurs créatures consentantes."
+            },
+            "ecorcheur" : {
+                "name": "Écorcheur",
+                "description": "Le personnage est assoiffé de sang, et prompt à une violence désinhibée. Lorsqu'il obtient un succès d'une épreuve d'attaque de mêlée contre une créature, il la force à tirer un jeton de sacrifice"
+            },
+            "combattant" : {
+                "name": "Combattant",
+                "description": "Le personnage est un combattant efficace. Lorsqu'il effectue un coup d'éclat sur une épreuve d'attaque, le coût de cette dernière est réduit d'un point d'action."
+            },
+            "fidelecompagnon" : {
+                "name": "Fidèle compagnon",
+                "description": "Le personnage est accompagné d'un compagnon loyal. Ce dernier ne peut participer au combat. Le compagnon possède un aptitude de niveau 4 et une de niveau 2. Il possède 1D4 dans toutes ses caractéristiques et 1D6 dans une au choix"
+            },
+            "courageradiant" : {
+                "name": "Courage radiant",
+                "description": "Le personnage rayonne de courage et de confiance en lui, ou en la cause qu'il porte. Il peut offrir ses propres réussites de courage ou de résistance à la peur à une ou plusieurs créatures consentantes"
+            },
+            "choisi" : {
+                "name": "Choisi",
+                "description": "le personnage a été choisi par une divinité. change la caractéristique de référence de deux de ses aptitudes en foi. Il peut lier un autre don à la foi, comme évocateur par exemple, au lieu d'une aptitude."
+            },
+            "toujourspret" : {
+                "name": "Toujours prêt",
+                "description": "Le personnage est prévoyant, et possède une habitude à rationner ses possessions de manière presque automatique, consciente ou non. Il commence chaque journée avec deux ingrédients supplémentaires dans son inventaire."
+            },
+            "evocateurofficiel" : {
+                "name": "Évocateur officiel",
+                "description": "L'évocateur officiel possède un cursus d'apprentissage des glyphes. Il peut ou a pu appartenir à un ordre ou un chapitre d'un culte qui possède la capacité d'enseigner un tel art. Il peut évoquer des glyphes en utilisant la table d'immersion. Attention : S'il ne fait plus partie de l'entité qui l'a formé, il est très probable qu'il soit traqué. Un évocateur officiel qui est toujours dans son ordre possède par contre certains passe-droits dans la région d'influence de son ordre, mais peut se trouver pris pour cible dans une zone d'influence adverse. Révéler sa condition d'évocateur possède toujours une part de risque"
+            },
+            "evocateursauvage" : {
+                "name": "Évocateur sauvage",
+                "description": "c'est le terme utilisé pour ceux qui n'ont jamais suivi de cursus d'apprentissage officiel et reconnu par les autorités d'une cité état ou d'un ordre religieux autorisé à de telles pratiques. Lorsqu'il s'immerge, il fait cela de manière instinctive et provoque souvent des événements de flux à son avantage, mais est plus prompt à causer des cataclysmes autour de lui. Il peut évoquer des glyphes en utilisant la table d'immersion. Cependant il évoque avec 2D d'immersion et prend en compte le meilleur dé pour le résultat. Si l'un des deux dé provoque un événement de flux, cet événement se produira. L'événement en question sera compté comme bénéfique si l'épreuve d'immersion est un succès. Attention : un évocateur sauvage sera obligatoirement poursuivi par les autorités s'il est reconnu comme tel"
+            },
+            "marque" : {
+                "name": "Marqué",
+                "description": "Le marqué est une personne qui a été marquée par un glyphe avec ou contre son gré, lors d'un incident ou d'un rituel. Le marqué n'est pas un évocateur, mais une personne capable d'évoquer le glyphe dont il est le porteur. Contrairement à l'évocateur, le marqué peut choisir la caractéristique d'évocation, entre Foi ou Esprit"
+            },
+            "araignee" : {
+                "name": "Araignée",
+                "description": "Le personnage possède une affinité étrange avec le monde qui l'entoure. Certains peuvent le décrire comme étant “ailleurs” ou distrait, mais sa perception du monde est tout simplement différente. Il voit les liens entre les créatures comme une toile, et possède la capacité de l'exploiter à sa manière. L'araignée peut transférer les points de corps et d'âme entre deux créatures consentantes."
+            },
+            "reveur" : {
+                "name": "Réveur",
+                "description": "Le personnage est parasité par un mange songe qui dévore ses rêves. Ce dernier prend les caractéristiques du dernier rêve que le personnage à fait durant son dernier repos complet pour ensuite se matérialiser. Après chaque repos complet, le joueur détermine le type de rêve en lançant un dé. Sur un résultat pair, c'est un rêve doux, et le mange songe se matérialise sous la forme d'un petit animal de compagnie et qui possède les mêmes caractéristiques que le rêveur. L'animal possède la même taille qu'un rongeur ou un oiseau de petite taille. Il peut communiquer mentalement avec et lui donner des ordres pour qu'il effectue des tâches à la place du rêveur. Si le résultat est impair, L'animal n'apparaît pas, mais le rêveur peut entrer en coma quand il le souhaite pour laisser le cauchemar se matérialiser. Le corps inerte du rêveur reste alors sur place et le cauchemar lui peut se déplacer à sa guise et possède une taille moyenne et une forme que le joueur pourra décider. Le cauchemar possède les mêmes caractéristiques que le rêveur, et augmente le niveau d'un de ses dés de 1, et le niveau de deux aptitudes de 1. Lorsque le cauchemar a subi 3 blessures, il disparaît et le rêveur reprend conscience. Si le rêveur est tué alors que le cauchemar est matérialisé, ce dernier disparaît."
+            },
+            "visage" : {
+                "name": "Visage",
+                "description": "Le personnage est très à l'aise avec les interactions sociales. Il sait captiver son auditoire et adapter son discours si le besoin s'en fait sentir. Lorsqu'il tente une épreuve sociale en rapport avec une aptitude qu'il ne possède pas, il peut à la place utiliser la moitié des niveaux d'une autre aptitude sociale qu'il possède, arrondi à l'inférieur."
+            },
+            "linguiste" : {
+                "name": "Linguiste",
+                "description": "Le personnage est un maître en ce qui concerne les moyens de communication. Il maîtrise parfaitement le Sylvain, la langue commune et le Brume￾langue. Il peut échanger l'un de ces langages pour maîtriser la langue des signes à la place."
+            },
+            "expertcreature" : {
+                "name": "Expert en créature",
+                "description": "Le personnage à eu affaire à un bon nombre de créature. Il a appris à étudier et exploiter leurs faiblesses ou comportements caractéristiques. Ces études ont pu l'amener à faire des prédictions sur des créatures qu'il n'a jamais rencontré. Le personnage peut recevoir une information sur n'importe quelle créature commune ou déjà rencontrée, et sur une épreuve d'instinct pour des créatures rares ou uniques."
+            },
+            "insaisissable" : {
+                "name": "Insaisissable",
+                "description": "Le personnage est d'une agilité déconcertante lorsqu'il s'agit de se dégager de situations compliquées. Il peut se désengager gratuitement d'un corps à corps."
+            }
         },
         "sheet": {
             "common": {
@@ -220,7 +273,13 @@
                 },
                 "origine": "Origine",
                 "race": "Race",
-                "raceSelect": "Choisissez la race"
+                "raceSelect": "Choisissez la race",
+                "dialog": {
+                    "ajoutDon": {
+                        "title": "Ajouter un Don",
+                        "selectDon": "Choisissez un Don à ajouter"
+                    }
+                }
             }
         },
         "roll": {

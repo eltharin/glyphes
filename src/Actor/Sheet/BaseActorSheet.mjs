@@ -69,8 +69,12 @@ export class BaseActorSheet extends BaseSheet (
       verouillage: this.verouillage,
       deverouillage: this.deverouillage,
       addRemoveDeCompetence: this.onAddRemoveDeCompetence,
+      addRemoveDePts: this.onAddRemovePts,
       aptitudeRoll: this.onAptitudeRoll,
       sensRoll: this.onSensRoll,
+      ajoutDon: this.onAjoutDon,
+      supprDon: this.onSupprDon,
+
     },
     position: {
       width: 1030,
@@ -269,12 +273,23 @@ export class BaseActorSheet extends BaseSheet (
     
     const oldVal = this.actor.system.competences[target.dataset.competence].value;
     
-    system.Common.ValeurDe.getNext(5)
-    
     const newVal = (target.dataset.sens == "+" ? system.Common.ValeurDe.getNext(oldVal) : system.Common.ValeurDe.getPrev(oldVal));
     
     let change = {};
     change["system.competences." + target.dataset.competence + ".value"] = newVal;
+
+    this.actor.update(change);
+  }
+
+  static async onAddRemovePts(event, target)
+  {
+    
+    const oldVal = this.actor.system.points[target.dataset.pointtype].value;
+    
+    const newVal = (target.dataset.sens == "+" ? 1 : -1) + oldVal;
+    
+    let change = {};
+    change["system.points." + target.dataset.pointtype + ".value"] = newVal;
 
     this.actor.update(change);
   }
@@ -321,5 +336,36 @@ export class BaseActorSheet extends BaseSheet (
       competenceValue :competenceValue,
     });
 
+  }
+
+  static async onAjoutDon(event, target)
+  {
+    const data = await foundry.applications.api.DialogV2.input({
+      title: game.i18n.format("glyphes.sheet.dialog.ajoutDon.title"),
+      content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/actor/dialog/ajoutDon.hbs", {
+        dons : system.Common.Dons.list().filter(d => !this.actor.system.dons.includes(d.id)),
+      }),
+      modal: true,
+    });
+
+    if(data)    {
+      let dons = this.actor.system.dons;
+      dons.push(data.don);
+      await this.actor.update({"system.dons": dons});
+    }
+  }
+
+  static async onSupprDon(event, target)
+  {
+    if (await foundry.applications.api.DialogV2.confirm({
+      content: game.i18n.format("glyphes.common.dialog.askDelete", {name: game.i18n.format("glyphes.dons." + target.dataset.don + ".name")}),
+      rejectClose: false,
+      modal: true
+    })) {
+      const donId = target.dataset.don;
+      let dons = this.actor.system.dons;
+      dons = dons.filter(d => d != donId);
+      await this.actor.update({"system.dons": dons});
+    }
   }
 }

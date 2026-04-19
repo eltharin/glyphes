@@ -1,22 +1,16 @@
 <section>
 
-    <div data-action="sensRoll" data-sens="vue">
-        <label>{{localize "glyphes.sens.vue"}}</label> : {{ system.sens.vue }}
-    </div>
-    <div data-action="sensRoll" data-sens="ouie">
-        <label>{{localize "glyphes.sens.ouie"}}</label> : {{ system.sens.ouie }}
-    </div>
-    <div data-action="sensRoll" data-sens="instinct">
-        <label>{{localize "glyphes.sens.instinct"}}</label> : {{ system.sens.instinct }}
-    </div>
-    <div data-action="sensRoll" data-sens="flux">
-        <label>{{localize "glyphes.sens.flux"}}</label> : {{ system.sens.flux }}
-    </div>
-
-
-    <fieldset>
-        <legend>{{localize "glyphes.competences.cat.corps"}} pts corps</legend>
+<div class="col2">
+    <div class="competences">
+        <legend>{{localize "glyphes.competences.cat.corps"}} 
+            <span>
+                <span data-action="addRemoveDePts" data-pointtype="corps" data-sens="-">-</span>
+                <div>{{ fieldOrInput "system.points.corps.value" class="pj-sheet-input"}}</div>
+                <span data-action="addRemoveDePts" data-pointtype="corps" data-sens="+">+</span>
+            </span>
+        </legend>
         
+
         <div class="">
             <label>{{localize "glyphes.competences.puissance.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="-">-</span>
@@ -37,11 +31,18 @@
             <div>{{ fieldOrInput "system.competences.constitution.value" class="pj-sheet-input"}}</div>
             <span data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="+">+</span>
         </div>
+
         
-    </fieldset>
+    </div>
     
-    <fieldset>
-        <legend>{{localize "glyphes.competences.cat.ame"}} pts ame</legend>
+    <div class="competences">
+        <legend>{{localize "glyphes.competences.cat.ame"}}
+            <span>
+                <span data-action="addRemoveDePts" data-pointtype="ame" data-sens="-">-</span>
+                <div>{{ fieldOrInput "system.points.ame.value" class="pj-sheet-input"}}</div>
+                <span data-action="addRemoveDePts" data-pointtype="ame" data-sens="+">+</span>
+            </span>
+        </legend>
         
         <div class="">
             <label>{{localize "glyphes.competences.foi.court"}}</label>
@@ -63,7 +64,30 @@
             <div>{{ fieldOrInput "system.competences.esprit.value" class="pj-sheet-input"}}</div>
             <span data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="+">+</span>
         </div>
-        
-    </fieldset>
 
+    </div>
+</div>
+
+<div>
+    Dons <span class="action" data-action="ajoutDon">Ajouter un Don</span>
+    {{#each system.donsObj as |don|}}
+        <div>
+            <label>{{localize (concat "glyphes.dons." don.id ".name")}}</label>
+            <span class="action" data-action="supprDon" data-don="{{don.id}}">Supprimer</span>
+            <div>{{localize (concat "glyphes.dons." don.id ".description")}}</div>
+        </div>
+    {{/each}}
+</div>
+
+
+<div>
+    heroisme
+    <legend>{{localize "glyphes.heroisme.cat.ame"}}
+        <span>
+            <span data-action="addRemoveDePts" data-pointtype="heroisme" data-sens="-">-</span>
+            <div>{{ fieldOrInput "system.points.heroisme.value" class="pj-sheet-input"}}</div>
+            <span data-action="addRemoveDePts" data-pointtype="heroisme" data-sens="+">+</span>
+        </span>
+    </legend>
+</div>
 </section>
