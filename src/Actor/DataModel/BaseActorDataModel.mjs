@@ -13,22 +13,22 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
 
             points: new foundry.data.fields.SchemaField({
                 corps: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0}),
-                    max: new foundry.data.fields.NumberField({initial: 0}),
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
                 ame: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0}),
-                    max: new foundry.data.fields.NumberField({initial: 0}),
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
                 heroisme: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0}),
-                    max: new foundry.data.fields.NumberField({initial: 0}),
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
             }),
-
+            
             competences: new foundry.data.fields.SchemaField({
                 puissance: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0})
@@ -62,6 +62,9 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
                 },
                 
             ),
+            dons: new foundry.data.fields.ArrayField(
+                new foundry.data.fields.StringField({}),      
+            ),
         };
     }
 
@@ -81,13 +84,14 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             instinct: Math.min(this.competences.esprit.value, this.competences.foi.value),
         }
 
+        this.donsObj = this.dons.map(donId => { return (system.Common.Dons.get(donId) || null ); });
+
         Object.entries(system.Common.Aptitudes.list).forEach(([key, val]) => {
-            console.log(key,val, this.aptitudes[key])
             if(!this.aptitudes[key]) {this.aptitudes[key] = {}};
             if(!this.aptitudes[key].value)  {this.aptitudes[key].value = 1;}
             if(!this.aptitudes[key].bonus)  {this.aptitudes[key].bonus = 0;}
         });
-        console.log(foundry.utils.deepClone(this.aptitudes))
+        
     }
 
     _prepareDerivedData() {

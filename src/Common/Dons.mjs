@@ -6,7 +6,11 @@ class Don {
     }
      
     get name(){
-        return this.name;
+        return "glyphes.dons." + this._id + ".name";
+    }
+     
+    get description(){
+        return "glyphes.dons." + this._id + ".description";
     }
 
     get effets(){
@@ -44,6 +48,7 @@ class ToujourspretDon extends Don {
 
 class EvocateurofficielDon extends Don {
     _id = "evocateurofficiel";
+    _name= "Coucou"
 }
 
 class EvocateursauvageDon extends Don {

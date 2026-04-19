@@ -1,0 +1,13 @@
+<form>
+
+        <div class="">
+            <label>{{localize 'glyphes.sheet.dialog.ajoutDon.select'}}</label>
+            <select name="don">
+                {{#each dons as  |don|}}
+                <option value="{{this.id}}">{{localize don.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+    
+</form>
