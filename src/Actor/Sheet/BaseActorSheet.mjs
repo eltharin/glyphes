@@ -12,6 +12,7 @@ export class BaseActorSheet extends BaseSheet (
   static PARTIALS = {
     sidebar: system.Consts.TEMPLATES_PATH + "/actor/parts/sidebar.hbs",
     topbar: system.Consts.TEMPLATES_PATH + "/actor/parts/topbar.hbs",
+    actionHeroique_liste: system.Consts.TEMPLATES_PATH + "/shared/actionHeroique/liste.hbs",
   };
 
   static PARTS = {
@@ -20,6 +21,7 @@ export class BaseActorSheet extends BaseSheet (
       templates: [
         "sidebar",
         "topbar",
+        "actionHeroique_liste",
       ]
     },
     main: {
@@ -73,8 +75,10 @@ export class BaseActorSheet extends BaseSheet (
       aptitudeRoll: this.onAptitudeRoll,
       sensRoll: this.onSensRoll,
       ajoutDon: this.onAjoutDon,
-      supprDon: this.onSupprDon,
-
+      supprDon: this.onSupprDon,      
+      addEffet: this._onAddEffet,
+      editEffet: this._onEditEffet,
+      deleteEffet: this._onDeleteEffet,
     },
     position: {
       width: 1030,
@@ -135,6 +139,8 @@ export class BaseActorSheet extends BaseSheet (
     context.lists = {
       races: Races.list(),
     };
+    
+    context.actionsHeroiques = this.document.effects.filter(e => e.type == "actionHeroique");
 
     return context
   }
@@ -368,4 +374,86 @@ export class BaseActorSheet extends BaseSheet (
       await this.actor.update({"system.dons": dons});
     }
   }
+
+
+  static async _onAddEffet(event, target) {
+    event.preventDefault();
+    
+
+        const data = await foundry.applications.api.DialogV2.input({
+      title: game.i18n.format("glyphes.sheet.dialog.ajoutActHer.title"),
+      content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/effet/actionHeroique/form.hbs", {
+        isCreation: true,
+        actionsHeroiques : system.Common.ActionsHeroiques.list().filter(d => d.destination.includes("actor")),
+      }),
+      render: event => {
+        event.target.element.querySelector("form select.actionHeroique").addEventListener("change", ev2 => {
+          console.log("ca change", ev2.target.selectedOptions[0])
+          event.target.element.querySelector("input[name='name']").value = ev2.target.selectedOptions[0].dataset.name || "";
+          event.target.element.querySelector("textarea[name='system.effet']").value = ev2.target.selectedOptions[0].dataset.effet || "";
+          event.target.element.querySelector("input[name='system.cout']").value = ev2.target.selectedOptions[0].dataset.cout || "";
+        }, {passive: true});
+      },
+      modal: true,
+    });
+
+    if(data)    {
+      console.log(data)
+      const effetData = {
+        name: data.name,
+        type: "actionHeroique",
+        system: {
+          effet: data["system.effet"],
+          cout: data["system.cout"],
+        }
+      };
+    
+      // Créer l'item sans render automatique
+      const created = await this.document.createEmbeddedDocuments("ActiveEffect", [effetData], { render: true });
+      if (created && created[0]) {
+        //created[0].sheet.render(true, { force: true });
+      }
+    }
+  }
+  
+  static async _onEditEffet(event, target) {
+    event.preventDefault();
+    const effet = this.document.effects.get(target.dataset.effet);
+    if (effet) {      
+      if (effet.sheet.rendered) {
+        effet.sheet.bringToTop();
+      } else {
+        effet.sheet.render(true, { force: true });
+      }
+    }
+  }
+  
+  static async _onDeleteEffet(event, target) {
+    event.preventDefault();
+    const effet = this.document.effects.get(target.dataset.effet);
+
+    if (effet) {
+      
+      let confirmed = false;
+
+      if(event.ctrlKey && event.shiftKey)
+      {
+        confirmed = true;
+      }
+      else
+      {
+        confirmed = await foundry.applications.api.DialogV2.confirm({
+          content: `<p>Êtes-vous sûr de vouloir supprimer ${effet.name}?</p>`,
+          rejectClose: false,
+          modal: true
+        });
+      }
+
+      if (confirmed) {
+
+        await effet.delete({ render: true });
+        ui.notifications.info(`${effet.name} supprimé(e)`);
+      }
+    }
+  }  
 }

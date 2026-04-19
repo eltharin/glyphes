@@ -32,6 +32,9 @@
     },
     "Item": {
       "objet": {}
+    },
+    "ActiveEffect": {
+      "actionHeroique": {}
     }
   },
   "socket": false,
