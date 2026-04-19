@@ -12,6 +12,10 @@
         "common": {
             "dialog": {
                 "askDelete": "Etes vous sur de vouloir supprimer {name} ?"
+            },
+            "label": {
+                "edit": "Modifier",
+                "delete": "Supprimer"
             }
         },
         "sens": {
@@ -258,6 +262,44 @@
                 "description": "Le personnage est d'une agilité déconcertante lorsqu'il s'agit de se dégager de situations compliquées. Il peut se désengager gratuitement d'un corps à corps."
             }
         },
+        "actionsheroiques": {
+            "chargeheroique": {
+                "name"  : "Charge héroïque",
+                "effet" : "Annule le coût de la charge en point d'action."
+            },
+            "charmedivin": {
+                "name": "Charme divin",
+                "effet": "Lorsque le personnage tente de séduire ou de charmer une créature. Il peut dépenser 2 points d'actions pour annuler une réussite de résistance de sa cible"
+            },
+            "criteralliement": {
+                "name": "Cri de ralliement",
+                "effet": "Le personnage puise dans ses réserves pour hurler sa détermination au visage de ses ennemis, ainsi qu'à ses alliés. Toutes créatures alliées à 50 ft relancent leurs initiatives avec une supériorité si elles le souhaitent."
+            },
+            "inspirationheroique": {
+                "name": "Inspiration héroïque",
+                "effet": "Le personnage peut dépenser ses points pour accorder son niveau d'aptitude à une autre créature."
+            },
+            "mortattendra": {
+                "name": "Mort attendra",
+                "effet": "Au lieu de mourir lors d'une blessure, le personnage tient le coup pendant une minute supplémentaire. Si cela se passe lors d'un combat, le personnage tombera lors de la fin du combat."
+            },
+            "persuasionnaturelle": {
+                "name": "Persuasion naturelle",
+                "effet": "Lorsque le personnage tente de persuader une créature.Il peut dépenser 2 points d'actions pour annuler une réussite de résistance de sa cible."
+            },
+            "presencemenacante": {
+                "name": "Présence menaçante",
+                "effet": "Lorsque le personnage tente d'intimider une créature. Il peut dépenser 2 points d'actions pour annuler une réussite de résistance de sa cible."
+            },
+            "vitessemonstrueuse": {
+                "name": "Vitesse monstueuse",
+                "effet": "Le personnage reçoit un rush d'adrénaline dans ses veines, et se déplace à la vitesse du vent. Il ajoute 10ft à sa vitesse de déplacement pendant le tour et réussit ses épreuves de désengagement automatiquement."
+            },
+            "serrerdents": {
+                "name": "Serrer les dents",
+                "effet": "Le personnage serre les dents et encaisse le coup ou l'effet qu'il aurait dû subir. Sous réserve que le personnage n'est pas pris par surprise, il peut annuler une réussite pour chaque 2 points d'héroïsme dépensés."
+            }
+        },
         "sheet": {
             "common": {
                 "nom": "Nom"
@@ -278,7 +320,23 @@
                     "ajoutDon": {
                         "title": "Ajouter un Don",
                         "selectDon": "Choisissez un Don à ajouter"
+                    },
+                    "ajoutActHer": {
+                        "title": "Ajouter une Action Héroïque",
+                        "name": "Nom de l'action héroïque",
+                        "effet": "Effet de l'action héroïque"
                     }
+                },
+                "heroisme": {
+                    "pts": "Points d'héroïsme"
+                }
+            },
+            "effet": {
+                "actionHeroique": {
+                    "title" : "Actions Héroïques",
+                    "ajout": "Ajouter une action héroïque",
+                    "effet": "Effet",
+                    "cout": "Coût de l'action héroïque"
                 }
             }
         },

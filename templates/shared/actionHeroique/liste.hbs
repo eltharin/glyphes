@@ -1,0 +1,20 @@
+<div class="pj-sheet-cat fields-container aspects">
+    <h2>
+    {{localize "glyphes.sheet.effet.actionHeroique.title"}}
+    {{#if (not isVerrou) }}
+        <span class="clickable" data-action="addEffet" title="{{localize "glyphes.sheet.effet.actionHeroique.ajout"}}"><a><i class="fas fa-plus"></i></a></span>
+    {{/if}}
+    </h2>
+
+    {{#each actionsHeroiques as |effet| }}
+        <div class="field">
+            <div class="clickable" >{{effet.name}}</div>
+            <div>{{effet.system.effet}}</div>
+            <div>{{effet.system.cout}}</div>
+            <div class="controls">
+                <a data-action="editEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.edit"}}"><i class="fas fa-edit"></i></a>
+                <a data-action="deleteEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+    {{/each}}
+</div>

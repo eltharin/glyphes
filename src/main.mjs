@@ -12,6 +12,9 @@ import { ObjetDataModel } from "./Item/DataModel/ObjetDataModel.mjs";
 
 import {registerFunctions as registerHandleBarFunctions} from "./Handlebars.mjs"
 
+import { ActionHeroiqueDataModel } from "./Effet/ActionHeroique/DataModel/ActionHeroiqueDataModel.mjs";
+import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroiqueSheet.mjs";
+
 
 Hooks.once("init", () => {
   console.log(system.Consts.SYSTEMID + " | Initialisation du système " + system.Consts.SYSTEMID);
@@ -23,6 +26,10 @@ Hooks.once("init", () => {
   
   CONFIG.Item.dataModels = {
     objet: ObjetDataModel,
+  };
+  
+  CONFIG.ActiveEffect.dataModels = {
+    actionHeroique: ActionHeroiqueDataModel
   };
   
   foundry.documents.collections.Actors.registerSheet(system.Consts.SYSTEMID, PjSheet, {
@@ -39,6 +46,12 @@ Hooks.once("init", () => {
     types: ["objet"],
     makeDefault: true,
     label: "Feuille d'objet"
+  });
+  
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "glyphes", ActionHeroiqueSheet, {
+    label: "Action Héroïque",
+    types: ["actionHeroique"],
+    makeDefault: true
   });
 
   system.Settings.fct.registerSettings();
