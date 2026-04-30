@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     id="icon"
+     transform="matrix(1.0093568,0,0,1.0093568,-285.51979,-519.17529)">
+    <g
+       id="g4">
+      <path
+         fill="var(--color-dice)"
+         d="m 293.527,582.264 38.894,-67.597 39.229,67.261 z"
+         id="path1" />
+      <path
+         fill="var(--color-dice)"
+         d="m 291.304,581.946 -0.562,-38.354 39.36,-29.039 z"
+         id="path2" />
+      <path
+         fill="var(--color-dice)"
+         d="m 373.477,581.529 0.6,-37.685 -39.565,-29.314 z"
+         id="path3" />
+      <path
+         fill="var(--color-dice)"
+         d="m 332.421,613.268 -38.894,-29.016 78.122,-0.621 z"
+         id="path4" />
+    </g>
+  </g>
+</svg>

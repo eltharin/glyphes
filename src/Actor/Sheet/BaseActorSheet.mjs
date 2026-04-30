@@ -155,6 +155,7 @@ export class BaseActorSheet extends BaseSheet (
       }
     }
 
+    context.ValeurDe = ValeurDe;
     return context;
   }  
 

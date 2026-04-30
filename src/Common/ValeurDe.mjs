@@ -13,9 +13,29 @@ export class ValeurDe{
         12: "D12",
     };
 
-    static getPrev(valeur){
-        const index = this.ordre.indexOf(valeur);
-        if(index == -1)
+    static icons = {
+        4 : "systems/glyphes/assets/dice/d4.svg?n=" + Date.now() + "#icon",
+        6 : "systems/glyphes/assets/dice/d6.svg?n=" + Date.now() + "#icon",
+        8 : "systems/glyphes/assets/dice/d8.svg?n=" + Date.now() + "#icon",
+        10: "systems/glyphes/assets/dice/d10.svg?n=" + Date.now() + "#icon",
+        12: "systems/glyphes/assets/dice/d12.svg?n=" + Date.now() + "#icon",
+    };
+
+    static getVal(index) {
+        console.log(index);
+        return this.list[this.ordre[index]];
+    }
+
+    static getIcon(index) {
+        console.log(index);
+        return this.icons[this.ordre[index]];
+    }
+
+    static getPrev(index){
+        
+        console.log(Object.keys(this.ordre));
+
+        if(! index in Object.keys(this.ordre))
         {
             console.error("Valeur non trouvée");
             return null;
@@ -23,16 +43,16 @@ export class ValeurDe{
         if(index == 0)
         {
             console.error("Valeur min atteinte");
-            return this.ordre[0];
+            return 0;
         }
 
-        return this.ordre[index-1];
+        return index-1;
     }
 
-    static getNext(valeur){
-        const index = this.ordre.indexOf(valeur);
+    static getNext(index){
+        //const index = this.ordre.indexOf(valeur);
         console.log(index)
-        if(index == -1)
+        if(! index in Object.keys(this.ordre))
         {
             console.error("Valeur non trouvée");
             return null;
@@ -40,9 +60,9 @@ export class ValeurDe{
         if(index == this.ordre.length-1)
         {
             console.error("Valeur max atteinte");
-            return this.ordre[this.ordre.length-1];
+            return this.ordre.length-1;
         }
 
-        return this.ordre[index+1];
+        return index+1;
     }
 }

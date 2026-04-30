@@ -92,6 +92,32 @@
     flex:0 0 160px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 div.competences > div {
     display:flex;
     flex-direction: row;
@@ -116,4 +142,20 @@ div.competences > div > span {
 
 .col2 {
     columns: 2;
+}
+
+
+
+.diceVal {
+  --color-dice: blue;
+}
+
+.diceVal svg {
+  width:20px;
+  height:20px;
+}
+
+.diceVal label{
+    width:50px;
+    display: inline-block;
 }

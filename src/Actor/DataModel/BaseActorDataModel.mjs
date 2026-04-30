@@ -1,4 +1,5 @@
 import * as system from "../../_helpers.mjs";
+import { ValeurDe } from "../../Common/ValeurDe.mjs";
 
 
 export class BaseActorDataModel extends system.Models.SystemDataModel {
@@ -92,6 +93,14 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             if(!this.aptitudes[key].bonus)  {this.aptitudes[key].bonus = 0;}
         });
         
+        console.log(this.competences);
+        Object.keys(this.competences).forEach(key => {
+            if(this.competences[key].value < 0 || this.competences[key].value > ValeurDe.ordre.length) {
+                console.error(`Compétence ${key} a une valeur invalide (${this.competences[key].value}). Réinitialisation à 0.`);
+                this.competences[key].value = 0;
+            }
+        });
+        //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.ordre.length) ? {...comp, value: 0} : comp);
     }
 
     _prepareDerivedData() {
@@ -99,9 +108,15 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
     }
 
     verifAptitudes(changes, clone){
-        console.log(changes)
-        /*if(foundry.utils.getProperty(clone, "oubli.value") > this._getNbCasesOubliTotal(clone)) {
-            foundry.utils.setProperty(changes, "system.oubli.value", this._getNbCasesOubliTotal(clone));
-        }*/
+        console.log(changes);
+
+        if(foundry.utils.hasProperty(changes, "competences")) {
+            foundry.utils.getProperty(changes, "competences").forEach((comp, key) => {
+                if(comp.value < 0 || comp.value > ValeurDe.ordre.length) {
+                    console.error(`Compétence ${key} a une valeur invalide (${comp.value}). Réinitialisation à 0.`);
+                    foundry.utils.deleteProperty(changes, `competences.${key}.value`);
+                }
+            });
+        }
     }
 }

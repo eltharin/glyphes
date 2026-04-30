@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     id="icon"
+     transform="matrix(1.3611719,0,0,1.3611719,-18.058595,-18.058595)">
+    <polygon
+       fill="var(--color-dice)"
+       points="49.421875,59.897461 49.421875,18.208008 13.291016,80.787109 "
+       id="polygon1" />
+    <polygon
+       fill="var(--color-dice)"
+       points="86.708984,80.787109 50.577148,18.209473 50.577148,59.898438 "
+       id="polygon2" />
+    <polygon
+       fill="var(--color-dice)"
+       points="86.137695,81.791992 49.999023,60.898438 13.860352,81.791992 "
+       id="polygon3" />
+  </g>
+</svg>
