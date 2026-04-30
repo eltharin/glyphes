@@ -14,21 +14,36 @@
         <div class="">
             <label>{{localize "glyphes.competences.puissance.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.puissance.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.puissance.value }}">
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.puissance.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="+">+</span>
         </div>
         
         <div class="">
             <label>{{localize "glyphes.competences.souplesse.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="souplesse" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.souplesse.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.souplesse.value }}"/>
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.souplesse.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="souplesse" data-sens="+">+</span>
         </div>
         
         <div class="">
             <label>{{localize "glyphes.competences.constitution.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.constitution.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.constitution.value }}"/>
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.constitution.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="+">+</span>
         </div>
 
@@ -47,21 +62,36 @@
         <div class="">
             <label>{{localize "glyphes.competences.foi.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="foi" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.foi.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.foi.value }}"/>
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.foi.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="foi" data-sens="+">+</span>
         </div>
         
         <div class="">
             <label>{{localize "glyphes.competences.social.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="social" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.social.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.social.value }}"/>
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.social.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="social" data-sens="+">+</span>
         </div>
         
         <div class="">
             <label>{{localize "glyphes.competences.esprit.court"}}</label>
             <span data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="-">-</span>
-            <div>{{ fieldOrInput "system.competences.esprit.value" class="pj-sheet-input"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.value }}"/>
+                </svg>
+                <label>{{ callMethod ValeurDe "getVal" system.competences.esprit.value}}</label>
+            </div>
             <span data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="+">+</span>
         </div>
 

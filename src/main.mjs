@@ -64,3 +64,12 @@ Hooks.once("init", () => {
   system.DiceRoller.fct.registerDiceRolls();
 });
 
+
+Handlebars.registerHelper("callMethod", function(obj, methodName, ...args) {
+  console.log(obj, methodName, args);
+  if (obj && typeof obj[methodName] === "function") {
+    console.log("Appel de la méthode " + methodName + " avec les arguments : ", args, obj[methodName](...args));
+    return obj[methodName](...args);
+  }
+  return "";
+});

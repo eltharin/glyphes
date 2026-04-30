@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     id="icon"
+     fill="var(--color-dice)">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="100"
+       rx="5"
+       id="rect1" />
+  </g>
+</svg>
