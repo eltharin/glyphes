@@ -9,6 +9,9 @@ import { ActorPnjDataModel } from "./Actor/DataModel/ActorPnjDataModel.mjs";
 import { ObjetSheet } from "./Item/Sheet/ObjetSheet.mjs";
 
 import { ObjetDataModel } from "./Item/DataModel/ObjetDataModel.mjs";
+import { ConsomableDataModel } from "./Item/DataModel/ConsomableDataModel.mjs";
+import { ArmeDataModel } from "./Item/DataModel/ArmeDataModel.mjs";
+import { ArmureDataModel } from "./Item/DataModel/ArmureDataModel.mjs";
 
 import {registerFunctions as registerHandleBarFunctions} from "./Handlebars.mjs"
 
@@ -26,6 +29,9 @@ Hooks.once("init", () => {
   
   CONFIG.Item.dataModels = {
     objet: ObjetDataModel,
+    consommable: ConsomableDataModel,
+    arme: ArmeDataModel,
+    armure: ArmureDataModel,
   };
   
   CONFIG.ActiveEffect.dataModels = {
@@ -46,6 +52,24 @@ Hooks.once("init", () => {
     types: ["objet"],
     makeDefault: true,
     label: "Feuille d'objet"
+  });
+
+  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+    types: ["consommable"],
+    makeDefault: true,
+    label: "Feuille de consommable"
+  });
+
+  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+    types: ["arme"],
+    makeDefault: true,
+    label: "Feuille d'arme"
+  });
+
+  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+    types: ["armure"],
+    makeDefault: true,
+    label: "Feuille d'armure"
   });
   
   foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "glyphes", ActionHeroiqueSheet, {

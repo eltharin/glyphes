@@ -1,4 +1,25 @@
 <section>
 
     inventaire
+
+
+    <div data-action="addItem" data-type="objet">+ Ajout objet</div>
+
+    {{#each items as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
+
+
+    
+    <div data-action="addItem" data-type="consommable">+ Ajout consommable</div>
+
+    {{#each consommables as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
 </section>

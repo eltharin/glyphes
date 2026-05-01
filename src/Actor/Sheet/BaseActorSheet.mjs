@@ -70,6 +70,11 @@ export class BaseActorSheet extends BaseSheet (
     actions: {
       verouillage: this.verouillage,
       deverouillage: this.deverouillage,
+      
+      addItem: this._onAddItem,
+      editItem: this._onEditItem,
+      deleteItem: this._onDeleteItem,
+
       addRemoveDeCompetence: this.onAddRemoveDeCompetence,
       addRemoveDePts: this.onAddRemovePts,
       aptitudeRoll: this.onAptitudeRoll,
@@ -142,6 +147,23 @@ export class BaseActorSheet extends BaseSheet (
     
     context.actionsHeroiques = this.document.effects.filter(e => e.type == "actionHeroique");
 
+
+    let allItems = foundry.utils.deepClone(this.document.items.documentsByType);
+
+//    context.effets = this.document.effects.filter(e => e.type != "base");
+
+    context.armes = allItems.arme || [];
+    delete allItems.arme;
+    context.armures = allItems.armure || [];
+    delete allItems.armure;
+    context.glyphes = allItems.glyphes || [];
+    delete allItems.glyphes;
+    context.consommables = allItems.consommable || [];
+    delete allItems.consommable;
+    
+    context.items = Object.values(allItems).reduce((a, b ) => [...a, ...b], []);
+
+
     return context
   }
 
@@ -198,9 +220,12 @@ export class BaseActorSheet extends BaseSheet (
           super._onDrop(event);
 
         }
+        else {
+          console.log("Tentative de drop d'un item de type " + item.type + " sur la fiche acteur, ce qui n'est pas supporté.");
+        }
     }
   }
-  /*
+  
   static async _onAddItem(event, target) {
     event.preventDefault();
     const type = target.dataset.type;
@@ -236,6 +261,9 @@ export class BaseActorSheet extends BaseSheet (
     event.preventDefault();
     const item = this.document.items.get(target.dataset.itemid);
 
+    
+    console.log("edit : " , target, target.dataset.itemid,this.document.items.get(target.dataset.itemid))
+
     if (item) {
       if(item.system.isDefault == true)
       {
@@ -265,7 +293,7 @@ export class BaseActorSheet extends BaseSheet (
       }
     }
   }  
-*/
+
   /*
   static async _onEquipeArmure(event, target) {
     this.actor.items.get(target.dataset.itemid).update({"system.isEquipe": true});
