@@ -39,14 +39,14 @@ export class BaseActorSheet extends BaseSheet (
         {
           action: "verouillage",
           icon: "fa-solid fa-lock",
-          label: "beryllium.pjsheet.action.lock",
+          label: system.Consts.SYSTEMID + ".pjsheet.action.lock",
           ownership: "OWNER",
           visible: this.#canVerouillage
         },
         {
           action: "deverouillage",
           icon: "fa-solid fa-unlock",
-          label: "beryllium.pjsheet.action.unlock",
+          label: system.Consts.SYSTEMID + ".pjsheet.action.unlock",
           ownership: "OWNER",
           visible: this.#canDeverouillage
         }
