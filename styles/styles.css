@@ -103,10 +103,16 @@
 
 
 
+.glyphes.item-sheet {
+    display:flex;
+    flex-direction:row;
+    min-height: 0;
+}
 
 
-
-
+.glyphes.item-sheet > .sidebar {
+    flex: 0 0 200px;
+}
 
 
 

@@ -31,7 +31,10 @@
       "pnj": {  }
     },
     "Item": {
-      "objet": {}
+      "objet": {},
+      "consommable": {},
+      "arme": {},
+      "armure": {}
     },
     "ActiveEffect": {
       "actionHeroique": {}

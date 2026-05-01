@@ -1,18 +1,8 @@
 import * as system from "../../_helpers.mjs";
+import { BaseItemDataModel } from "./BaseItemDataModel.mjs";
 
 
 
-export class ObjetDataModel extends system.Models.SystemDataModel {
+export class ObjetDataModel extends BaseItemDataModel {
 
-
-  static defineSchema() {
-    return {
-      //prixmoyen: new foundry.data.fields.NumberField({initial: 0, min:0}),
-      notes: new foundry.data.fields.StringField({}),
-    };
-  }
-
-  prepareDerivedData() {
-      //this.prix = system.Common.Argent.convertAtoB(this.prixmoyen);
-  }
 }
