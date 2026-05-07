@@ -53,7 +53,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.puissance.value }}">
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.puissance.dice }}">
                         </svg>
                         <label>D{{ system.competences.puissance.dice}}</label>
                     </div>
@@ -65,7 +65,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="souplesse" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.souplesse.value }}"/>
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.souplesse.dice }}"/>
                         </svg>
                         <label>D{{ system.competences.souplesse.dice}}</label>
                     </div>
@@ -77,7 +77,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.constitution.value }}"/>
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.constitution.dice }}"/>
                         </svg>
                         <label>D{{ system.competences.constitution.dice}}</label>
                     </div>
@@ -112,7 +112,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="foi" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.foi.value }}"/>
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.foi.dice }}"/>
                         </svg>
                         <label>D{{ system.competences.foi.dice}}</label>
                     </div>
@@ -124,7 +124,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="social" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.social.value }}"/>
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.social.dice }}"/>
                         </svg>
                         <label>D{{ system.competences.social.dice}}</label>
                     </div>
@@ -136,7 +136,7 @@
                     <span class="moins" data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="-"></span>
                     <div class="diceVal">
                         <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.value }}"/>
+                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.dice }}"/>
                         </svg>
                         <label>D{{ system.competences.esprit.dice}}</label>
                     </div>
@@ -149,7 +149,7 @@
         <hr/>
 
         <div>
-            Dons <span class="action" data-action="ajoutDon">Ajouter un Don</span>
+            <h2><span>{{ localize "glyphes.sheet.actor.don.title" }}</span><span class="action add button" data-action="ajoutDon">{{ localize "glyphes.sheet.actor.don.ajoutbtn" }}</span></h2>
             {{#each system.donsObj as |don|}}
                 <div class="don">
                     <div class="lignetab">
@@ -191,8 +191,6 @@
                     </span>
             </legend>
         </div>
-
-
 
         {{> actionHeroique_liste}}
     </div>

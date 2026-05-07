@@ -1,27 +1,60 @@
 <section>
 
-    inventaire
+    <h2>{{ localize "glyphes.sheet.actor.inventaire.encombrement" val=system.competences.puissance.dice }}</h2>
 
-    encombrement : {{ system.competences.puissance.dice }}
+    <hr/>
 
+    <div class="flextabs">
+        <div class="objet">
+            <h2>
+                <span>{{localize "glyphes.sheet.actor.inventaire.objet.title"}}</span>
+                <span class="action add button" data-action="addItem" data-type="objet" title="{{localize "glyphes.sheet.actor.inventaire.objet.ajout"}}">{{localize "glyphes.sheet.actor.inventaire.objet.ajoutbtn"}}</span>
+            </h2>
 
-    <div data-action="addItem" data-type="objet">+ Ajout objet</div>
-
-    {{#each items as |item|}}
-        <div class="item">
-            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
-            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+            <div class="tabitem">
+                {{#each items as |item|}}
+                    <div class="item objet">
+                        <div class="lignetab">
+                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <span class="action" >
+                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                            </span>    
+                        </div>
+                        
+                        <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
+                            <div class="infos">      
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </div>
-    {{/each}}
+        <div class="consommable">
+            <h2>
+                <span>{{localize "glyphes.sheet.actor.inventaire.consommable.title"}}</span>
+                <span class="action add button" data-action="addItem" data-type="consommable" title="{{localize "glyphes.sheet.actor.inventaire.consommable.ajout"}}">{{localize "glyphes.sheet.actor.inventaire.consommable.ajoutbtn"}}</span>
+            </h2>
 
-
-    
-    <div data-action="addItem" data-type="consommable">+ Ajout consommable</div>
-
-    {{#each consommables as |item|}}
-        <div class="item">
-            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
-            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+            <div class="tabitem">
+                {{#each consommables as |item|}}
+                    <div class="item consommable">
+                        <div class="lignetab">
+                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <span class="action" >
+                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                            </span>    
+                        </div>
+                        
+                        <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
+                            <div class="infos">      
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </div>
-    {{/each}}
+    </div>
+
 </section>

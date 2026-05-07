@@ -1,47 +1,86 @@
-<section>
+<section class="combat">
 
-    combat
+    <div class="flextabs">
+        <div>
+            <h2>
+                <span>{{localize "glyphes.sheet.actor.combat.arme.title"}}</span>
+                <span class="action add button" data-action="addItem" data-type="arme" title="{{localize "glyphes.sheet.actor.combat.arme.ajout"}}">{{localize "glyphes.sheet.actor.combat.arme.ajoutbtn"}}</span>
+            </h2>
 
-    <div data-action="addItem" data-type="arme">+ Ajout arme</div>
+            <div class="tabitem">
+                {{#each armes as |item|}}
+                    <div class="item arme">
+                        <div class="lignetab">
+                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <span class="action" >
+                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                            </span>    
+                        </div>
+                        
+                        <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
+                            <div class="infos">      
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
 
-    {{#each armes as |item|}}
-        <div class="item">
-            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
-            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+            <hr/>
+
+            <div class="flextabs">
+                <div class="field">
+                    <label>{{localize "glyphes.sheet.actor.combat.resilience"}}</label>
+                    <div>{{ fieldOrInput "system.resilience" class="pj-sheet-input"}}</div>
+                </div>
+
+                <div class="field">
+                    <label>{{localize "glyphes.sheet.actor.combat.esquive"}}</label>
+                    <div>{{ fieldOrInput "system.esquive" class="pj-sheet-input"}}</div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <h2>
+                <span>{{localize "glyphes.sheet.actor.combat.armure.title"}}</span>
+                <span class="action add button" data-action="addItem" data-type="armure" title="{{localize "glyphes.sheet.actor.combat.armure.ajout"}}">{{localize "glyphes.sheet.actor.combat.armure.ajoutbtn"}}</span>
+            </h2>
+
+            <div class="tabitem">
+                {{#each armures as |item|}}
+                    <div class="item armure">
+                        <div class="lignetab">
+                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <span class="action" >
+                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                            </span>    
+                        </div>
+                        
+                        <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
+                            <div class="infos">      
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </div>
-    {{/each}}
-
-
-
-    <div>Defense
-
-
-    <div class="field">
-        <label>{{localize "glyphes.pjsheet.combat.resilience"}}</label>
-        <div>{{ fieldOrInput "system.resilience" class="pj-sheet-input"}}</div>
-    </div>
-
-    <div class="field">
-        <label>{{localize "glyphes.pjsheet.combat.esquive"}}</label>
-        <div>{{ fieldOrInput "system.esquive" class="pj-sheet-input"}}</div>
-    </div>
-
-
     
-    <div data-action="addItem" data-type="armure">+ Ajout armure</div>
 
-    {{#each armures as |item|}}
-        <div class="item">
-            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
-            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
-        </div>
-    {{/each}}
+
+        <div >
+            <h2>
+                <span>{{localize "glyphes.sheet.actor.combat.pioche.title"}}</span>
+                <span class="action add button" data-action="pioche" title="{{localize "glyphes.sheet.actor.combat.pioche.ajout"}}">{{localize "glyphes.sheet.actor.combat.pioche.ajoutbtn"}}</span>
+            </h2>
+
+            <div class="cards flextabs">
+                {{#each system.sacrificesCards as |card|}}
+                    <div><img src="{{card.faces.0.img}}" alt="{{card.name}}" width="100" ></div>
+                {{/each}}
+            </div>
+      </div>
     </div>
-
-<div data-action="pioche">pioche</div>
-
-{{#each system.sacrificesCards as |card|}}
-    <div>{{card.name}}</div>
-{{/each}}
 
 </section>

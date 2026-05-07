@@ -26,7 +26,7 @@ export class ValeurDe{
     }
 
     static getIcon(index) {
-        return this.icons[this.ordre[index]];
+        return this.icons[index];
     }
 
     static getPrev(index) {

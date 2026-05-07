@@ -1,9 +1,7 @@
 <div class="pj-sheet-cat fields-container aspects">
     <h2>
-    {{localize "glyphes.sheet.effet.actionHeroique.title"}}
-    {{#if (not isVerrou) }}
-        <span class="clickable" data-action="addEffet" title="{{localize "glyphes.sheet.effet.actionHeroique.ajout"}}"><a><i class="fas fa-plus"></i></a></span>
-    {{/if}}
+        <span>{{localize "glyphes.sheet.effet.actionHeroique.title"}}</span>
+        <span class="action add button" data-action="addEffet" title="{{localize "glyphes.sheet.effet.actionHeroique.ajout"}}">{{localize "glyphes.sheet.effet.actionHeroique.ajoutbtn"}}</span>
     </h2>
 
     {{#each actionsHeroiques as |effet| }}

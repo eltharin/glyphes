@@ -1,39 +1,97 @@
-<section>
+<section class="evocation">
 
-    evocation
+    <div class="flextabs pts">
+        <div class="temepete ">
+            <div>{{localize "glyphes.sheet.actor.evocation.tempete.pts"}}</div>
+            <div class="points tempete">
+                <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="-">-</span>
+                <span class="pts">
+                    {{ log system.points.tempete }}
+                    {{#times system.points.tempete.value }}
+                        <span class="active"></span>
+                    {{/times}}
+                    {{#times system.points.tempete.bonus }}
+                        <span class="bonus"></span>
+                    {{/times}}
+                    {{#times system.points.tempete.nope }}
+                        <span></span>
+                    {{/times}}
+                </span>
+                <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="+">+</span>
+            </div>
+        </div>
 
-    <div>
-        tempete spirituelle
-        <legend>{{localize "glyphes.sheet.actor.tempete.pts"}}
-                        <span class="points tempete">
-                            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="-">-</span>
-                            <span class="pts">
-                                {{ log system.points.tempete }}
-                                {{#times system.points.tempete.value }}
-                                    <span class="active"></span>
-                                {{/times}}
-                                {{#times system.points.tempete.bonus }}
-                                    <span class="bonus"></span>
-                                {{/times}}
-                                {{#times system.points.tempete.nope }}
-                                    <span></span>
-                                {{/times}}
-                            </span>
-                            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="+">+</span>
-                        </span>
-        </legend>
+        <div class="ame ">
+            <div>{{localize "glyphes.competences.cat.ame"}}</div>
+            <div class="points ame">
+                <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="ame" data-sens="-">-</span>
+                <span class="pts">
+                    {{ log system.points.ame }}
+                    {{#times system.points.ame.value }}
+                        <span class="active"></span>
+                    {{/times}}
+                    {{#times system.points.ame.bonus }}
+                        <span class="bonus"></span>
+                    {{/times}}
+                    {{#times system.points.ame.nope }}
+                        <span></span>
+                    {{/times}}
+                </span>
+                <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="ame" data-sens="+">+</span>
+            </div>
+        </div>
     </div>
 
-    <div data-action="addItem" data-type="glyphe">+ Ajout glyphe</div>
+    <hr/>
 
-    {{#each glyphes as |item|}}
-        <div class="item">
-            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
-            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+    <div class="flextabs">
+        <div class="field">
+            <div>{{localize "glyphes.competences.esprit.long"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.dice }}"/>
+                </svg>
+                <label>D{{ system.competences.esprit.dice}}</label>
+            </div>
         </div>
-    {{/each}}
 
+        <div class="field">
+            <div>{{localize "glyphes.sens.flux"}}</div>
+            <div class="diceVal">
+                <svg width="50" height="50" viewBox="0 0 100 100">
+                    <use href="{{ callMethod ValeurDe "getIcon" system.sens.flux }}"/>
+                </svg>
+                <label>D{{ system.sens.flux}}</label>
+            </div>
+        </div>
+    </div>
 
+    <hr/>
 
+    <div>
+        <h2>
+            <span>{{localize "glyphes.sheet.actor.evocation.glyphes.title"}}</span>
+            <span class="action add button" data-action="addItem" data-type="glyphe" title="{{localize "glyphes.sheet.actor.evocation.glyphes.ajout"}}">{{localize "glyphes.sheet.actor.evocation.glyphes.ajoutbtn"}}</span>
+        </h2>
+
+        <div class="tabitem">
+            {{#each glyphes as |item|}}
+                <div class="item glyphe">
+                    <div class="lignetab">
+                        <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                        <span class="action" >
+                            <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                            <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                        </span>    
+                    </div>
+                    
+                    <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
+                        <div class="infos">      
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
 
 </section>
