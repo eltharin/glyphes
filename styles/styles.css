@@ -1,5 +1,82 @@
 
 
+/* toutes fiches */
+.glyphes.sheet {
+    --font-h2-size: 1.65em;
+}
+
+.glyphes.sheet .toggleable {
+    display:none;
+}
+
+.glyphes.sheet .toggleable.visible {
+    display:initial;
+}
+
+.glyphes.sheet .lignetab {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.glyphes.sheet .lignetab > *{
+    flex : 1 1 auto;
+}
+
+.glyphes.sheet .lignetab > .action{
+    flex : 0 0 auto;
+}
+
+.glyphes.sheet h2 {
+    display:flex;
+    flex-direction: row;
+
+    span {
+        flex: 1 0 auto;
+    }
+    
+    span.button{
+        flex: 0 0 auto;
+        font-size: 1rem;
+        border:1px solid white;
+        padding: 0.25em 0.5em;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        float:rigth;
+    }
+}
+
+.glyphes.sheet .flextabs{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    * {
+        flex: 1 1 1px;
+    }
+}
+
+
+
+.glyphes.sheet h2 > span.button::before {
+    content:"";
+    display:inline-block;
+    width:1em;
+    height:1em;
+    background-color:white;
+    color:black;
+    text-align:center;
+    margin-right:0.5rem;
+    border-radius: 0.75rem;
+}
+
+.glyphes.sheet h2 > span.button.add::before {
+    content:"+";
+}
+
+
+/* fiche acteur */
 
 .glyphes.actor-sheet {
     display:flex;
@@ -268,6 +345,26 @@
     -webkit-mask: url("../assets/pics/arrow_plus.svg") no-repeat center / contain;
 }
 
+
+.glyphes.actor-sheet section.combat .flextabs > div {
+    max-width:50%;
+}
+
+.glyphes.actor-sheet section.combat .cards {
+    
+    flex-wrap:wrap;
+    gap: 0.5rem;
+    --card-width: 110px;
+    div {
+        flex: 1 0 var(--card-width);
+    }
+    div > img {
+        width: var(--card-width);
+    }
+}
+
+
+
 .diceVal {
   --color-dice: blue;
   height:2em;
@@ -288,27 +385,6 @@
 
 
 
-.glyphes.sheet .toggleable {
-    display:none;
-}
-.glyphes.sheet .toggleable.visible {
-    display:initial;
-}
-
-.glyphes.sheet .lignetab {
-    display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.glyphes.sheet .lignetab > *{
-    flex : 1 1 auto;
-}
-
-.glyphes.sheet .lignetab > .action{
-    flex : 0 0 auto;
-}
 
 
 

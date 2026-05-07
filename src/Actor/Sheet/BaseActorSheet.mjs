@@ -405,7 +405,7 @@ export class BaseActorSheet extends BaseSheet (
   static async onAjoutDon(event, target)
   {
     const data = await foundry.applications.api.DialogV2.input({
-      title: game.i18n.format("glyphes.sheet.actor.dialog.ajoutDon.title"),
+      title: game.i18n.format("glyphes.sheet.actor.don.select"),
       content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/actor/dialog/ajoutDon.hbs", {
         dons : system.Common.Dons.list().filter(d => !this.actor.system.dons.includes(d.id)),
       }),

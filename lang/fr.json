@@ -311,7 +311,8 @@
                     "combat" : "Combat",
                     "evocation" : "Evocation",
                     "inventaire" : "Inventaire",
-                    "fabrication" : "Fabrication"
+                    "fabrication" : "Fabrication",
+                    "max" : "Max"
                 },
                 "origine": "Origine",
                 "race": "Race",
@@ -331,12 +332,94 @@
                 },
                 "heroisme": {
                     "pts": "Points d'héroïsme"
+                },
+                "don": {
+                    "title": "Dons",
+                    "ajoutbtn": "Ajouter un Don",
+                    "select": "Choisissez un Don"
+                },
+                "combat": {
+                    "arme": {
+                        "title": "Armes",
+                        "ajout": "Ajouter une arme",
+                        "ajoutbtn": "Ajouter une arme",
+                        "type": "Type d'arme",
+                        "degats": "Dégâts de l'arme",
+                        "portee": "Portée de l'arme",
+                        "description": "Description de l'arme"
+                    },
+                    "armure": {
+                        "title": "Armures",
+                        "ajout": "Ajouter une armure",
+                        "ajoutbtn": "Ajouter",
+                        "type": "Type d'armure",
+                        "defense": "Défense de l'armure",
+                        "description": "Description de l'armure"
+                    },
+                    "resilience" : "Résilience",
+                    "esquive": "Esquive",
+                    "pioche": {
+                        "title": "Pioche de sacrifice",
+                        "ajout": "Piocher une carte de sacrifice",
+                        "ajoutbtn": "Piocher"
+                    }
+                },
+                "evocation": {
+                    "glyphes": {
+                        "title": "Glyphes",
+                        "ajout": "Ajouter un glyphe",
+                        "ajoutbtn": "Ajouter un glyphe",
+                        "type": "Type de glyphe",
+                        "description": "Description du glyphe"
+                    },
+                    "tempete": {
+                        "pts": "Tempete spirituelle"
+                    }
+                },
+                "fabrication": {
+                    "title": "Fabrication",
+                    "ajout": "Ajouter une fabriquation",
+                    "ajoutbtn": "Ajouter une fabriquation"
+                },
+                "inventaire": {
+                    "encombrement": "Encombrement Max : {val}",
+                    "objet": {
+                        "title": "Objets",
+                        "ajout": "Ajouter un objet",
+                        "ajoutbtn": "Ajouter un objet"
+                    },
+                    "consommable": {
+                        "title": "Consommables",
+                        "ajout": "Ajouter un consommable",
+                        "ajoutbtn": "Ajouter un consommable"
+                    }
+                },
+                "max": {
+                    "pts": {
+                        "corps": {
+                            "max": "Points de corps max",
+                            "bonus": "Points de corps bonus"
+                        },
+                        "ame": {
+                            "max": "Points d'âme max",
+                            "bonus": "Points d'âme bonus"
+                        },
+                        "heroisme": {
+                            "max": "Points d'héroïsme max",
+                            "bonus": "Points d'héroïsme bonus"
+                        },
+                        "tempete": {
+                            "max": "Tempête spirituelle max",
+                            "bonus": "Tempête spirituelle bonus"
+                        }
+                    }
                 }
             },
             "effet": {
                 "actionHeroique": {
                     "title" : "Actions Héroïques",
                     "ajout": "Ajouter une action héroïque",
+                    "ajoutbtn": "Ajouter",
                     "effet": "Effet",
                     "cout": "Coût de l'action héroïque"
                 }
