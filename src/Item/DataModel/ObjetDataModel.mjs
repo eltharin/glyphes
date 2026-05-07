@@ -1,8 +1,9 @@
 import * as system from "../../_helpers.mjs";
-import { BaseItemDataModel } from "./BaseItemDataModel.mjs";
+import { BaseObjetDataModel } from "./BaseObjetDataModel.mjs";
 
 
 
-export class ObjetDataModel extends BaseItemDataModel {
+export class ObjetDataModel extends BaseObjetDataModel {
+  
 
 }

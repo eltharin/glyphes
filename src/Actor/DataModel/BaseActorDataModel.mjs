@@ -12,7 +12,7 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             origine: new foundry.data.fields.StringField({}),
             race: new foundry.data.fields.StringField({}),
 
-            richesse: new foundry.data.fields.NumberField({initial: 0}),
+            argent: new foundry.data.fields.NumberField({initial: 0}),
             blessures: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min:0}),
                     max: new foundry.data.fields.NumberField({initial: 3, min:0}),
@@ -81,6 +81,10 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
                 new foundry.data.fields.StringField({}),      
             ),
             sacrificeDeckId: new foundry.data.fields.StringField({initial: ""}),
+            fabrication: new foundry.data.fields.SchemaField({
+                aptitude: new foundry.data.fields.StringField({initial: ""}),
+                nbIngredients: new foundry.data.fields.NumberField({initial: 0, min: 0})
+            }),
         };
     }
 

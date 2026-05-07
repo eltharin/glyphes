@@ -11,17 +11,21 @@
                 {{#each armes as |item|}}
                     <div class="item arme">
                         <div class="lignetab">
-                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <label>{{item.name}}</label>
+                            {{#if item.system.aptitude}}<label data-width="200">{{localize (concat "glyphes.aptitudes." item.system.aptitude ".name") }}</label>{{/if}}
                             <span class="action" >
-                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                {{#if item.system.notes}}<a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>{{/if}}
+                                <a data-action="editItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.edit"}}"><i class="fas fa-edit"></i></a>
                                 <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
                             </span>    
                         </div>
-                        
+                        {{#if item.system.notes}}
                         <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
                             <div class="infos">      
+                                {{item.system.notes}}
                             </div>
                         </div>
+                        {{/if}}
                     </div>
                 {{/each}}
             </div>
@@ -51,17 +55,21 @@
                 {{#each armures as |item|}}
                     <div class="item armure">
                         <div class="lignetab">
-                            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <label>{{item.name}}</label>
+                            <label data-width="100">{{#if item.system.isBouclier}}{{localize (concat "glyphes.sheet.actor.combat.armure.bouclier")}}{{/if}}</label>
                             <span class="action" >
-                                <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
+                                {{#if item.system.notes}}<a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>{{/if}}
+                                <a data-action="editItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.edit"}}"><i class="fas fa-edit"></i></a>
                                 <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
                             </span>    
                         </div>
-                        
+                        {{#if item.system.notes}}
                         <div class="toggleable flexrow" data-toggle_section="item_{{item._id}}">
                             <div class="infos">      
+                                {{item.system.notes}}
                             </div>
                         </div>
+                        {{/if}}
                     </div>
                 {{/each}}
             </div>
