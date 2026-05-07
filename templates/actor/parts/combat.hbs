@@ -1,4 +1,47 @@
 <section>
 
-    comabt
+    combat
+
+    <div data-action="addItem" data-type="arme">+ Ajout arme</div>
+
+    {{#each armes as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
+
+
+
+    <div>Defense
+
+
+    <div class="field">
+        <label>{{localize "glyphes.pjsheet.combat.resilience"}}</label>
+        <div>{{ fieldOrInput "system.resilience" class="pj-sheet-input"}}</div>
+    </div>
+
+    <div class="field">
+        <label>{{localize "glyphes.pjsheet.combat.esquive"}}</label>
+        <div>{{ fieldOrInput "system.esquive" class="pj-sheet-input"}}</div>
+    </div>
+
+
+    
+    <div data-action="addItem" data-type="armure">+ Ajout armure</div>
+
+    {{#each armures as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
+    </div>
+
+<div data-action="pioche">pioche</div>
+
+{{#each system.sacrificesCards as |card|}}
+    <div>{{card.name}}</div>
+{{/each}}
+
 </section>

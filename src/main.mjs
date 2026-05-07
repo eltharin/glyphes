@@ -6,12 +6,19 @@ import { PnjSheet } from "./Actor/Sheet/PnjSheet.mjs";
 import { ActorPjDataModel } from "./Actor/DataModel/ActorPjDataModel.mjs";
 import { ActorPnjDataModel } from "./Actor/DataModel/ActorPnjDataModel.mjs";
 
-import { ObjetSheet } from "./Item/Sheet/ObjetSheet.mjs";
+import { ObjetSheet }       from "./Item/Sheet/ObjetSheet.mjs";
+import { ArmeSheet }        from "./Item/Sheet/ArmeSheet.mjs";
+import { ArmureSheet }      from "./Item/Sheet/ArmureSheet.mjs";
+import { ConsommableSheet } from "./Item/Sheet/ConsommableSheet.mjs";
+import { GlypheSheet }      from "./Item/Sheet/GlypheSheet.mjs";
+import { FabricationSheet } from "./Item/Sheet/FabricationSheet.mjs";
 
 import { ObjetDataModel } from "./Item/DataModel/ObjetDataModel.mjs";
 import { ConsomableDataModel } from "./Item/DataModel/ConsomableDataModel.mjs";
 import { ArmeDataModel } from "./Item/DataModel/ArmeDataModel.mjs";
 import { ArmureDataModel } from "./Item/DataModel/ArmureDataModel.mjs";
+import { GlypheDataModel } from "./Item/DataModel/GlypheDataModel.mjs";
+import { FabricationDataModel } from "./Item/DataModel/FabricationDataModel.mjs";
 
 import {registerFunctions as registerHandleBarFunctions} from "./Handlebars.mjs"
 
@@ -32,6 +39,8 @@ Hooks.once("init", () => {
     consommable: ConsomableDataModel,
     arme: ArmeDataModel,
     armure: ArmureDataModel,
+    glyphe: GlypheDataModel,
+    fabrication: FabricationDataModel
   };
   
   CONFIG.ActiveEffect.dataModels = {
@@ -54,22 +63,34 @@ Hooks.once("init", () => {
     label: "Feuille d'objet"
   });
 
-  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+  foundry.documents.collections.Items.registerSheet("glyphes", ConsommableSheet, {
     types: ["consommable"],
     makeDefault: true,
     label: "Feuille de consommable"
   });
 
-  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+  foundry.documents.collections.Items.registerSheet("glyphes", ArmeSheet, {
     types: ["arme"],
     makeDefault: true,
     label: "Feuille d'arme"
   });
 
-  foundry.documents.collections.Items.registerSheet("glyphes", ObjetSheet, {
+  foundry.documents.collections.Items.registerSheet("glyphes", ArmureSheet, {
     types: ["armure"],
     makeDefault: true,
     label: "Feuille d'armure"
+  });
+
+  foundry.documents.collections.Items.registerSheet("glyphes", GlypheSheet, {
+    types: ["glyphe"],
+    makeDefault: true,
+    label: "Feuille de glyphe"
+  });
+
+  foundry.documents.collections.Items.registerSheet("glyphes", FabricationSheet, {
+    types: ["fabrication"],
+    makeDefault: true,
+    label: "Feuille de fabrication"
   });
   
   foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "glyphes", ActionHeroiqueSheet, {
@@ -90,9 +111,7 @@ Hooks.once("init", () => {
 
 
 Handlebars.registerHelper("callMethod", function(obj, methodName, ...args) {
-  console.log(obj, methodName, args);
   if (obj && typeof obj[methodName] === "function") {
-    console.log("Appel de la méthode " + methodName + " avec les arguments : ", args, obj[methodName](...args));
     return obj[methodName](...args);
   }
   return "";

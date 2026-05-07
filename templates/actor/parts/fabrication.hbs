@@ -1,4 +1,14 @@
 <section>
 
     fabrication
+
+
+    <div data-action="addItem" data-type="fabrication">+ Ajout fabrication</div>
+
+    {{#each fabrications as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
 </section>

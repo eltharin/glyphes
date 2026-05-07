@@ -7,9 +7,19 @@
     min-height: 0;
 }
 
+.glyphes.actor-sheet [data-action] {
+    cursor: pointer;
+}
+
+.glyphes-sheet textarea, .glyphes-dialog textarea {
+    width:100%;
+}
+
+
 .glyphes.actor-sheet > .sidebar {
     flex: 0 0 200px;
 }
+
 
 .glyphes.actor-sheet > .content {
     flex: 1 0 200px;
@@ -19,14 +29,158 @@
 }
 
 .glyphes.actor-sheet .topbar {
-    height:200px;
+    height:160px;
     display:flex;
     flex-direction: row;
 }
 
 .glyphes.actor-sheet .topbar > .image > img{
-    height:200px;
+    height:150px;
 }
+
+.glyphes.actor-sheet .perso > .carac  {
+    display:flex;
+    flex-direction: row;
+}
+
+.glyphes.actor-sheet .perso > .carac > div:nth-child(2) {
+    flex: 1 0 350px;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens {
+    --color-sens: white;
+    color:black;
+    width:350px;
+    position: relative;
+    flex:0 0 350px;
+    height:350px;
+    margin-right:20px;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > svg{
+    position: absolute;
+    top:0;
+    left:0;
+    width:350px;
+    height:350px;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > div {
+    position: absolute;
+    text-align:center;
+    transform: translate(0, -50%);
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .senslabel{
+    top:50%;
+    left: 40%;
+    width:21%;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensvuelabel{
+    top:30%;
+    left: 40%;
+    width:21%;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensvuevalue{
+    top:13%;
+    left:45%;
+    width:10%;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensouielabel{
+    top:50%;
+    left: 14%;
+    width:22%;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensouievalue{
+    top:50%;
+    left:1%;
+    width:10%;
+}
+
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensinstinctlabel{
+    top:50%;
+    left: 65%;
+    width:20%;
+}
+
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensinstinctvalue{
+    top:50%;
+    left:89%;
+    width:10%;
+}
+
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensfluxlabel{
+    top:69%;
+    left: 40%;
+    width:21%;
+}
+
+.glyphes.actor-sheet .perso > .carac > .sens > .sensfluxvalue{
+    top:87%;
+    left: 45%;
+    width:10%;
+}
+
+.glyphes.actor-sheet .points{
+    
+    display:inline-block;
+    padding: 0.25em;
+    border : 1px solid white;
+    border-radius:1em;
+    margin-bottom: 0.5em;
+    margin-left : 2em;
+}
+
+.glyphes.actor-sheet .points .ptscontrol{
+    display:inline-block;
+    width:1.5em;
+    height:1.5em;
+    background-color: white;
+    color:black;
+    text-align:center;
+    border-radius:0.75em;
+    cursor: pointer;
+    vertical-align: super;
+}
+
+.glyphes.actor-sheet .points .ptscontrol:first-child{
+    margin-right:1em;
+}
+
+.glyphes.actor-sheet .points .ptscontrol:last-child{
+    margin-left:1em;
+}
+
+.glyphes.actor-sheet .points .pts span{
+    
+    mask: url("../assets/pics/sheet/point.svg") no-repeat center / contain;
+    -webkit-mask: url("../assets/pics/sheet/point.svg") no-repeat center / contain;
+    display:inline-block;
+    width:1.5em;
+    height:1.5em;
+    background-color: white;
+}
+
+.glyphes.actor-sheet .points .pts span.active{
+    
+    background-color: red;
+}
+
+.glyphes.actor-sheet .points .pts span.bonus{
+    
+    background-color: green;
+}
+
+
+
+
 
 
 .glyphes.actor-sheet > .content > .main {
@@ -92,12 +246,69 @@
     flex:0 0 160px;
 }
 
+.glyphes.actor-sheet .carac .competences .competence {
+    height:2em;
+}
+.glyphes.actor-sheet .carac .competences .competence .moins, .glyphes.actor-sheet .carac .competences .competence .plus {
+    display:inline-block;
+    width:1.5em;
+    height:1.5em;
+    background-color: white;
+    cursor: pointer;
+    margin-top:0.2em
+}
+
+.glyphes.actor-sheet .carac .competences .competence .moins {
+    mask: url("../assets/pics/arrow_minus.svg") no-repeat center / contain;
+    -webkit-mask: url("../assets/pics/arrow_minus.svg") no-repeat center / contain;
+}
+
+.glyphes.actor-sheet .carac .competences .competence .plus {
+    mask: url("../assets/pics/arrow_plus.svg") no-repeat center / contain;
+    -webkit-mask: url("../assets/pics/arrow_plus.svg") no-repeat center / contain;
+}
+
+.diceVal {
+  --color-dice: blue;
+  height:2em;
+}
+
+.diceVal svg {
+  width:2em;
+  height:2em;
+}
+
+.diceVal label{
+    width:5em;
+    display: inline-block;
+    height:2em;
+    line-height: 2em;
+    vertical-align: top;
+}
 
 
 
+.glyphes.sheet .toggleable {
+    display:none;
+}
+.glyphes.sheet .toggleable.visible {
+    display:initial;
+}
 
+.glyphes.sheet .lignetab {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.glyphes.sheet .lignetab > *{
+    flex : 1 1 auto;
+}
 
+.glyphes.sheet .lignetab > .action{
+    flex : 0 0 auto;
+}
 
 
 
@@ -152,16 +363,7 @@ div.competences > div > span {
 
 
 
-.diceVal {
-  --color-dice: blue;
-}
-
-.diceVal svg {
-  width:20px;
-  height:20px;
-}
-
-.diceVal label{
-    width:50px;
-    display: inline-block;
+.myflexrow {
+    display:flex;
+    flex-direction: row;
 }

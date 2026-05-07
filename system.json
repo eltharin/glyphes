@@ -34,7 +34,9 @@
       "objet": {},
       "consommable": {},
       "arme": {},
-      "armure": {}
+      "armure": {},
+      "glyphe": {},
+      "fabrication": {}
     },
     "ActiveEffect": {
       "actionHeroique": {}

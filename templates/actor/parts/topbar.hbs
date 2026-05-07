@@ -30,17 +30,12 @@
 
 </div>
 
+
 <div>
-        <div data-action="sensRoll" data-sens="vue">
-        <label>{{localize "glyphes.sens.vue"}}</label> : {{ system.sens.vue }}
+    Blessures
+
+    <div class="flexrow">
+        {{ fieldOrInput "system.blessures.value" class="pj-sheet-input"}} (+ {{ fieldOrInput "system.blessures.bonus" class="pj-sheet-input"}} ) / {{ fieldOrInput "system.blessures.max" class="pj-sheet-input"}}
     </div>
-    <div data-action="sensRoll" data-sens="ouie">
-        <label>{{localize "glyphes.sens.ouie"}}</label> : {{ system.sens.ouie }}
-    </div>
-    <div data-action="sensRoll" data-sens="instinct">
-        <label>{{localize "glyphes.sens.instinct"}}</label> : {{ system.sens.instinct }}
-    </div>
-    <div data-action="sensRoll" data-sens="flux">
-        <label>{{localize "glyphes.sens.flux"}}</label> : {{ system.sens.flux }}
-    </div>
+
 </div>
