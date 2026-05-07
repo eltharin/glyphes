@@ -1,34 +1,39 @@
 
 
 /* toutes fiches */
-.glyphes.sheet {
+.glyphes-sheet {
     --font-h2-size: 1.65em;
 }
 
-.glyphes.sheet .toggleable {
+.glyphes-sheet .toggleable {
     display:none;
 }
 
-.glyphes.sheet .toggleable.visible {
+.glyphes-sheet .toggleable.visible {
     display:initial;
 }
 
-.glyphes.sheet .lignetab {
+.glyphes-sheet .lignetab {
     display:flex;
     flex-direction:row;
     justify-content: space-between;
     align-items: center;
 }
 
-.glyphes.sheet .lignetab > *{
+.glyphes-sheet .lignetab > *{
     flex : 1 1 auto;
 }
 
-.glyphes.sheet .lignetab > .action{
-    flex : 0 0 auto;
+.glyphes-sheet .lignetab > [data-width]{
+    flex : 0 1 attr(data-width px);
 }
 
-.glyphes.sheet h2 {
+.glyphes-sheet .lignetab > .action{
+    flex : 0 0 50px;
+    text-align: right;
+}
+
+.glyphes-sheet h2 {
     display:flex;
     flex-direction: row;
 
@@ -47,7 +52,7 @@
     }
 }
 
-.glyphes.sheet .flextabs{
+.glyphes-sheet .flextabs{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -59,7 +64,7 @@
 
 
 
-.glyphes.sheet h2 > span.button::before {
+.glyphes-sheet h2 > span.button::before {
     content:"";
     display:inline-block;
     width:1em;
@@ -71,7 +76,7 @@
     border-radius: 0.75rem;
 }
 
-.glyphes.sheet h2 > span.button.add::before {
+.glyphes-sheet h2 > span.button.add::before {
     content:"+";
 }
 
@@ -84,7 +89,7 @@
     min-height: 0;
 }
 
-.glyphes.actor-sheet [data-action] {
+.glyphes-sheet [data-action] {
     cursor: pointer;
 }
 
@@ -398,7 +403,11 @@
 
 
 .glyphes.item-sheet > .sidebar {
-    flex: 0 0 200px;
+    flex: 0 1 200px;
+}
+
+.glyphes.item-sheet > main {
+    flex: 1 1 500px;
 }
 
 

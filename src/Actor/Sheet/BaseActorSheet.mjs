@@ -73,7 +73,7 @@ export class BaseActorSheet extends BaseSheet (
   };
 
   static DEFAULT_OPTIONS = {
-    classes: [],
+    classes: [...super.DEFAULT_OPTIONS.classes??[], "glyphes-sheet", "glyphes-actor-sheet"],
     actions: {
       verouillage: this.verouillage,
       deverouillage: this.deverouillage,
@@ -153,7 +153,9 @@ export class BaseActorSheet extends BaseSheet (
 
   
   async _prepareContext(options) {
-    
+
+    this.document.system.getSacrificesCards();
+
     const context = await super._prepareContext(options)
 
     context.isVerrou = this.actor.system.isLocked;
@@ -534,7 +536,7 @@ export class BaseActorSheet extends BaseSheet (
 
     console.log(deck.availableCards);
     await deck.draw(game.cards.getName("Sacrifices"), 1 , CONST.CARD_DRAW_MODES.RANDOM);
-    this.document.system.getSacrificesCards();
-    this.render(false);
+    
+    this.render(true, {force: true});
   }
 }

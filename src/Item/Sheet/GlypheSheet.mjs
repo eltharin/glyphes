@@ -16,7 +16,7 @@ export class GlypheSheet extends BaseItemSheet {
   static TABS = {
     sheet: {
       tabs: [
-        { id: "main", label: system.Consts.SYSTEMID + ".sheets.nav.main"},
+        { id: "main", label: system.Consts.SYSTEMID + ".sheet.item.nav.main"},
       ],
       initial: "main",
     }

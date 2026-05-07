@@ -41,6 +41,7 @@
                     <div class="item consommable">
                         <div class="lignetab">
                             <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+                            <label data-width="50">{{item.system.qte}}</label>
                             <span class="action" >
                                 <a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>
                                 <a data-action="deleteItem" data-itemid="{{item.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>

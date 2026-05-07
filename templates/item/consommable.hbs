@@ -1,21 +1,15 @@
 <section>
 
-    <div>
-        <label>{{localize "beryllium.itemsheet.common.prix"}}</label>
-        <div class="multicol">
-            <label>{{localize "beryllium.bourse.couronne.label"}}</label>
-            <div>{{ fieldOrInput "system.prix.couronne" type="number" class="pj-sheet-input" }}</div>
+    {{>prix}}
 
-            <label>{{localize "beryllium.bourse.eclat.label"}}</label>
-            <div>{{ fieldOrInput "system.prix.eclat" type="number" class="pj-sheet-input" }}</div>
+    {{>encombrant}}
 
-            <label>{{localize "beryllium.bourse.fragment.label"}}</label>
-            <div>{{ fieldOrInput "system.prix.fragment" type="number" class="pj-sheet-input" }}</div>
+    <div class="field">
+        <label>{{localize "glyphes.sheet.item.qte"}}</label>
+        <div>
+            <input type="number" name="system.qte" class="pj-sheet-input" value="{{system.qte}}" min="0">
         </div>
     </div>
 
-    <div class="notes">
-        <label>{{localize "beryllium.pjsheet.notes.titre"}}</label>
-        <textarea name="system.notes" rows="5" class="pj-sheet-input" placeholder="">{{system.notes}}</textarea>
-    </div>
+    {{>notes}}
 </section>

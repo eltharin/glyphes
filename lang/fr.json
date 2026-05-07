@@ -5,7 +5,12 @@
             "pnj": "Personnage Non-Joueur"
         },
         "Item": {
-            "objet": "Objet"
+            "objet": "Objet",
+            "consommable": "Consommable",
+            "fabrication": "Fabrication",
+            "glyphe": "Glyphe",
+            "arme": "Arme",
+            "armure": "Armure"
         }
     },
     "glyphes": {
@@ -16,6 +21,13 @@
             "label": {
                 "edit": "Modifier",
                 "delete": "Supprimer"
+            },
+            "difficulte": {
+                "commun" : "Commun",
+                "heroique" : "Héroïque",
+                "grandiose" : "Grandiose",
+                "legendaire" : "Légendaire",
+                "mythique" : "Mythique"
             }
         },
         "sens": {
@@ -302,7 +314,8 @@
         },
         "sheet": {
             "common": {
-                "nom": "Nom"
+                "nom": "Nom",
+                "notes": "Notes"
             },
             "actor": {
                 "tabs": {
@@ -354,7 +367,8 @@
                         "ajoutbtn": "Ajouter",
                         "type": "Type d'armure",
                         "defense": "Défense de l'armure",
-                        "description": "Description de l'armure"
+                        "description": "Description de l'armure",
+                        "bouclier": "Bouclier"
                     },
                     "resilience" : "Résilience",
                     "esquive": "Esquive",
@@ -379,7 +393,9 @@
                 "fabrication": {
                     "title": "Fabrication",
                     "ajout": "Ajouter une fabriquation",
-                    "ajoutbtn": "Ajouter une fabriquation"
+                    "ajoutbtn": "Ajouter une fabriquation",
+                    "aptitude": "Aptitude de fabrication",
+                    "nbIngredients": "Nombre d'ingrédients"
                 },
                 "inventaire": {
                     "encombrement": "Encombrement Max : {val}",
@@ -423,6 +439,47 @@
                     "effet": "Effet",
                     "cout": "Coût de l'action héroïque"
                 }
+            },
+            "item": {
+                "nav": {
+                    "main": "Détails"
+                },
+                "prix": {
+                    "defaut": "Prix par défaut",
+                    "argent": "Argent",
+                    "bronze": "Bronze"
+                },
+                "qte" : "Quantité",
+                "encombrant": "Encombrant",
+                "arme": {
+                    "aptitude": {
+                        "titre": "Aptitude de combat",
+                        "choix": "Sélectionnez une aptitude de combat"
+                    }
+                },
+                "armure": {
+                    "bouclier": "Bouclier"
+                },
+                "glyphe": {
+                    "type": "Type"
+                },
+                "fabrication": {
+                    "zone": {
+                        "titre": "Zone d'effet",
+                        "choix": "Sélectionnez une zone d'effet"
+                    },
+                    "duree": {
+                        "titre": "Durée de fabrication",
+                        "choix": "Sélectionnez une durée de fabrication"
+                    },
+                    "temps": {
+                        "titre": "Temps de fabrication",
+                        "choix": "Sélectionnez un temps de fabrication"
+                    },
+                    "magnitude": {
+                        "titre": "Magnitude de la fabrication"
+                    }
+                }
             }
         },
         "roll": {
@@ -447,6 +504,27 @@
             "result" : {
                 "total": "Total : {total}",
                 "difficulte": "Difficulté : {difficulte}"
+            }
+        },
+        "fabrication": {
+            "zone": {
+                "unique": "Cible Unique",
+                "5ft": "5 feet",
+                "10ft": "10 feet",
+                "15ft": "15 feet"
+            },
+            "duree": {
+                "instant": "Instantanée",
+                "1minute": "1 minute",
+                "15minutes": "15 minutes",
+                "1heure": "1 heure"
+            },
+            "temps": {
+                "1jour": "1 jour",
+                "activitec": "Activité Complête",
+                "activitec2": "2 / Activité Complête",
+                "activitec3": "3 /Activité Complête",
+                "activites": "Activité Simple"
             }
         }
     }

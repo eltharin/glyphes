@@ -16,7 +16,7 @@ export class FabricationSheet extends BaseItemSheet {
   static TABS = {
     sheet: {
       tabs: [
-        { id: "main", label: system.Consts.SYSTEMID + ".sheets.nav.main"},
+        { id: "main", label: system.Consts.SYSTEMID + ".sheet.item.nav.main"},
       ],
       initial: "main",
     }
@@ -29,6 +29,19 @@ export class FabricationSheet extends BaseItemSheet {
       width: 790,
       height: 360,
     },
+  }
+
+  async _prepareContext(options) {
+    
+    const context = await super._prepareContext(options);
+    context.lists = {
+      zones: system.Common.FabricationComposant.zone,
+      durees: system.Common.FabricationComposant.duree,
+      tempss: system.Common.FabricationComposant.temps,
+      magnitudes: system.Common.FabricationComposant.magnitude,
+    }
+
+    return context;
   }
 
   _prepareSubmitData(event, form, formData, updateData) { 
