@@ -13,11 +13,7 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             race: new foundry.data.fields.StringField({}),
 
             argent: new foundry.data.fields.NumberField({initial: 0}),
-            blessures: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
-                    max: new foundry.data.fields.NumberField({initial: 3, min:0}),
-                    bonus: new foundry.data.fields.NumberField({initial: 0}),
-            }),
+            
             resilience: new foundry.data.fields.NumberField({initial: 0, min:0}),
             esquive: new foundry.data.fields.NumberField({initial: 0, min:0}),
 
@@ -40,6 +36,11 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
                 tempete: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min:0}),
                     max: new foundry.data.fields.NumberField({initial: 12, min:0}),
+                    bonus: new foundry.data.fields.NumberField({initial: 0}),
+                }),
+                blessure: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 3, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
             }),
@@ -95,6 +96,7 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
         "verifPtsAme",
         "verifPtsHeroisme",
         "verifPtsTempete",
+        "verifPtsBlessure",
     ];
 
     prepareDerivedData() {
@@ -192,4 +194,14 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
         }
     }
 
+    verifPtsBlessure(changes, clone){
+        if(foundry.utils.getProperty(clone, "points.blessure.value") + foundry.utils.getProperty(clone, "points.blessure.bonus") > foundry.utils.getProperty(clone, "points.blessure.max")) {
+            if(foundry.utils.hasProperty(changes, "system.points.blessure.value")) {
+                foundry.utils.setProperty(changes, "system.points.blessure.value", foundry.utils.getProperty(clone, "points.blessure.max") - foundry.utils.getProperty(clone, "points.blessure.bonus"));
+            }
+            else if(foundry.utils.hasProperty(changes, "system.points.blessure.bonus")) {
+                foundry.utils.setProperty(changes, "system.points.blessure.bonus", foundry.utils.getProperty(clone, "points.blessure.max") - foundry.utils.getProperty(clone, "points.blessure.value"));
+            }
+        }
+    }
 }

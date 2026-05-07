@@ -370,6 +370,7 @@
                         "description": "Description de l'armure",
                         "bouclier": "Bouclier"
                     },
+                    "blessure" : "Blessures",
                     "resilience" : "Résilience",
                     "esquive": "Esquive",
                     "pioche": {
@@ -427,6 +428,10 @@
                         "tempete": {
                             "max": "Tempête spirituelle max",
                             "bonus": "Tempête spirituelle bonus"
+                        },
+                        "blessure": {
+                            "max": "Points de blessure max",
+                            "bonus": "Points de blessure bonus"
                         }
                     }
                 }

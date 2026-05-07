@@ -31,11 +31,23 @@
 </div>
 
 
-<div>
-    Blessures
-
-    <div class="flexrow">
-        {{ fieldOrInput "system.blessures.value" class="pj-sheet-input"}} (+ {{ fieldOrInput "system.blessures.bonus" class="pj-sheet-input"}} ) / {{ fieldOrInput "system.blessures.max" class="pj-sheet-input"}}
+<div class="perso2">
+    <div class="blessure field">
+        <label>{{localize "glyphes.sheet.actor.combat.blessure"}}</label>
+        <div class="points blessure">
+            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="blessure" data-sens="-">-</span>
+            <span class="pts">
+                {{#times system.points.blessure.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.points.blessure.bonus }}
+                    <span class="bonus"></span>
+                {{/times}}
+                {{#times system.points.blessure.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="blessure" data-sens="+">+</span>
+        </div>
     </div>
-
 </div>

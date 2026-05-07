@@ -189,6 +189,7 @@ export class BaseActorSheet extends BaseSheet (
     context.system.points.ame.nope = context.system.points.ame.max - context.system.points.ame.value - context.system.points.ame.bonus;
     context.system.points.heroisme.nope = context.system.points.heroisme.max - context.system.points.heroisme.value - context.system.points.heroisme.bonus;
     context.system.points.tempete.nope = context.system.points.tempete.max - context.system.points.tempete.value - context.system.points.tempete.bonus;
+    context.system.points.blessure.nope = context.system.points.blessure.max - context.system.points.blessure.value - context.system.points.blessure.bonus;
 
     return context
   }

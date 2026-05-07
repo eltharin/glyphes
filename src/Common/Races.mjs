@@ -112,11 +112,11 @@ export class Races {
     static races = {
         humain : HumainRace,
         gourmet : GourmetRace,
-        medeinites : MedeinitesRace,
+        //medeinites : MedeinitesRace,
         arboreides : ArboreidesRace,
         fee: FeeRace,
         ombre: OmbreRace,
-        hybrides: HybridesRace,
+        //hybrides: HybridesRace,
         cervide: CervideRace,
         lycan: LycanRace,
         urside: UrsideRace,
