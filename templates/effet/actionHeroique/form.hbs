@@ -2,9 +2,9 @@
     
     {{#if isCreation}}
         <div>
-            <label>{{localize 'glyphes.sheet.dialog.ajoutActHer.select'}}</label>
+            <label>{{localize 'glyphes.sheet.actor.dialog.ajoutActHer.import'}}</label>
             <select class="actionHeroique">
-                <option value="">{{localize 'glyphes.sheet.dialog.ajoutActHer.selectOption'}}</option>
+                <option value="">{{localize 'glyphes.sheet.actor.dialog.ajoutActHer.selectOption'}}</option>
                 {{#each actionsHeroiques as  |action|}}
                 <option value="" data-name="{{localize action.name}}" data-cout="{{action.cout}}" data-effet="{{localize action.effet}}">{{localize action.name}}</option>
                 {{/each}}

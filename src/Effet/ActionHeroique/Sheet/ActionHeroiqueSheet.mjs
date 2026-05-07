@@ -19,7 +19,7 @@ export class ActionHeroiqueSheet extends BaseSheet(
       closeOnSubmit: false,
       submitOnChange: true
     },
-    classes: ["beryllium-sheet"],
+    classes: ["glyphes-sheet"],
     actions: {
 
     },

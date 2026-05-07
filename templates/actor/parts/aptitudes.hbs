@@ -11,10 +11,18 @@
             {{#if aptitude }}
                 <div class="field">
                     
-                    <label data-action="aptitudeRoll" data-aptitude="{{ aptitude }}">{{ localize (concat "glyphes.aptitudes." aptitude ".name") }}</label>
+                    <label data-action="aptitudeRoll" data-aptitude="{{ aptitude }}">
+                        <span>{{ localize (concat "glyphes.aptitudes." aptitude ".name") }}</span></br>
+                        <span>(
+                            {{#with (lookup ../../lists.aptitudes aptitude ) as |apt| }}
+                                {{#each apt.competences as |competence| }}
+                                    {{ localize (concat "glyphes.competences." competence ".court") }}{{#unless @last}}, {{/unless}}
+                                {{/each}}
+                            {{/with}}
+                            )</span>
+                    </label>
                     {{#with (lookup ../../system.aptitudes aptitude ) as |apt| }}
                     <div>
-                        
                         {{ fieldOrInput (concat "system.aptitudes." aptitude ".value") class="pj-sheet-input" value=apt.value}}
                     </div>
                     {{/with}}

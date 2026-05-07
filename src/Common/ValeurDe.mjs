@@ -22,19 +22,15 @@ export class ValeurDe{
     };
 
     static getVal(index) {
-        console.log(index);
-        return this.list[this.ordre[index]];
+        return this.ordre[index];
     }
 
     static getIcon(index) {
-        console.log(index);
         return this.icons[this.ordre[index]];
     }
 
-    static getPrev(index){
+    static getPrev(index) {
         
-        console.log(Object.keys(this.ordre));
-
         if(! index in Object.keys(this.ordre))
         {
             console.error("Valeur non trouvée");
@@ -51,7 +47,6 @@ export class ValeurDe{
 
     static getNext(index){
         //const index = this.ordre.indexOf(valeur);
-        console.log(index)
         if(! index in Object.keys(this.ordre))
         {
             console.error("Valeur non trouvée");

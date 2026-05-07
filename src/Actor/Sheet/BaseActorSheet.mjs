@@ -1,7 +1,9 @@
 import * as system  from "../../_helpers.mjs";
+import { Aptitudes } from "../../Common/Aptitudes.mjs";
 import { Races } from "../../Common/Races.mjs";
 import { ValeurDe } from "../../Common/ValeurDe.mjs";
 import { AptitudeRoller } from "../../DiceRoller/Aptitude/AptitudeRoller.mjs";
+import { Dialog } from "../../Models/Dialog.mjs";
 import { BaseSheet } from "../../Models/Sheet/BaseSheet.mjs";
 
 
@@ -49,6 +51,10 @@ export class BaseActorSheet extends BaseSheet (
       template: system.Consts.TEMPLATES_PATH + "/actor/parts/inventaire.hbs",
       container: { id: "form" , element: ".tabscontainer" },
     },
+    max: {
+      template: system.Consts.TEMPLATES_PATH + "/actor/parts/max.hbs",
+      container: { id: "form" , element: ".tabscontainer" },
+    },
   };
 
   static TABS = {
@@ -60,6 +66,7 @@ export class BaseActorSheet extends BaseSheet (
         {id: "evocation", label:"glyphes.sheet.actor.tabs.evocation"},
         {id: "fabrication", label:"glyphes.sheet.actor.tabs.fabrication"},
         {id: "inventaire", label:"glyphes.sheet.actor.tabs.inventaire"},
+        {id: "max", label:"glyphes.sheet.actor.tabs.max"},
       ],
       initial: "main",
     }
@@ -71,6 +78,8 @@ export class BaseActorSheet extends BaseSheet (
       verouillage: this.verouillage,
       deverouillage: this.deverouillage,
       
+      toggle: this._onToggle,
+
       addItem: this._onAddItem,
       editItem: this._onEditItem,
       deleteItem: this._onDeleteItem,
@@ -84,6 +93,7 @@ export class BaseActorSheet extends BaseSheet (
       addEffet: this._onAddEffet,
       editEffet: this._onEditEffet,
       deleteEffet: this._onDeleteEffet,
+      pioche: this._onPioche,
     },
     position: {
       width: 1030,
@@ -128,8 +138,14 @@ export class BaseActorSheet extends BaseSheet (
     this._updateFrame({window: {}});
   }
 
+  static async _onToggle(event, target) {
+    this.element.querySelectorAll("[data-toggle_section='" + target.dataset.toggle + "']").forEach(e => e.classList.toggle("visible"));
+    //--TODO: ajouter changement icone
+  }
+
   _prepareSubmitData(event, form, formData, updateData) { 
 
+    console.log("submit data", {event, form, formData, updateData})
     let data  = super._prepareSubmitData(event, form, formData, updateData);
 
     return data ; 
@@ -143,6 +159,7 @@ export class BaseActorSheet extends BaseSheet (
     context.isVerrou = this.actor.system.isLocked;
     context.lists = {
       races: Races.list(),
+      aptitudes: Aptitudes.list,
     };
     
     context.actionsHeroiques = this.document.effects.filter(e => e.type == "actionHeroique");
@@ -156,13 +173,20 @@ export class BaseActorSheet extends BaseSheet (
     delete allItems.arme;
     context.armures = allItems.armure || [];
     delete allItems.armure;
-    context.glyphes = allItems.glyphes || [];
-    delete allItems.glyphes;
+    context.glyphes = allItems.glyphe || [];
+    delete allItems.glyphe;
+    context.fabrications = allItems.fabrication || [];
+    delete allItems.fabrication;
     context.consommables = allItems.consommable || [];
     delete allItems.consommable;
     
     context.items = Object.values(allItems).reduce((a, b ) => [...a, ...b], []);
 
+
+    context.system.points.corps.nope = context.system.points.corps.max - context.system.points.corps.value - context.system.points.corps.bonus;
+    context.system.points.ame.nope = context.system.points.ame.max - context.system.points.ame.value - context.system.points.ame.bonus;
+    context.system.points.heroisme.nope = context.system.points.heroisme.max - context.system.points.heroisme.value - context.system.points.heroisme.bonus;
+    context.system.points.tempete.nope = context.system.points.tempete.max - context.system.points.tempete.value - context.system.points.tempete.bonus;
 
     return context
   }
@@ -215,7 +239,7 @@ export class BaseActorSheet extends BaseSheet (
       case "Item": 
         const item = fromUuidSync(data.uuid);
         
-        if(item.type == "objet")
+        if(item.type == "objet" || item.type == "arme" || item.type == "armure" || item.type == "consommable" || item.type == "glyphe" || item.type == "fabrication")
         {
           super._onDrop(event);
 
@@ -279,7 +303,7 @@ export class BaseActorSheet extends BaseSheet (
       }
       else
       {
-        confirmed = await system.Common.Dialog.confirm({
+        confirmed = await system.Models.Dialog.confirm({
           content: `<p>Êtes-vous sûr de vouloir supprimer ${item.name}?</p>`,
           rejectClose: false,
           modal: true
@@ -335,11 +359,16 @@ export class BaseActorSheet extends BaseSheet (
     console.log(aptitude)
     const competences = system.Common.Aptitudes.getApt(aptitude).competences;
     
-    const competenceValue = Math.max(...competences.map(c => {
+
+    console.log(competences)
+
+    const competenceValue = ValeurDe.getVal(Math.max(...competences.map(c => {
       console.log(this.actor.system.competences, c)
       return this.actor.system.competences[c].value;
-    }))
+    })));
 
+    console.log(competenceValue);
+    
     const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
 
     AptitudeRoller.execute({
@@ -376,7 +405,7 @@ export class BaseActorSheet extends BaseSheet (
   static async onAjoutDon(event, target)
   {
     const data = await foundry.applications.api.DialogV2.input({
-      title: game.i18n.format("glyphes.sheet.dialog.ajoutDon.title"),
+      title: game.i18n.format("glyphes.sheet.actor.dialog.ajoutDon.title"),
       content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/actor/dialog/ajoutDon.hbs", {
         dons : system.Common.Dons.list().filter(d => !this.actor.system.dons.includes(d.id)),
       }),
@@ -409,8 +438,8 @@ export class BaseActorSheet extends BaseSheet (
     event.preventDefault();
     
 
-        const data = await foundry.applications.api.DialogV2.input({
-      title: game.i18n.format("glyphes.sheet.dialog.ajoutActHer.title"),
+        const data = await Dialog.input({
+      title: game.i18n.format("glyphes.sheet.actor.dialog.ajoutActHer.title"),
       content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/effet/actionHeroique/form.hbs", {
         isCreation: true,
         actionsHeroiques : system.Common.ActionsHeroiques.list().filter(d => d.destination.includes("actor")),
@@ -485,4 +514,27 @@ export class BaseActorSheet extends BaseSheet (
       }
     }
   }  
+
+  static async _onPioche(event, target) {
+      
+    let handId = this.actor.system.sacrificeDeckId;
+    if(!handId) {
+      const hand =await Cards.create({
+        name: `Sacrifice Hand of ${this.actor.name}}`,
+        type: "hand"
+      });
+      handId = hand.id;
+      await this.actor.update({"system.sacrificeDeckId": handId, render: false});
+    }
+
+    // --- RÉCUPÉRATION DU DECK ---
+    const deck = game.cards.get(handId);
+    if (!deck) return ui.notifications.error(`Deck "${DECK_NAME}" introuvable.`);
+
+
+    console.log(deck.availableCards);
+    await deck.draw(game.cards.getName("Sacrifices"), 1 , CONST.CARD_DRAW_MODES.RANDOM);
+    this.document.system.getSacrificesCards();
+    this.render(false);
+  }
 }

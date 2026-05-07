@@ -1,4 +1,39 @@
 <section>
 
     evocation
+
+    <div>
+        tempete spirituelle
+        <legend>{{localize "glyphes.sheet.actor.tempete.pts"}}
+                        <span class="points tempete">
+                            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="-">-</span>
+                            <span class="pts">
+                                {{ log system.points.tempete }}
+                                {{#times system.points.tempete.value }}
+                                    <span class="active"></span>
+                                {{/times}}
+                                {{#times system.points.tempete.bonus }}
+                                    <span class="bonus"></span>
+                                {{/times}}
+                                {{#times system.points.tempete.nope }}
+                                    <span></span>
+                                {{/times}}
+                            </span>
+                            <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="tempete" data-sens="+">+</span>
+                        </span>
+        </legend>
+    </div>
+
+    <div data-action="addItem" data-type="glyphe">+ Ajout glyphe</div>
+
+    {{#each glyphes as |item|}}
+        <div class="item">
+            <label data-action="editItem" data-itemid="{{item.id}}">{{item.name}}</label>
+            <span data-action="deleteItem" data-itemid="{{item.id}}">X</span>
+        </div>
+    {{/each}}
+
+
+
+
 </section>

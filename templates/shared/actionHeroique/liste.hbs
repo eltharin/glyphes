@@ -7,13 +7,20 @@
     </h2>
 
     {{#each actionsHeroiques as |effet| }}
-        <div class="field">
-            <div class="clickable" >{{effet.name}}</div>
-            <div>{{effet.system.effet}}</div>
-            <div>{{effet.system.cout}}</div>
-            <div class="controls">
-                <a data-action="editEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.edit"}}"><i class="fas fa-edit"></i></a>
-                <a data-action="deleteEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+        <div class="fiessld">
+            <div class="lignetab">
+                <div class="clickable" >{{effet.name}}</div>
+                <div>{{effet.system.cout}}</div>
+                <div class="action">
+                    <a data-action="toggle"  data-toggle="effet_{{effet._id}}"><i class="fas fa-eye"></i></a>
+                    <a data-action="editEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.edit"}}"><i class="fas fa-edit"></i></a>
+                    <a data-action="deleteEffet" data-effet="{{effet.id}}" title="{{localize "glyphes.common.label.delete"}}"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="toggleable flexrow" data-toggle_section="effet_{{effet._id}}">
+                <div class="infos">
+                    {{effet.system.effet}}
+                </div>
             </div>
         </div>
     {{/each}}

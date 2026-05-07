@@ -12,20 +12,34 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             origine: new foundry.data.fields.StringField({}),
             race: new foundry.data.fields.StringField({}),
 
+            richesse: new foundry.data.fields.NumberField({initial: 0}),
+            blessures: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 3, min:0}),
+                    bonus: new foundry.data.fields.NumberField({initial: 0}),
+            }),
+            resilience: new foundry.data.fields.NumberField({initial: 0, min:0}),
+            esquive: new foundry.data.fields.NumberField({initial: 0, min:0}),
+
             points: new foundry.data.fields.SchemaField({
                 corps: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min:0}),
-                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 5, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
                 ame: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min:0}),
-                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 5, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
                 heroisme: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min:0}),
-                    max: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 5, min:0}),
+                    bonus: new foundry.data.fields.NumberField({initial: 0}),
+                }),
+                tempete: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min:0}),
+                    max: new foundry.data.fields.NumberField({initial: 12, min:0}),
                     bonus: new foundry.data.fields.NumberField({initial: 0}),
                 }),
             }),
@@ -66,6 +80,7 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             dons: new foundry.data.fields.ArrayField(
                 new foundry.data.fields.StringField({}),      
             ),
+            sacrificeDeckId: new foundry.data.fields.StringField({initial: ""}),
         };
     }
 
@@ -79,10 +94,10 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
         this._prepareDerivedData();
 
         this.sens = {
-            vue: Math.min(this.competences.esprit.value, this.competences.constitution.value),
-            ouie: Math.min(this.competences.esprit.value, this.competences.constitution.value),
-            flux: this.competences.esprit.value -1 ,
-            instinct: Math.min(this.competences.esprit.value, this.competences.foi.value),
+            vue: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.constitution.value)),
+            ouie: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.constitution.value)),
+            flux: ValeurDe.getVal(Math.max(0, this.competences.esprit.value -1 )),
+            instinct: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.foi.value)),
         }
 
         this.donsObj = this.dons.map(donId => { return (system.Common.Dons.get(donId) || null ); });
@@ -93,14 +108,21 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             if(!this.aptitudes[key].bonus)  {this.aptitudes[key].bonus = 0;}
         });
         
-        console.log(this.competences);
+        
         Object.keys(this.competences).forEach(key => {
             if(this.competences[key].value < 0 || this.competences[key].value > ValeurDe.ordre.length) {
                 console.error(`Compétence ${key} a une valeur invalide (${this.competences[key].value}). Réinitialisation à 0.`);
                 this.competences[key].value = 0;
             }
+            this.competences[key].dice = ValeurDe.getVal(this.competences[key].value);
         });
+
+        this.getSacrificesCards();
         //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.ordre.length) ? {...comp, value: 0} : comp);
+    }
+
+    getSacrificesCards() {
+        this.sacrificesCards = this.sacrificeDeckId ? game.cards.get(this.sacrificeDeckId)?.availableCards : [];
     }
 
     _prepareDerivedData() {

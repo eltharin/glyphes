@@ -324,7 +324,9 @@
                     "ajoutActHer": {
                         "title": "Ajouter une Action Héroïque",
                         "name": "Nom de l'action héroïque",
-                        "effet": "Effet de l'action héroïque"
+                        "effet": "Effet de l'action héroïque",
+                        "import": "Importer une action héroïque prédéfinie",
+                        "selectOption": "Choisissez une action héroique"
                     }
                 },
                 "heroisme": {
