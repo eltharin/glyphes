@@ -87,6 +87,10 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
     static preSaveFunctions = [
         ...super.preSaveFunctions,
         "verifAptitudes",
+        "verifPtsCorps",
+        "verifPtsAme",
+        "verifPtsHeroisme",
+        "verifPtsTempete",
     ];
 
     prepareDerivedData() {
@@ -130,8 +134,6 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
     }
 
     verifAptitudes(changes, clone){
-        console.log(changes);
-
         if(foundry.utils.hasProperty(changes, "competences")) {
             foundry.utils.getProperty(changes, "competences").forEach((comp, key) => {
                 if(comp.value < 0 || comp.value > ValeurDe.ordre.length) {
@@ -141,4 +143,49 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             });
         }
     }
+
+    verifPtsCorps(changes, clone){
+        if(foundry.utils.getProperty(clone, "points.corps.value") + foundry.utils.getProperty(clone, "points.corps.bonus") > foundry.utils.getProperty(clone, "points.corps.max")) {
+            if(foundry.utils.hasProperty(changes, "system.points.corps.value")) {
+                foundry.utils.setProperty(changes, "system.points.corps.value", foundry.utils.getProperty(clone, "points.corps.max") - foundry.utils.getProperty(clone, "points.corps.bonus"));
+            }
+            else if(foundry.utils.hasProperty(changes, "system.points.corps.bonus")) {
+                foundry.utils.setProperty(changes, "system.points.corps.bonus", foundry.utils.getProperty(clone, "points.corps.max") - foundry.utils.getProperty(clone, "points.corps.value"));
+            }
+        }
+    }
+
+    verifPtsAme(changes, clone){
+        if(foundry.utils.getProperty(clone, "points.ame.value") + foundry.utils.getProperty(clone, "points.ame.bonus") > foundry.utils.getProperty(clone, "points.ame.max")) {
+            if(foundry.utils.hasProperty(changes, "system.points.ame.value")) {
+                foundry.utils.setProperty(changes, "system.points.ame.value", foundry.utils.getProperty(clone, "points.ame.max") - foundry.utils.getProperty(clone, "points.ame.bonus"));
+            }
+            else if(foundry.utils.hasProperty(changes, "system.points.ame.bonus")) {
+                foundry.utils.setProperty(changes, "system.points.ame.bonus", foundry.utils.getProperty(clone, "points.ame.max") - foundry.utils.getProperty(clone, "points.ame.value"));
+            }
+        }
+    }
+
+    verifPtsHeroisme(changes, clone){
+        if(foundry.utils.getProperty(clone, "points.heroisme.value") + foundry.utils.getProperty(clone, "points.heroisme.bonus") > foundry.utils.getProperty(clone, "points.heroisme.max")) {
+            if(foundry.utils.hasProperty(changes, "system.points.heroisme.value")) {
+                foundry.utils.setProperty(changes, "system.points.heroisme.value", foundry.utils.getProperty(clone, "points.heroisme.max") - foundry.utils.getProperty(clone, "points.heroisme.bonus"));
+            }
+            else if(foundry.utils.hasProperty(changes, "system.points.heroisme.bonus")) {
+                foundry.utils.setProperty(changes, "system.points.heroisme.bonus", foundry.utils.getProperty(clone, "points.heroisme.max") - foundry.utils.getProperty(clone, "points.heroisme.value"));
+            }
+        }
+    }
+
+    verifPtsTempete(changes, clone){
+        if(foundry.utils.getProperty(clone, "points.tempete.value") + foundry.utils.getProperty(clone, "points.tempete.bonus") > foundry.utils.getProperty(clone, "points.tempete.max")) {
+            if(foundry.utils.hasProperty(changes, "system.points.tempete.value")) {
+                foundry.utils.setProperty(changes, "system.points.tempete.value", foundry.utils.getProperty(clone, "points.tempete.max") - foundry.utils.getProperty(clone, "points.tempete.bonus"));
+            }
+            else if(foundry.utils.hasProperty(changes, "system.points.tempete.bonus")) {
+                foundry.utils.setProperty(changes, "system.points.tempete.bonus", foundry.utils.getProperty(clone, "points.tempete.max") - foundry.utils.getProperty(clone, "points.tempete.value"));
+            }
+        }
+    }
+
 }
