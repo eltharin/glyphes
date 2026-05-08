@@ -24,6 +24,7 @@ export class SystemDataModel extends foundry.abstract.TypeDataModel {
         this.constructor.preSaveFunctions.forEach(element => {
             this[element](changes, clone);
         });
-        
+
+        return allowed;
     }
 }

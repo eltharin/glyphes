@@ -52,7 +52,7 @@ export class ValeurDe{
             console.error("Valeur non trouvée");
             return null;
         }
-        if(index == this.ordre.length-1)
+        if(index >= this.ordre.length-1)
         {
             console.error("Valeur max atteinte");
             return this.ordre.length-1;
