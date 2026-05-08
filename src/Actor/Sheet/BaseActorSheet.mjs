@@ -145,7 +145,6 @@ export class BaseActorSheet extends BaseSheet (
 
   _prepareSubmitData(event, form, formData, updateData) { 
 
-    console.log("submit data", {event, form, formData, updateData})
     let data  = super._prepareSubmitData(event, form, formData, updateData);
 
     return data ; 
@@ -288,8 +287,6 @@ export class BaseActorSheet extends BaseSheet (
     event.preventDefault();
     const item = this.document.items.get(target.dataset.itemid);
 
-    
-    console.log("edit : " , target, target.dataset.itemid,this.document.items.get(target.dataset.itemid))
 
     if (item) {
       if(item.system.isDefault == true)
@@ -359,18 +356,13 @@ export class BaseActorSheet extends BaseSheet (
   static async onAptitudeRoll(event, target)
   {
     const aptitude = target.dataset.aptitude;
-    console.log(aptitude)
     const competences = system.Common.Aptitudes.getApt(aptitude).competences;
     
 
-    console.log(competences)
-
     const competenceValue = ValeurDe.getVal(Math.max(...competences.map(c => {
-      console.log(this.actor.system.competences, c)
       return this.actor.system.competences[c].value;
     })));
 
-    console.log(competenceValue);
     
     const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
 
@@ -388,7 +380,6 @@ export class BaseActorSheet extends BaseSheet (
   static async onSensRoll(event, target)
   {
     const sens = target.dataset.sens;
-    console.log(sens)
     
     const competenceValue = this.actor.system.sens[sens];
 
@@ -449,7 +440,6 @@ export class BaseActorSheet extends BaseSheet (
       }),
       render: event => {
         event.target.element.querySelector("form select.actionHeroique").addEventListener("change", ev2 => {
-          console.log("ca change", ev2.target.selectedOptions[0])
           event.target.element.querySelector("input[name='name']").value = ev2.target.selectedOptions[0].dataset.name || "";
           event.target.element.querySelector("textarea[name='system.effet']").value = ev2.target.selectedOptions[0].dataset.effet || "";
           event.target.element.querySelector("input[name='system.cout']").value = ev2.target.selectedOptions[0].dataset.cout || "";
@@ -458,8 +448,7 @@ export class BaseActorSheet extends BaseSheet (
       modal: true,
     });
 
-    if(data)    {
-      console.log(data)
+    if(data) {
       const effetData = {
         name: data.name,
         type: "actionHeroique",
