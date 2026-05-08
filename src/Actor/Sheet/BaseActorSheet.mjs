@@ -333,10 +333,14 @@ export class BaseActorSheet extends BaseSheet (
     const oldVal = this.actor.system.competences[target.dataset.competence].value;
     
     const newVal = (target.dataset.sens == "+" ? system.Common.ValeurDe.getNext(oldVal) : system.Common.ValeurDe.getPrev(oldVal));
-    
+
+    if(!newVal === null) {
+      return ;
+    }
+
     let change = {};
     change["system.competences." + target.dataset.competence + ".value"] = newVal;
-
+    
     this.actor.update(change);
   }
 
@@ -510,8 +514,10 @@ export class BaseActorSheet extends BaseSheet (
   static async _onPioche(event, target) {
       
     let handId = this.actor.system.sacrificeDeckId;
-    if(!handId) {
-      const hand =await Cards.create({
+    let hand = game.cards.get(handId);
+
+    if(!hand) {
+      hand = await Cards.create({
         name: `Sacrifice Hand of ${this.actor.name}}`,
         type: "hand"
       });
@@ -519,14 +525,27 @@ export class BaseActorSheet extends BaseSheet (
       await this.actor.update({"system.sacrificeDeckId": handId, render: false});
     }
 
-    // --- RÉCUPÉRATION DU DECK ---
-    const deck = game.cards.get(handId);
-    if (!deck) return ui.notifications.error(`Deck "${DECK_NAME}" introuvable.`);
 
+    const deck = game.cards.get(game.settings.get("glyphes", "deckSacrifice") ?? "");
+    if(!deck) {
+      ui.notifications.error("PAs de deck créé, veuillez le créer avant.");
+    }
 
-    console.log(deck.availableCards);
-    await deck.draw(game.cards.getName("Sacrifices"), 1 , CONST.CARD_DRAW_MODES.RANDOM);
+    const card = await hand.draw(deck, 1 , {how: CONST.CARD_DRAW_MODES.RANDOM, chatNotification: false});
     
+    
+
+    ChatMessage.create({
+      user: game.user.id,
+      content: `
+        <div>
+          <h2>Le joueur pioche une carte</h2>
+          <h3>${card[0].faces[0].name}</h3>
+          <img src="${card[0].faces[0].img}" style="width: 150px; border: 2px solid #444;">
+        </div>
+      `
+    });
+
     this.render(true, {force: true});
   }
 }

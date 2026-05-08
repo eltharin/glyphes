@@ -144,7 +144,7 @@ export class BaseActorDataModel extends system.Models.SystemDataModel {
             foundry.utils.getProperty(changes, "competences").forEach((comp, key) => {
                 if(comp.value < 0 || comp.value > ValeurDe.ordre.length) {
                     console.error(`Compétence ${key} a une valeur invalide (${comp.value}). Réinitialisation à 0.`);
-                    foundry.utils.deleteProperty(changes, `competences.${key}.value`);
+                    foundry.utils.setProperty(changes, `competences.${key}.value`, 0);
                 }
             });
         }

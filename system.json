@@ -1,6 +1,6 @@
 {
   "id": "glyphes",
-  "title": "glyphes",
+  "title": "Glyphes",
   "description": "Glyphes system for foundryVTT.",
   "version": "#{VERSION}#",
   "compatibility": {

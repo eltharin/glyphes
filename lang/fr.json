@@ -531,6 +531,33 @@
                 "activitec3": "3 /Activité Complête",
                 "activites": "Activité Simple"
             }
+        },
+        "settings": {
+            "deckSacrifice": {
+                "label": "Gestion du Deck de sacrifice",
+                "hint": "Cliquer sur ce bouton pour créer le deck de Sacrifices, le supprimer, le réinitialiser, ou compléter le nombre de carte de morts",
+                "btn": "Ouvrir le gestionnaire"
+            }
+        },
+        "cards": {
+            "sacrifice": {
+                "mort": "Mort",
+                "destructionMembreInferieur": "Destruction d'un membre inférieur",
+                "destructionMembreSuperieur": "Destruction d'un membre supérieur",
+                "perteTemporaireMembreSuperieur": "Perte temporaire d'un membre supérieur",
+                "perteAptitude": "Perte d'aptitude",
+                "diminutionPermanenteSens": "Diminution permanente d'un sens",
+                "perteTemporaireMembreInferieur": "Perte temporaire d'un membre inférieur",
+                "phobie": "Phobie",
+                "destructionEquipement": "Destruction d'équipement",
+                "blessureVisage": "Blessure au visage",
+                "perteTemporaireSens": "Perte temporaire de sens",
+                "furie": "Furie",
+
+                "supprDeck": "Supprimer le deck de sacrifice",
+                "creerDeck": "Creer le deck de sacrifice / Ajuster le nombre de carte de morts",
+                "nbCartesMort": "Nombre de cartes de morts dans le deck"
+            }
         }
     }
 }
