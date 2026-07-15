@@ -3,11 +3,9 @@ import { Aptitudes } from "../../Common/Aptitudes.mjs";
 import { Races } from "../../Common/Races.mjs";
 import { ValeurDe } from "../../Common/ValeurDe.mjs";
 import { AptitudeRoller } from "../../DiceRoller/Aptitude/AptitudeRoller.mjs";
-import { Dialog } from "../../Models/Dialog.mjs";
-import { BaseSheet } from "../../Models/Sheet/BaseSheet.mjs";
 
 
-export class BaseActorSheet extends BaseSheet (
+export class BaseActorSheet extends system.Base.BaseSheet (
   foundry.applications.sheets.ActorSheetV2
 ) {
 
@@ -436,7 +434,7 @@ export class BaseActorSheet extends BaseSheet (
     event.preventDefault();
     
 
-        const data = await Dialog.input({
+        const data = await system.Base.Dialog.input({
       title: game.i18n.format("glyphes.sheet.actor.dialog.ajoutActHer.title"),
       content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/effet/actionHeroique/form.hbs", {
         isCreation: true,

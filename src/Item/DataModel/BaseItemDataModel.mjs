@@ -2,7 +2,7 @@ import * as system from "../../_helpers.mjs";
 
 
 
-export class BaseItemDataModel extends system.Models.SystemDataModel {
+export class BaseItemDataModel extends system.Base.SystemDataModel {
 
 
   static defineSchema() {
