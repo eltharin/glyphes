@@ -1,8 +1,7 @@
 import * as system  from "../../_helpers.mjs";
-import { BaseSheet } from "../../Models/Sheet/BaseSheet.mjs";
 
 
-export class BaseItemSheet extends BaseSheet(
+export class BaseItemSheet extends system.Base.BaseSheet(
   foundry.applications.sheets.ItemSheetV2
 ) {
 

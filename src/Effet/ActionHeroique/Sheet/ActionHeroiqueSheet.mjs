@@ -1,8 +1,7 @@
 import * as system  from "../../../_helpers.mjs";
-import { BaseSheet } from "../../../Models/_helpers.mjs";
 
 
-export class ActionHeroiqueSheet extends BaseSheet(
+export class ActionHeroiqueSheet extends system.Base.BaseSheet(
   foundry.applications.sheets.ActiveEffectConfig
 ) {
   static TABS= {};

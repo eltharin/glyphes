@@ -20,7 +20,7 @@ import { ArmureDataModel } from "./Item/DataModel/ArmureDataModel.mjs";
 import { GlypheDataModel } from "./Item/DataModel/GlypheDataModel.mjs";
 import { FabricationDataModel } from "./Item/DataModel/FabricationDataModel.mjs";
 
-import {registerFunctions as registerHandleBarFunctions} from "./Handlebars.mjs"
+import {registerFunctions as registerHandleBarFunctions} from "./SystemBase/Helpers/Handlebars.mjs";
 
 import { ActionHeroiqueDataModel } from "./Effet/ActionHeroique/DataModel/ActionHeroiqueDataModel.mjs";
 import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroiqueSheet.mjs";
@@ -110,9 +110,3 @@ Hooks.once("init", () => {
 });
 
 
-Handlebars.registerHelper("callMethod", function(obj, methodName, ...args) {
-  if (obj && typeof obj[methodName] === "function") {
-    return obj[methodName](...args);
-  }
-  return "";
-});

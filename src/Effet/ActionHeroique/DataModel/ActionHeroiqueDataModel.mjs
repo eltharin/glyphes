@@ -1,6 +1,6 @@
 import * as system from "../../../_helpers.mjs";
 
-export class ActionHeroiqueDataModel  extends system.Models.SystemDataModel {
+export class ActionHeroiqueDataModel  extends system.Base.SystemDataModel {
   constructor(data, options) {
     super(data, options);
   }
