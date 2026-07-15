@@ -64,7 +64,8 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
                 social: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0})
                 })
-            }),   
+            }),
+
             aptitudes: new foundry.data.fields.TypedObjectField(
                 new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({ initial: 1 }),
@@ -104,11 +105,16 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         this._prepareDerivedData();
 
         this.sens = {
-            vue: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.constitution.value)),
-            ouie: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.constitution.value)),
-            flux: ValeurDe.getVal(Math.max(0, this.competences.esprit.value -1 )),
-            instinct: ValeurDe.getVal(Math.min(this.competences.esprit.value, this.competences.foi.value)),
+            vue: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
+            ouie: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
+            flux: {value : Math.max(0, this.competences.esprit.value -1 ), dice: -1},
+            instinct: {value : Math.min(this.competences.esprit.value, this.competences.foi.value), dice: -1},
         }
+
+        this.sens.vue.dice = ValeurDe.getVal(this.sens.vue.value);
+        this.sens.ouie.dice = ValeurDe.getVal(this.sens.ouie.value);
+        this.sens.flux.dice = ValeurDe.getVal(this.sens.flux.value);
+        this.sens.instinct.dice = ValeurDe.getVal(this.sens.instinct.value);
 
         this.donsObj = this.dons.map(donId => { return (system.Common.Dons.get(donId) || null ); });
 

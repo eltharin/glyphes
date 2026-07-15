@@ -15,9 +15,17 @@
                         <span>{{ localize (concat "glyphes.aptitudes." aptitude ".name") }}</span></br>
                         <span>(
                             {{#with (lookup ../../lists.aptitudes aptitude ) as |apt| }}
-                                {{#each apt.competences as |competence| }}
-                                    {{ localize (concat "glyphes.competences." competence ".court") }}{{#unless @last}}, {{/unless}}
-                                {{/each}}
+                                {{#if apt.competencesText }}
+                                    {{ localizeSystem apt.competencesText }}
+                                {{else}}
+                                    {{#each apt.competences as |competence| }}
+                                        {{ localize (concat "glyphes.competences." competence ".court") }}{{#unless @last}}, {{/unless}}
+                                    {{/each}}
+                                    
+                                    {{#each apt.sens as |sens| }}
+                                        {{ localize (concat "glyphes.sens." sens ) }}{{#unless @last}}, {{/unless}}
+                                    {{/each}}
+                                {{/if}}
                             {{/with}}
                             )</span>
                     </label>
