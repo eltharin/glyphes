@@ -82,7 +82,7 @@ export class Aptitudes {
             competences: ["foi"]
         },
         forgeglyphe: {
-            competences: ["esprit"]
+            sens: ["flux"]
         },
         athletique: {
             competences: ["puissance"]
@@ -97,10 +97,12 @@ export class Aptitudes {
             competences: ["esprit", "souplesse"]
         },
         scout: {
-            competences: ["esprit"]
+            sens: ["instinct"]
         },
         vigilant: {
-            competences: ["esprit"]
+            sens: ["vue", "ouie", "flux", "instinct"],
+            competencesText: "sens.choix",
+            mustChoose: true
         },
         alchimiste: {
             competences: ["esprit", "souplesse"]

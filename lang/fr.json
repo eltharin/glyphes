@@ -35,7 +35,8 @@
             "vue" : "Vue",
             "ouie" : "Ouie",
             "instinct" : "Instinct",
-            "flux" : "Flux"
+            "flux" : "Flux",
+            "choix" : "Choix du sens"
         },
         "competences" : {
             "cat": {

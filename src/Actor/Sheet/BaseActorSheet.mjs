@@ -358,12 +358,20 @@ export class BaseActorSheet extends system.Base.BaseSheet (
   static async onAptitudeRoll(event, target)
   {
     const aptitude = target.dataset.aptitude;
-    const competences = system.Common.Aptitudes.getApt(aptitude).competences;
-    
 
-    const competenceValue = ValeurDe.getVal(Math.max(...competences.map(c => {
-      return this.actor.system.competences[c].value;
-    })));
+    const competences = system.Common.Aptitudes.getApt(aptitude).competences ?? [];
+    const sens = system.Common.Aptitudes.getApt(aptitude).sens ?? [];
+    
+    const competenceValue = ValeurDe.getVal(
+      Math.max(0, 
+        ...competences.map(c => {
+          return this.actor.system.competences[c].value;
+        }),
+        ...sens.map(s => {
+          return this.actor.system.sens[s].value;
+        }),
+      )
+    );
 
     
     const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
@@ -383,7 +391,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
   {
     const sens = target.dataset.sens;
     
-    const competenceValue = this.actor.system.sens[sens];
+    const competenceValue = this.actor.system.sens[sens].value;
 
     const aptitudeValue = 1 + (foundry.utils.getProperty(Races.get(this.actor.system.race), "modificateurs.sens." + sens + ".nb") || 0);
 
