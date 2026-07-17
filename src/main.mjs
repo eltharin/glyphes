@@ -27,6 +27,7 @@ import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroique
 import { MessageActionResolver } from "./SystemBase/ChatMessage/MessageActionResolver.mjs";
 import { AptitudeAskMessage } from "./DiceRoller/Aptitude/AptitudeAskMessage.mjs";
 import { ValeurDe } from "./Common/ValeurDe.mjs";
+import { BaseActorSheet } from "./Actor/Sheet/BaseActorSheet.mjs";
 
 
 Hooks.once("init", () => {
@@ -112,6 +113,7 @@ Hooks.once("init", () => {
   system.DiceRoller.fct.registerDiceRolls();
 
   MessageActionResolver.register("lancerDeDemandeMJ", AptitudeAskMessage._onReponseDemandeMJ);
+  MessageActionResolver.register("affectTempete", BaseActorSheet._onClickRollAffectTempete);
 
 });
 

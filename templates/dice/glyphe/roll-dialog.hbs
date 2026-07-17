@@ -1,0 +1,26 @@
+<form id="bonus-roll-form">
+
+    <div class="">
+
+        <div class="">
+            <label>{{localize 'glyphes.roll.difficulte.select_type'}}</label>
+            <select name="typeDifficulte">
+                {{#each difficultes as |difficulte| }}
+                    <option value="{{difficulte.value}}" {{#if difficulte.isDefault}}selected{{/if}}>{{localize (concat 'glyphes.roll.difficulte.' @key)}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="">
+            <label>{{localize 'glyphes.roll.glyphe.nb_des'}}</label>
+            <input type="number" name="nbDe" value="1" step="1" />
+        </div>
+
+        <div class="flexrow-beryllium roll-threshold">
+            <label>{{localize 'glyphes.roll.common.ajout_de_bonus'}}</label>
+            <input type="number" name="nbDeBonus" value="0" step="1" />
+        </div>
+
+
+    </div>
+</form>
