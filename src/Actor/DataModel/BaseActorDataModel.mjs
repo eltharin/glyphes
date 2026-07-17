@@ -126,7 +126,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         
         
         Object.keys(this.competences).forEach(key => {
-            if(this.competences[key].value < 0 || this.competences[key].value > ValeurDe.ordre.length) {
+            if(this.competences[key].value < 0 || this.competences[key].value > ValeurDe.dices.length) {
                 console.error(`Compétence ${key} a une valeur invalide (${this.competences[key].value}). Réinitialisation à 0.`);
                 this.competences[key].value = 0;
             }
@@ -134,7 +134,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         });
 
         this.getSacrificesCards();
-        //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.ordre.length) ? {...comp, value: 0} : comp);
+        //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.dices.length) ? {...comp, value: 0} : comp);
     }
 
     getSacrificesCards() {
@@ -148,7 +148,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
     verifAptitudes(changes, clone){
         if(foundry.utils.hasProperty(changes, "competences")) {
             foundry.utils.getProperty(changes, "competences").forEach((comp, key) => {
-                if(comp.value < 0 || comp.value > ValeurDe.ordre.length) {
+                if(comp.value < 0 || comp.value > ValeurDe.dices.length) {
                     console.error(`Compétence ${key} a une valeur invalide (${comp.value}). Réinitialisation à 0.`);
                     foundry.utils.setProperty(changes, `competences.${key}.value`, 0);
                 }

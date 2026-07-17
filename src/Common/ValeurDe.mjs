@@ -3,35 +3,25 @@
 
 export class ValeurDe{
     
-    static ordre = [4,6,8,10,12];
-
-    static list = {
-        4 : "D4",
-        6 : "D6",
-        8 : "D8",
-        10: "D10",
-        12: "D12",
-    };
-
-    static icons = {
-        4 : "systems/glyphes/assets/dice/d4.svg?n=" + Date.now() + "#icon",
-        6 : "systems/glyphes/assets/dice/d6.svg?n=" + Date.now() + "#icon",
-        8 : "systems/glyphes/assets/dice/d8.svg?n=" + Date.now() + "#icon",
-        10: "systems/glyphes/assets/dice/d10.svg?n=" + Date.now() + "#icon",
-        12: "systems/glyphes/assets/dice/d12.svg?n=" + Date.now() + "#icon",
-    };
+    static dices = [
+        {faces: 4,  label: "D4", icon: "systems/glyphes/assets/dice/d4.svg?n=" + Date.now() + "#icon"},
+        {faces: 6,  label: "D6", icon: "systems/glyphes/assets/dice/d6.svg?n=" + Date.now() + "#icon"},
+        {faces: 8,  label: "D8", icon: "systems/glyphes/assets/dice/d8.svg?n=" + Date.now() + "#icon"},
+        {faces: 10, label: "D10", icon: "systems/glyphes/assets/dice/d10.svg?n=" + Date.now() + "#icon"},
+        {faces: 12, label: "D12", icon: "systems/glyphes/assets/dice/d12.svg?n=" + Date.now() + "#icon"},
+    ];
 
     static getVal(index) {
-        return this.ordre[index];
+        return this.dices[index].faces;
     }
 
     static getIcon(index) {
-        return this.icons[index];
+        return this.dices[index].icon;
     }
 
     static getPrev(index) {
         
-        if(! index in Object.keys(this.ordre))
+        if(! index in Object.keys(this.dices))
         {
             console.error("Valeur non trouvée");
             return null;
@@ -46,16 +36,15 @@ export class ValeurDe{
     }
 
     static getNext(index){
-        //const index = this.ordre.indexOf(valeur);
-        if(! index in Object.keys(this.ordre))
+        if(! index in Object.keys(this.dices))
         {
             console.error("Valeur non trouvée");
             return null;
         }
-        if(index >= this.ordre.length-1)
+        if(index >= this.dices.length-1)
         {
             console.error("Valeur max atteinte");
-            return this.ordre.length-1;
+            return this.dices.length-1;
         }
 
         return index+1;
