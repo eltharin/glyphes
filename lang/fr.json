@@ -492,7 +492,10 @@
             "common" : {
                 "title": "Lancer de dé",
                 "rolldice": "Lancer le(s) dé(s)",
-                "ajout_de_bonus": "Nombre de dé(s) bonus"
+                "ajout_de_bonus": "Nombre de dé(s) bonus",
+                "demandeJoueur": "Demande au joueur de lancer le(s) dé(s)",
+                "demandeMJ": "Peux tu me lancer ceci ?",
+                "clickDemandeMJ": "Lancer le(s) dé(s)"
             },
             "title": {
                 "sens": "Jet de sens : {sens}",

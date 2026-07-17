@@ -357,51 +357,24 @@ export class BaseActorSheet extends system.Base.BaseSheet (
 
   static async onAptitudeRoll(event, target)
   {
-    const aptitude = target.dataset.aptitude;
-
-    const competences = system.Common.Aptitudes.getApt(aptitude).competences ?? [];
-    const sens = system.Common.Aptitudes.getApt(aptitude).sens ?? [];
-    
-    const competenceValue = ValeurDe.getVal(
-      Math.max(0, 
-        ...competences.map(c => {
-          return this.actor.system.competences[c].value;
-        }),
-        ...sens.map(s => {
-          return this.actor.system.sens[s].value;
-        }),
-      )
-    );
-
-    
-    const aptitudeValue = this.actor.system.aptitudes[aptitude].value;
+    const aptitudeId = target.dataset.aptitude;
 
     AptitudeRoller.execute({
-      title: game.i18n.format("glyphes.roll.title.aptitude" , {aptitude: game.i18n.format("glyphes.aptitudes." + aptitude + ".name")}),
       document: this.document,
-      aptitude: aptitude,
-      aptitudeValue: aptitudeValue,
-      competences: competences,
-      competenceValue :competenceValue,
+      aptitude: aptitudeId,
+      type: "aptitude",
     });
 
   }
 
   static async onSensRoll(event, target)
   {
-    const sens = target.dataset.sens;
     
-    const competenceValue = this.actor.system.sens[sens].value;
-
-    const aptitudeValue = 1 + (foundry.utils.getProperty(Races.get(this.actor.system.race), "modificateurs.sens." + sens + ".nb") || 0);
-
     AptitudeRoller.execute({
-      title: game.i18n.format("glyphes.roll.title.sens" , {sens: game.i18n.format("glyphes.sens." + sens)}),
       document: this.document,
-      aptitude: sens,
-      aptitudeValue: aptitudeValue,
-      competences: "",
-      competenceValue :competenceValue,
+      aptitude: target.dataset.sens,
+      type: "sens",
+      sens: target.dataset.sens,
     });
 
   }

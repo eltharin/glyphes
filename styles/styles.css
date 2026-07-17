@@ -452,3 +452,11 @@ div.competences > div > span {
     display:flex;
     flex-direction: row;
 }
+
+
+.chat-message .button {
+    border: 1px solid grey;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--color-light-3);
+}
