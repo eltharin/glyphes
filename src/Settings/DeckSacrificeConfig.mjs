@@ -43,10 +43,6 @@ export class DeckSacrificeConfig extends foundry.applications.api.HandlebarsAppl
 
 
   static async _onCreerDeck(event, target) {
-      
-    console.log("creer deck");
-    console.log(event, target, target.closest("form").querySelector('input[name="nbMort"]').value);
-
     await SacrificeDeck.createDeckIfNotExist();
     await SacrificeDeck.setMort(Number(target.closest("form").querySelector('input[name="nbMort"]').value));
 

@@ -1,24 +1,54 @@
 <form id="bonus-roll-form">
 
     <div class="">
+        {{#if isReposneMJ}}
+        {{else}}
+            {{#if isMJ}}
+                <div class="flexrow-beryllium roll-threshold">
+                    <label>{{localize 'glyphes.roll.common.demandeJoueur'}}</label>
+                    <input type="checkbox" name="lancerJoueur" value="1"  />
+                </div>
 
-        <div class="">
-            <label>{{localize 'glyphes.roll.difficulte.select_type'}}</label>
-            <select name="typeDifficulte">
-                {{#each difficultes as |difficulte| }}
-                    <option value="{{difficulte.value}}" {{#if difficulte.isDefault}}selected{{/if}}>{{localize (concat 'glyphes.roll.difficulte.' @key)}}</option>
-                {{/each}}
-            </select>
-        </div>
+            {{/if}}
+        {{/if}}
 
-        <div class="">
-            <label>{{localize 'glyphes.roll.difficulte.select_rang'}}</label>
-            <input type="number" name="rangDifficulte" value="1" step="1" />
-        </div>
+        {{#if mustChoose}}
+            <div class="flexrow-beryllium roll-threshold">
+                <label>{{localize 'glyphes.roll.aptitude.choixCompSens'}}</label>
+                <select name="idcompsens">
+                    {{#each competences as |comp| }}
+                        <option value="{{@index}}" {{#if comp.isDefault}}selected{{/if}}>{{ comp.titre}} (D{{ callMethod ../ValeurDe "getVal" comp.val }})</option>
+                    {{/each}}
+                    
+                </select>
+            </div>
+        {{/if}}
+
+
+        {{#if isReposneMJ}}
+            <input type="hidden" name="typeDifficulte" value="{{typeDifficulte}}" />
+            <input type="hidden" name="rangDifficulte" value="{{rangDifficulte}}" />
+        {{else}}
+            <div class="">
+                <label>{{localize 'glyphes.roll.difficulte.select_type'}}</label>
+                <select name="typeDifficulte">
+                    {{#each difficultes as |difficulte| }}
+                        <option value="{{difficulte.value}}" {{#if difficulte.isDefault}}selected{{/if}}>{{localize (concat 'glyphes.roll.difficulte.' @key)}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="">
+                <label>{{localize 'glyphes.roll.difficulte.select_rang'}}</label>
+                <input type="number" name="rangDifficulte" value="1" step="1" />
+            </div>
+        {{/if}}
 
         <div class="flexrow-beryllium roll-threshold">
             <label>{{localize 'glyphes.roll.common.ajout_de_bonus'}}</label>
             <input type="number" name="nbDeBonus" value="0" step="1" />
         </div>
+
+
     </div>
 </form>

@@ -25,6 +25,8 @@ import {registerFunctions as registerHandleBarFunctions} from "./SystemBase/Help
 import { ActionHeroiqueDataModel } from "./Effet/ActionHeroique/DataModel/ActionHeroiqueDataModel.mjs";
 import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroiqueSheet.mjs";
 import { MessageActionResolver } from "./SystemBase/ChatMessage/MessageActionResolver.mjs";
+import { AptitudeAskMessage } from "./DiceRoller/Aptitude/AptitudeAskMessage.mjs";
+import { ValeurDe } from "./Common/ValeurDe.mjs";
 
 
 Hooks.once("init", () => {

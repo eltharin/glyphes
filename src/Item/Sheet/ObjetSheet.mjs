@@ -36,7 +36,6 @@ export class ObjetSheet extends BaseItemSheet {
     
     const context = await super._prepareContext(options);
     context.prix = system.Common.Argent.convertAtoB(this.document.system.prix);
-console.log(context)
     return context;
   }
   
