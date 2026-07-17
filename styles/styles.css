@@ -25,7 +25,8 @@
 }
 
 .glyphes-sheet .lignetab > [data-width]{
-    flex : 0 1 attr(data-width px);
+    --localwidth: attr(data-width px);
+    flex : 0 1 var(--localwidth);
 }
 
 .glyphes-sheet .lignetab > .action{
