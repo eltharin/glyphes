@@ -24,11 +24,13 @@ import {registerFunctions as registerHandleBarFunctions} from "./SystemBase/Help
 
 import { ActionHeroiqueDataModel } from "./Effet/ActionHeroique/DataModel/ActionHeroiqueDataModel.mjs";
 import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroiqueSheet.mjs";
+import { MessageActionResolver } from "./SystemBase/ChatMessage/MessageActionResolver.mjs";
 
 
 Hooks.once("init", () => {
   console.log(system.Consts.SYSTEMID + " | Initialisation du système " + system.Consts.SYSTEMID);
-
+  system.Base.init();
+  
   CONFIG.Actor.dataModels = {
     pj: ActorPjDataModel,
     pnj: ActorPnjDataModel,
@@ -103,10 +105,12 @@ Hooks.once("init", () => {
 
   registerHandleBarFunctions();
 
-  system.DiceRoller.fct.registerMessageEventListener();
   system.Actor.Events.register();
 
   system.DiceRoller.fct.registerDiceRolls();
+
+  MessageActionResolver.register("lancerDeDemandeMJ", AptitudeAskMessage._onReponseDemandeMJ);
+
 });
 
 
