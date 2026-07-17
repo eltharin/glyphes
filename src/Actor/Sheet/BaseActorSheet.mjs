@@ -3,6 +3,7 @@ import { Aptitudes } from "../../Common/Aptitudes.mjs";
 import { Races } from "../../Common/Races.mjs";
 import { ValeurDe } from "../../Common/ValeurDe.mjs";
 import { AptitudeRoller } from "../../DiceRoller/Aptitude/AptitudeRoller.mjs";
+import { GlypheRoll } from "../../DiceRoller/Glyphe/GlypheRoll.mjs";
 
 
 export class BaseActorSheet extends system.Base.BaseSheet (
@@ -85,6 +86,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       addRemoveDeCompetence: this.onAddRemoveDeCompetence,
       addRemoveDePts: this.onAddRemovePts,
       aptitudeRoll: this.onAptitudeRoll,
+      glypheRoll: this.onGlypheRoll,
       sensRoll: this.onSensRoll,
       ajoutDon: this.onAjoutDon,
       supprDon: this.onSupprDon,      
@@ -205,25 +207,6 @@ export class BaseActorSheet extends system.Base.BaseSheet (
     return context;
   }  
 
-  static async _onSkillRoll(event, target){
-    event.preventDefault();
-
-    const actor = this.document;
-    const competence =  target.dataset.competence;
-
-    const modificateurs = await system.DiceRoller.CompetenceRollDialog.create({ });
-    if (modificateurs == null) { return; }
-
-    const myRoll = new system.DiceRoller.CompetenceRoll("XXXXX",{}, {
-        modificateurs: modificateurs,
-        actor: actor.uuid
-    });
-
-    myRoll.toMessage({
-      speaker: ChatMessage.getSpeaker({ alias: this.document.name + " ( " + game.user.name + " )"}),
-    });
-
-  }
 /*
   static async _onToggle(event, target) {
     this.element.querySelectorAll("[data-toggle_section='" + target.dataset.toggle + "']").forEach(e => e.classList.toggle("visible"));
@@ -379,6 +362,49 @@ export class BaseActorSheet extends system.Base.BaseSheet (
 
   }
 
+  static async onGlypheRoll(event, target)
+  {
+    const glyphe = fromUuidSync(target.dataset.glyphe);
+
+    const dialogData = await system.Base.Dialog.input({
+        content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/dice/glyphe/roll-dialog.hbs", {
+          difficultes: system.Common.Difficultes.difficultes,
+        }),
+        window: {title: game.i18n.format("glyphes.roll.common.title")},
+        ok: {
+            label: game.i18n.format("glyphes.roll.common.rolldice"),
+            default: true,
+            icon: "fa-solid fa-dice",
+        }
+    });
+
+    if(dialogData == null) {return;}
+
+    const nbFace = ValeurDe.getVal(this.document.system.competences.esprit.value);
+
+    let dices = [];
+    if(dialogData.nbDe > 0) {
+      dices.push({dice: dialogData.nbDe, text: "nbDe"});
+    }
+    if(dialogData.nbDeBonus > 0) {
+      dices.push({dice: dialogData.nbDeBonus, text: "nbDeBonus"});
+    }
+
+    const myRoll = new GlypheRoll(
+      dices.map(
+        dice => `{ ${dice.dice}d${nbFace}cs>=${dialogData.typeDifficulte} }[${dice.text}]`
+      ).join(' + ')   
+      ,{}, {
+        title: "coucou",
+        actor: this.document.uuid,
+    });
+
+    myRoll.toMessage({
+        speaker: ChatMessage.getSpeaker({ alias: this.document.name + " ( " + game.user.name + " )"}),
+    });
+  }
+  
+
   static async onAjoutDon(event, target)
   {
     const data = await foundry.applications.api.DialogV2.input({
@@ -526,5 +552,12 @@ export class BaseActorSheet extends system.Base.BaseSheet (
     });
 
     this.render(true, {force: true});
+  }
+
+  static async _onClickRollAffectTempete(event, message, target) {
+        message.rolls[0].options.alreadyAffectTempete = true;
+        const actor = fromUuidSync(event.target.dataset.actor);
+        actor.update({"system.points.tempete.value": actor.system.points.tempete.value + parseInt(event.target.dataset.nbechecs)});
+        message.update({rolls: message.rolls});
   }
 }

@@ -1,0 +1,21 @@
+<div class="dice-roll" data-action="expandRoll">
+    <div class="dice-result">
+        <div class="dice-formula">{{title}} ({{competence.titre}})</div>
+        {{{tooltip}}}
+        
+        {{#if isMJ}}
+            <div class="dice-formula">{{localize "glyphes.roll.result.total" total=total}}</div>
+            <div class="dice-formula">{{localize "glyphes.roll.result.difficulte" difficulte=difficulte}}</div>
+        {{/if}}
+        
+        <h4 class="dice-total">{{result}}</h4>
+        <h4 class="dice-total">{{echecs}} Echecs</h4>
+
+        {{#if canAffectTempete}}
+            {{#if (not alreadyAffectTempete)}}
+                <div class="button" data-action="affectTempete" data-nbechecs="{{echecs}}" data-actor="{{actor}}">Enlever tempete</div>
+            {{/if}}
+        {{/if}}
+
+    </div>
+</div>

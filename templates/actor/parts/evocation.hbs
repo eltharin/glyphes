@@ -66,7 +66,7 @@
             {{#each glyphes as |item|}}
                 <div class="item glyphe">
                     <div class="lignetab">
-                        <label>{{item.name}}</label>
+                        <label data-action="glypheRoll" data-glyphe="{{item.uuid}}">{{item.name}}</label>
                         <label data-width="100">{{item.system.type}}</label>
                         <span class="action" >
                             {{#if item.system.notes}}<a data-action="toggle"  data-toggle="item_{{item._id}}"><i class="fas fa-eye"></i></a>{{/if}}

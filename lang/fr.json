@@ -513,6 +513,9 @@
             "result" : {
                 "total": "Total : {total}",
                 "difficulte": "Difficulté : {difficulte}"
+            },
+            "glyphe": {
+                "nb_des": "Nombre de dé(s) à lancer"
             }
         },
         "fabrication": {
