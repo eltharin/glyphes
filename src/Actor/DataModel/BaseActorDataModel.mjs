@@ -102,7 +102,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
 
     prepareDerivedData() {
 
-        this._prepareDerivedData();
+        this.initiative = "0";
 
         this.sens = {
             vue: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
@@ -134,6 +134,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         });
 
         this.getSacrificesCards();
+        this._prepareDerivedData();
         //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.dices.length) ? {...comp, value: 0} : comp);
     }
 
