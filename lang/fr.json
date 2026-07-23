@@ -565,6 +565,27 @@
                 "creerDeck": "Creer le deck de sacrifice / Ajuster le nombre de carte de morts",
                 "nbCartesMort": "Nombre de cartes de morts dans le deck"
             }
+        },
+        "combat": {
+            "objectifs": {
+                "titre": "Objectifs",
+                "titleAddBtn": "Ajouter un Objectif",
+                "status" : {
+                    "encours" : "En cours",
+                    "reussi": "Reussi",
+                    "echec" : "Echec"
+                },
+                "delete": "Voulez vous supprimer cet objectif ?",
+                "dialog" : {
+                    "titleAjout" : "Ajouter un objectif",
+                    "titleModif" : "Modifier un objectif",
+                    "btnAjout" : "Ajouter",
+                    "btnModif" : "Modifier",
+                    "text" : "Libellé",
+                    "mask" : "Masqué aux joueurs",
+                    "etat" : "Etat"
+                }
+            }
         }
     }
 }

@@ -461,3 +461,27 @@ div.competences > div > span {
     cursor: pointer;
     background-color: var(--color-light-3);
 }
+
+
+.combat-tracker-header > .combat-tracker-header-objectifs {
+    header {
+        display: flex;
+        > * {
+            flex: 0 0 15px;
+        }
+        >:nth-child(1) {
+            flex: 1 0 15px;
+        }        
+    }
+
+    .combat-tracker-header-objectifs-list > div {
+        display: flex;
+        border-top : 1px solid lightgrey;
+        > * {
+            flex: 0 0 15px;
+        }
+        >:nth-child(2) {
+            flex: 1 0 15px;
+        } 
+    }
+}

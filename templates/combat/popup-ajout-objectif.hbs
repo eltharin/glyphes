@@ -1,0 +1,18 @@
+<div class="flexrow roll-threshold">
+    <label>{{localize (concat (SYSTEMID) ".combat.objectifs.dialog.text")}}</label>
+    <input type="text" name="text" value="{{objectif.text}}" />
+</div>
+
+<div class="flexrow roll-threshold">
+    <label>{{localize (concat (SYSTEMID) ".combat.objectifs.dialog.mask")}}</label>
+    <input type="checkbox" name="mask" value="1" {{#if objectif.mask }} checked="checked" {{/if}}/>
+</div>
+
+<div class="flexrow roll-threshold">
+    <label>{{localize (concat (SYSTEMID) ".combat.objectifs.dialog.etat")}}</label>
+    <select name="status">
+        <option value="0" {{#if (eq objectif.status "0") }} selected="selected" {{/if}}>{{ localizeSystem "combat.objectifs.status.encours" }}</option>
+        <option value="1" {{#if (eq objectif.status "1") }} selected="selected" {{/if}}>{{ localizeSystem "combat.objectifs.status.reussi"}}</option>
+        <option value="-1" {{#if (eq objectif.status "-1") }} selected="selected" {{/if}}>{{ localizeSystem "combat.objectifs.status.echec"}}</option>
+    </select>
+</div>
