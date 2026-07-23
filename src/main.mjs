@@ -28,6 +28,7 @@ import { MessageActionResolver } from "./SystemBase/ChatMessage/MessageActionRes
 import { AptitudeAskMessage } from "./DiceRoller/Aptitude/AptitudeAskMessage.mjs";
 import { ValeurDe } from "./Common/ValeurDe.mjs";
 import { BaseActorSheet } from "./Actor/Sheet/BaseActorSheet.mjs";
+import { CombatManager } from "./Common/CombatManager.mjs";
 
 
 Hooks.once("init", () => {
@@ -115,6 +116,7 @@ Hooks.once("init", () => {
   MessageActionResolver.register("lancerDeDemandeMJ", AptitudeAskMessage._onReponseDemandeMJ);
   MessageActionResolver.register("affectTempete", BaseActorSheet._onClickRollAffectTempete);
 
+  CombatManager.init();
 });
 
 
