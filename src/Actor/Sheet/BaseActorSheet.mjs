@@ -105,14 +105,14 @@ export class BaseActorSheet extends system.Base.BaseSheet (
         {
           action: "verouillage",
           icon: "fa-solid fa-lock",
-          label: system.Consts.SYSTEMID + ".pjsheet.action.lock",
+          label: system.Consts.SYSTEMID + ".sheet.common.lock",
           ownership: "OWNER",
           visible: this.#canVerouillage
         },
         {
           action: "deverouillage",
           icon: "fa-solid fa-unlock",
-          label: system.Consts.SYSTEMID + ".pjsheet.action.unlock",
+          label: system.Consts.SYSTEMID + ".sheet.common.unlock",
           ownership: "OWNER",
           visible: this.#canDeverouillage
         }

@@ -316,7 +316,9 @@
         "sheet": {
             "common": {
                 "nom": "Nom",
-                "notes": "Notes"
+                "notes": "Notes",
+                "lock": "Verouiller la fiche",
+                "unlock": "déverouiller la fiche"
             },
             "actor": {
                 "tabs": {
