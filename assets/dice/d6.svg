@@ -7,11 +7,11 @@
      id="icon"
      fill="var(--color-dice)">
     <rect
-       x="0"
-       y="0"
-       width="100"
-       height="100"
-       rx="5"
+       x="5"
+       y="5"
+       width="90"
+       height="90"
+       rx="10"
        id="rect1" />
   </g>
 </svg>
