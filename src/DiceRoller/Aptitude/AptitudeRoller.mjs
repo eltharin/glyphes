@@ -52,6 +52,7 @@ export class AptitudeRoller
             ValeurDe: ValeurDe,
             typeDifficulte: options.typeDifficulte || null,
             rangDifficulte: options.rangDifficulte || null,
+            actor : fromUuidSync(options.document.uuid),
         };
 
         const dialogData = await system.Base.Dialog.input({
@@ -88,6 +89,32 @@ export class AptitudeRoller
 
             let nbDe = aptitudeValue + dialogData.nbDeBonus;
             
+            if(dialogData.addPtsCorps > 0 || dialogData.addPtsAme > 0) {
+
+                if(data.actor.system.points.corps.value + data.actor.system.points.corps.bonus - dialogData.addPtsCorps < 0) {
+                    ui.notifications.error(game.i18n.format("glyphes.roll.aptitude.error.ptsCorps"));
+                    return;
+                }
+                
+                if(data.actor.system.points.ame.value + data.actor.system.points.ame.bonus - dialogData.addPtsAme < 0) {
+                    ui.notifications.error(game.i18n.format("glyphes.roll.aptitude.error.ptsAme"));
+                    return;
+                }
+                
+                if(CompSens.val + dialogData.addPtsCorps + dialogData.addPtsAme >= ValeurDe.dices.length) {
+                    ui.notifications.error(game.i18n.format("glyphes.roll.aptitude.error.toomuch"));
+                    return;
+                }
+
+                data.actor.update({
+                    "system.points.corps.bonus" : Math.max(0, data.actor.system.points.corps.bonus - dialogData.addPtsCorps),
+                    "system.points.corps.value" : data.actor.system.points.corps.value - dialogData.addPtsCorps + data.actor.system.points.corps.bonus - Math.max(0, data.actor.system.points.corps.bonus - dialogData.addPtsCorps),
+                    "system.points.ame.bonus" : Math.max(0, data.actor.system.points.ame.bonus - dialogData.addPtsAme),
+                    "system.points.ame.value" : data.actor.system.points.ame.value - dialogData.addPtsAme + data.actor.system.points.ame.bonus - Math.max(0, data.actor.system.points.ame.bonus - dialogData.addPtsAme),
+                });
+
+                CompSens.val += dialogData.addPtsCorps + dialogData.addPtsAme;
+            }
 
             const nbFace = ValeurDe.getVal(CompSens.val);
 

@@ -518,6 +518,15 @@
             },
             "glyphe": {
                 "nb_des": "Nombre de dé(s) à lancer"
+            },
+            "aptitude": {
+                "addPtsCorps": "Dépenser point(s) de Corps",
+                "addPtsAme": "Dépenser point(s) d'Ame",
+                "error": {
+                    "ptsCorps": "Pas assez de points de corps",
+                    "ptsAme": "Pas assez de points d'ame",
+                    "toomuch": "trop de points dépensés"
+                }
             }
         },
         "fabrication": {
