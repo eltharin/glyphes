@@ -39,7 +39,8 @@
       "fabrication": {}
     },
     "ActiveEffect": {
-      "actionHeroique": {}
+      "actionHeroique": {},
+      "donEffet": {}
     }
   },
   "socket": false,

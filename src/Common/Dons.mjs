@@ -14,12 +14,19 @@ class Don {
     }
 
     get effets(){
-        return [];
+        return this._effects ?? [];
     }
 }
 
 class StrategeDon extends Don {
     _id = "stratege";
+    _effects = [
+        {
+            key: "system.initiativeTakeVigilance",
+            mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
+            value: true
+        }
+    ]
 }
 
 class EcorcheurDon extends Don {
@@ -48,7 +55,6 @@ class ToujourspretDon extends Don {
 
 class EvocateurofficielDon extends Don {
     _id = "evocateurofficiel";
-    _name= "Coucou"
 }
 
 class EvocateursauvageDon extends Don {

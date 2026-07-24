@@ -7,6 +7,8 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
     // All Actors have resources.
         return { 
             isLocked: new foundry.data.fields.BooleanField({initial: false}),
+            initiativeTakeVigilance: new foundry.data.fields.BooleanField({initial: false}),
+            
             notes: new foundry.data.fields.StringField({}),
 
             origine: new foundry.data.fields.StringField({}),

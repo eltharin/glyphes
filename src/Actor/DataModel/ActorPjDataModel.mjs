@@ -13,7 +13,7 @@ export class ActorPjDataModel extends system.Actor.BaseActorDataModel {
     ];
 
     _prepareDerivedData() {
-        this.initiative = "-1 + (1d" + this.sens.instinct.dice + "cs>=4)*2";
+        this.initiative = "-1 + (" + (this.initiativeTakeVigilance ? this.aptitudes.vigilant.value : 1) + "d" + this.sens.instinct.dice + "kh1cs>=4)*2";
     }    
 
     async _preCreate(data, options, user) {

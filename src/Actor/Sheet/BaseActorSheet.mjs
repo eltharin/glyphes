@@ -419,6 +419,27 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       let dons = this.actor.system.dons;
       dons.push(data.don);
       await this.actor.update({"system.dons": dons});
+      
+      const donObj = system.Common.Dons.get(data.don); 
+      if(donObj.effets != []) {
+          for(const effet of donObj.effets) {
+            this.actor.createEmbeddedDocuments("ActiveEffect", [{
+              label: "Don-" + data.don,
+              name: "Don-" + data.don,
+              flags: { 
+                  [system.Consts.SYSTEMID + ".don"]: data.don
+              },
+              changes: [
+                {
+                  key: effet.key,   // propriété ciblée
+                  mode: effet.mode, // mode d'application
+                  value: effet.value,                            // valeur appliquée
+                  priority: 20
+                }
+              ]
+            }]);
+          }
+      }
     }
   }
 
@@ -433,6 +454,8 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       let dons = this.actor.system.dons;
       dons = dons.filter(d => d != donId);
       await this.actor.update({"system.dons": dons});
+
+      this.actor.effects.filter(e => foundry.utils.getProperty(e.flags, system.Consts.SYSTEMID + ".don") == donId).forEach(e => e.delete());
     }
   }
 
@@ -440,8 +463,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
   static async _onAddEffet(event, target) {
     event.preventDefault();
     
-
-        const data = await system.Base.Dialog.input({
+    const data = await system.Base.Dialog.input({
       title: game.i18n.format("glyphes.sheet.actor.dialog.ajoutActHer.title"),
       content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/effet/actionHeroique/form.hbs", {
         isCreation: true,

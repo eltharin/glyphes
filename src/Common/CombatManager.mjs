@@ -24,9 +24,10 @@ export class CombatManager {
             
         });
 
+
+
         Hooks.on("renderCombatTracker", (app, html, data) => {
 
-            console.log(app, html, data, data.combat?.flags);
             const header = html.querySelector(".combat-tracker-header");
 
             let objectifsContainer = header.querySelector(".combat-tracker-header-objectifs");
@@ -67,14 +68,14 @@ export class CombatManager {
                             label: game.i18n.localize(system.Consts.SYSTEMID + ".combat.objectifs.dialog.btnAjout"),
                             },
                             submit: result => {
-                                console.log(result);
+
                                 let update = {};
                                 const uid = foundry.utils.randomID();
                                 update[CombatManager.FLAG_OBJECTIFS] = {
                                     ...foundry.utils.getProperty(data.combat,  CombatManager.FLAG_OBJECTIFS),
                                     [uid]: CombatObjectif.create(result.text, result.mask)
                                 };
-                                console.log(update)
+
                                 data.combat.update(update);
                             }
                         });
@@ -158,48 +159,6 @@ export class CombatManager {
                     };
                 }
             }
-
-
-
-/*            for (const li of html.querySelectorAll("li.combatant")) {
-                const combatantId = li.dataset.combatantId;
-                const combatant = game.combat.combatants.get(combatantId);
-
-                const actor = combatant?.actor;
-                if (!actor) continue;
-
-
-                if(li.querySelectorAll(".pa-container").length == 0) {
-                    // Conteneur
-                    const paContainer = document.createElement("div");
-                    paContainer.classList.add("pa-container");
-                    
-                    const paButton = document.createElement("div");
-                    paButton.classList.add("pa-button");
-                    paButton.innerHTML = foundry.utils.getProperty(combatant, CombatManager.getFlagPa());
-                    paContainer.appendChild(paButton);
-
-                    paButton.onclick = async (e) => {
-                        if(!game.user.isGM) return;
-                        e.stopPropagation();
-
-                        const dialog = await system.Base.Dialog.input({
-                            content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/combat/popup-reset-pa.hbs", {
-                                defaultPa: CombatManager.getNbPaStart(),
-                             }),
-                            window: {title: game.i18n.localize(system.Consts.SYSTEMID + ".combat.pa.title")},
-                            ok: {
-                                label: game.i18n.localize(system.Consts.SYSTEMID + ".combat.pa.buttons.changer"),
-                            },
-                            submit: result => {
-                                combatant.update({[CombatManager.getFlagPa()]: result.pa})
-                            }
-                        });
-                    };
-
-                    li.insertBefore(paContainer, li.lastElementChild);
-                }
-            }*/
         });  
-    }    
+    }  
 }

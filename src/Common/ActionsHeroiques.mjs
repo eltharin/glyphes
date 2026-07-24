@@ -81,7 +81,7 @@ class SerrerDentsActionHeroique extends ActionHeroique {
 
 
 export class ActionsHeroiques {
-    static dons = {
+    static actions = {
         chargeheroique: ChargeHeroiqueActionHeroique,
         charmedivin: CharmeDivinActionHeroique,
         criteralliement: CriRalliementActionHeroique,
@@ -93,17 +93,17 @@ export class ActionsHeroiques {
         serrerdents: SerrerDentsActionHeroique,
     };
 
-    static get(donId) {
-        if(this.dons[donId] !== undefined)
+    static get(actionId) {
+        if(this.actions[actionId] !== undefined)
         {
-            return new this.dons[donId];
+            return new this.actions[actionId];
         }
         return null;
     }
 
     static list(){
         let ret = [];
-        Object.values(this.dons).forEach(element => {
+        Object.values(this.actions).forEach(element => {
             ret.push(new element);
         });
 
