@@ -1,0 +1,10 @@
+
+<div class="roll-threshold">
+    <label>{{localize (concat (SYSTEMID) ".combat.objectifs.resolve.selectActors")}}</label>
+{{#each combatants as |combatant|}}
+    <div class="flexrow roll-threshold">
+        <label>{{combatant.actor.name}}</label>
+        <input type="checkbox" name="actors" value="{{combatant.actor.uuid}}" {{#if (eq combatant.actor.type "pj") }} checked="checked" {{/if}}/>
+    </div>
+{{/each}}
+</div>
