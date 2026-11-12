@@ -254,6 +254,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
   
   static async _onEditItem(event, target) {
     event.preventDefault();
+
     const item = this.document.items.get(target.dataset.itemid);
     if (item) {      
       if (item.sheet.rendered) {
@@ -284,7 +285,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       }
       else
       {
-        confirmed = await system.Models.Dialog.confirm({
+        confirmed = await system.Base.Dialog.confirm({
           content: `<p>Êtes-vous sûr de vouloir supprimer ${item.name}?</p>`,
           rejectClose: false,
           modal: true

@@ -20,15 +20,16 @@ import { ArmureDataModel } from "./Item/DataModel/ArmureDataModel.mjs";
 import { GlypheDataModel } from "./Item/DataModel/GlypheDataModel.mjs";
 import { FabricationDataModel } from "./Item/DataModel/FabricationDataModel.mjs";
 
-import {registerFunctions as registerHandleBarFunctions} from "./SystemBase/Helpers/Handlebars.mjs";
+import {registerFunctions as registerHandleBarFunctions} from "../systemBase/src/Helpers/Handlebars.mjs";
 
 import { ActionHeroiqueDataModel } from "./Effet/ActionHeroique/DataModel/ActionHeroiqueDataModel.mjs";
 import { ActionHeroiqueSheet } from "./Effet/ActionHeroique/Sheet/ActionHeroiqueSheet.mjs";
-import { MessageActionResolver } from "./SystemBase/ChatMessage/MessageActionResolver.mjs";
+import { MessageActionResolver } from "../systemBase/src/ChatMessage/MessageActionResolver.mjs";
 import { AptitudeAskMessage } from "./DiceRoller/Aptitude/AptitudeAskMessage.mjs";
 import { ValeurDe } from "./Common/ValeurDe.mjs";
 import { BaseActorSheet } from "./Actor/Sheet/BaseActorSheet.mjs";
 import { CombatManager } from "./Common/CombatManager.mjs";
+import { DynamicChatMessageManager } from "../systemBase/src/ChatMessage/DynamicChatMessageManager.mjs";
 
 
 Hooks.once("init", () => {
@@ -117,6 +118,14 @@ Hooks.once("init", () => {
   MessageActionResolver.register("affectTempete", BaseActorSheet._onClickRollAffectTempete);
 
   CombatManager.init();
+
+  DynamicChatMessageManager.init();
+
+  /*Hooks.on("renderChatMessageHTML", (message, html, data) => {
+    DynamicChatMessage.activerEcouteurs(message, html, data);
+  });
+*/
+  
 });
 
 
