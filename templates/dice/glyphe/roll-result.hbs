@@ -3,18 +3,26 @@
         <div class="dice-formula">{{title}} ({{competence.titre}})</div>
         {{{tooltip}}}
         
-        {{#if isMJ}}
-            <div class="dice-formula">{{localize "glyphes.roll.result.total" total=total}}</div>
-            <div class="dice-formula">{{localize "glyphes.roll.result.difficulte" difficulte=difficulte}}</div>
-        {{/if}}
+        
+       <div class="dice-formula">{{localize "glyphes.roll.result.difficulte" difficulte=difficulte}}</div>
+        
         
         <h4 class="dice-total">{{result}}</h4>
         <h4 class="dice-total">{{total}} Réussite(s)</h4>
         <h4 class="dice-total">{{echecs}} Echecs</h4>
+        <h4 class="dice-formula">{{nbdepairimpair.pair}} dés pairs</h4>
+        <h4 class="dice-formula">{{nbdepairimpair.impair}} dés impaires</h4>
 
         {{#if canAffectTempete}}
             {{#if (not alreadyAffectTempete)}}
                 <div class="button" data-action="affectTempete" data-nbechecs="{{echecs}}" data-actor="{{actor}}">Enlever tempete</div>
+            {{/if}}
+        {{/if}}
+
+
+        {{#if hasEffect}}
+            {{#if (not alreadyRollEffect)}}
+                <div class="button" data-action="rollEvocationEffect" data-nbechecs="{{echecs}}" data-actor="{{actor}}">Lancer l'effet</div>
             {{/if}}
         {{/if}}
 

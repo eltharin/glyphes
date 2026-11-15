@@ -30,6 +30,11 @@
                 "mythique" : "Mythique"
             }
         },
+        "error": {
+            "evocation": {
+                "noTable": "Veuillez saisir la table d'effets dans les paramêtres de jeu"
+            }
+        },
         "sens": {
             "titre" : "Sens",
             "vue" : "Vue",
@@ -513,7 +518,8 @@
                 "difficulte": "Difficulté : {difficulte}"
             },
             "glyphe": {
-                "nb_des": "Nombre de dé(s) à lancer"
+                "nb_des": "Nombre de dé(s) à lancer",
+                "nb_des_rituels": "Nombre de dé(s) de rituel à lancer"
             },
             "aptitude": {
                 "addPtsCorps": "Dépenser point(s) de Corps",
@@ -552,6 +558,17 @@
                 "label": "Gestion du Deck de sacrifice",
                 "hint": "Cliquer sur ce bouton pour créer le deck de Sacrifices, le supprimer, le réinitialiser, ou compléter le nombre de carte de morts",
                 "btn": "Ouvrir le gestionnaire"
+            },
+            "evocation":{
+                "nonnefaste": {
+                    "label": "Id de la table aléatoire des effets non néfastes"
+                },
+                "nefaste": {
+                    "label": "Id de la table aléatoire des effets néfastes"
+                },
+                "sendHidden": {
+                    "label": "Demander les jets d'effets d'évocation en aveugle (uniquement MJ)"
+                }
             }
         },
         "cards": {

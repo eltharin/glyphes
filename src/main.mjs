@@ -116,6 +116,7 @@ Hooks.once("init", () => {
 
   MessageActionResolver.register("lancerDeDemandeMJ", AptitudeAskMessage._onReponseDemandeMJ);
   MessageActionResolver.register("affectTempete", BaseActorSheet._onClickRollAffectTempete);
+  MessageActionResolver.register("rollEvocationEffect", BaseActorSheet._onClickRollEvocationEffect);
 
   CombatManager.init();
 

@@ -20,4 +20,32 @@ export function registerSettings()
         restricted: true,
         type: DeckSacrificeConfig,
     });
+
+
+    
+    game.settings.register(SystemConsts.SYSTEMID, "tabAleatIdEvocationNonNefaste", {
+        name: "glyphes.settings.evocation.nonnefaste.label",
+        scope: "world",
+        config: true,
+        type: String,
+        default: ""
+    });
+
+    
+    game.settings.register(SystemConsts.SYSTEMID, "tabAleatIdEvocationNefaste", {
+        name: "glyphes.settings.evocation.nefaste.label",
+        scope: "world",
+        config: true,
+        type: String,
+        default: ""
+    });
+
+    
+    game.settings.register(SystemConsts.SYSTEMID, "tabAleatIdEvocationSendHidden", {
+        name: "glyphes.settings.evocation.sendHidden.label",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: ""
+    });
 }

@@ -579,8 +579,26 @@ export class BaseActorSheet extends system.Base.BaseSheet (
 
   static async _onClickRollAffectTempete(event, message, target) {
         message.rolls[0].options.alreadyAffectTempete = true;
+        
         const actor = fromUuidSync(event.target.dataset.actor);
         actor.update({"system.points.tempete.value": actor.system.points.tempete.value + parseInt(event.target.dataset.nbechecs)});
         message.update({rolls: message.rolls});
   }
+
+  static async _onClickRollEvocationEffect(event, message, target) {
+    let settings = message.rolls[0].total > 5 ? "tabAleatIdEvocationNonNefaste" : "tabAleatIdEvocationNefaste";
+
+    const table = fromUuidSync(game.settings.get("glyphes", settings));
+
+    if (table) {
+      const tirage = await table.draw(game.settings.get("glyphes", "tabAleatIdEvocationSendHidden") ? {rollMode: "blindroll"} : {});
+
+      message.rolls[0].options.alreadyRollEffect = true;
+      message.update({rolls: message.rolls});
+    } else {
+      ui.notifications.error(game.i18n.format("glyphes.error.evocation.noTable"));
+    }
+  }
+
+
 }

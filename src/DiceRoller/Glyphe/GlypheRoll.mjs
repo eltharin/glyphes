@@ -9,15 +9,44 @@ export class GlypheRoll extends system.DiceRoller.BaseRoll{
         if (this.options.alreadyAffectTempete == undefined) {
             this.options.alreadyAffectTempete = false;
         }
+        
+        if (this.options.alreadyRollEffect == undefined) {
+            this.options.alreadyRollEffect = false;
+        }
     }
 
     async _prepareChatRenderContext({flavor, isPrivate=false, ...options}={}) {
         let ret = await super._prepareChatRenderContext({flavor, isPrivate, ...options});
         
         ret.echecs = this.dice[0].results.length - this.dice[0].total;
-        ret.canAffectTempete = fromUuidSync(this.options.actor).testUserPermission(game.user, "canUpdate");
+        ret.canAffectTempete = ret.echecs > 0 && fromUuidSync(this.options.actor).testUserPermission(game.user, "canUpdate");
         ret.alreadyAffectTempete = this.options.alreadyAffectTempete;
+
+        ret.nbdepairimpair = this.getnbde(this.dice);
+
+        ret.hasEffect = ret.nbdepairimpair.pair > ret.nbdepairimpair.impair && fromUuidSync(this.options.actor).testUserPermission(game.user, "canUpdate");
+        ret.alreadyRollEffect = this.options.alreadyRollEffect;        
+
         ret.actor = this.options.actor;
+
+        return ret;
+    }
+
+    getnbde(dices)
+    {
+        let ret = {pair: 0, impair: 0};
+
+        dices.forEach(onedice => {
+            onedice.results.forEach( dice => {
+                if(dice.result % 2 == 0)
+                {
+                    ret.pair ++;
+                }
+                else {
+                    ret.impair ++;
+                }
+            });
+        });
 
         return ret;
     }
