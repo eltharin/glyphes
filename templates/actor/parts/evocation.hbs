@@ -38,20 +38,18 @@
                 <span class="ptscontrol" data-action="addRemoveDePts" data-pointtype="ame" data-sens="+">+</span>
             </div>
         </div>
-    </div>
 
-    <hr/>
-
-    <div class="flextabs">
-        <div class="field">
-            <div>{{localize "glyphes.competences.esprit.long"}}</div>
-            <div class="diceVal">
-                <svg width="50" height="50" viewBox="0 0 100 100">
-                    <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.value }}"/>
-                </svg>
-                <label>D{{ system.competences.esprit.dice}}</label>
-            </div>
+        <div class="flextabs">
+                <div>{{localize "glyphes.competences.esprit.long"}}</div>
+                <div class="diceVal">
+                    <svg width="50" height="50" viewBox="0 0 100 100">
+                        <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.value }}"/>
+                    </svg>
+                    <label>D{{ system.competences.esprit.dice}}</label>
+                </div>
         </div>
+
+
     </div>
 
     <hr/>

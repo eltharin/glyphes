@@ -49,22 +49,28 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             
             competences: new foundry.data.fields.SchemaField({
                 puissance: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 }),
                 souplesse: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 }),
                 constitution: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 }),
                 foi: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 }),
                 esprit: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 }),
                 social: new foundry.data.fields.SchemaField({
-                    value: new foundry.data.fields.NumberField({initial: 0})
+                    value: new foundry.data.fields.NumberField({initial: 0}),
+                    malus: new foundry.data.fields.NumberField({initial: 0})
                 })
             }),
 

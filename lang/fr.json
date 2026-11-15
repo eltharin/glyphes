@@ -143,8 +143,8 @@
                 "name": "Médecin",
                 "description": ""
             },
-            "scout": {
-                "name": "Scout",
+            "observateur": {
+                "name": "Observateur",
                 "description": ""
             },
             "vigilant": {
@@ -159,8 +159,8 @@
                 "name": "Ingénieur",
                 "description": ""
             },
-            "botanique": {
-                "name": "Botanique",
+            "survie": {
+                "name": "Survie",
                 "description": ""
             },
             "deduction": {
@@ -169,10 +169,6 @@
             },
             "erudition": {
                 "name": "Érudition",
-                "description": ""
-            },
-            "traqueur": {
-                "name": "Traqueur",
                 "description": ""
             },
             "charme": {

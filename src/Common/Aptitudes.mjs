@@ -30,20 +30,19 @@ export class Aptitudes {
             "piedleger",
             "sangpourri",
         ],
-        "survie": [
-            "medecin",
-            "scout",
-            "vigilant",
-        ],
         "creation": [
             "alchimiste",
             "ingenieur",
         ],
+        "survie": [
+            "survie",
+            "medecin",
+            "observateur",
+            "vigilant",
+        ],
         "connaissances": [
-            "botanique",
             "deduction",
             "erudition",
-            "traqueur",
         ],
         "social": [
             "charme",
@@ -96,8 +95,9 @@ export class Aptitudes {
         medecin: {
             competences: ["esprit", "souplesse"]
         },
-        scout: {
-            sens: ["instinct"]
+        observateur: {
+            sens: ["vue", "instinct"],
+            mustChoose: true
         },
         vigilant: {
             sens: ["vue", "ouie", "flux", "instinct"],
@@ -110,17 +110,15 @@ export class Aptitudes {
         ingenieur: {
             competences: ["esprit", "souplesse"]
         },
-        botanique: {
-            competences: ["esprit"]
+        survie: {
+            sens: ["vue", "ouie", "flux", "instinct"],
+            mustChoose: true
         },
         deduction: {
             competences: ["esprit"]
         },
         erudition: {
             competences: ["foi", "esprit"]
-        },
-        traqueur: {
-            competences: ["esprit"]
         },
         charme: {
             competences: ["social", "souplesse"]
