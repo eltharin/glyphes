@@ -8,7 +8,8 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         return { 
             isLocked: new foundry.data.fields.BooleanField({initial: false}),
             initiativeTakeVigilance: new foundry.data.fields.BooleanField({initial: false}),
-            
+            initiativeFixed: new foundry.data.fields.NumberField({initial: 1}),
+
             notes: new foundry.data.fields.StringField({}),
 
             origine: new foundry.data.fields.StringField({}),
@@ -141,6 +142,8 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             this.competences[key].dice = ValeurDe.getVal(this.competences[key].value);
         });
 
+        this.initiative = this.initiativeFixed >= 0 ? this.initiativeFixed : " (" + (this.initiativeTakeVigilance ? this.aptitudes.vigilant.value : 5) + "d" + this.sens.instinct.dice + "cs>=4)*2";
+
         this.getSacrificesCards();
         this._prepareDerivedData();
         //this.competences = this.competences.map(comp => (comp.value < 0 || comp.value > ValeurDe.dices.length) ? {...comp, value: 0} : comp);
@@ -151,7 +154,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
     }
 
     _prepareDerivedData() {
-
+        
     }
 
     verifAptitudes(changes, clone){

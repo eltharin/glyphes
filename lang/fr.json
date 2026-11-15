@@ -437,7 +437,8 @@
                             "max": "Points de blessure max",
                             "bonus": "Points de blessure bonus"
                         }
-                    }
+                    },
+                    "initiative": "Fixer l'initiative (*2-1)"
                 }
             },
             "effet": {
@@ -519,7 +520,11 @@
             },
             "glyphe": {
                 "nb_des": "Nombre de dé(s) à lancer",
-                "nb_des_rituels": "Nombre de dé(s) de rituel à lancer"
+                "nb_des_rituels": "Nombre de dé(s) de rituel à lancer",
+                "result":{
+                    "lancerEffet": "Lancer l'effet",
+                    "appliqueTempete": "Appliquer tempete"
+                }
             },
             "aptitude": {
                 "addPtsCorps": "Dépenser point(s) de Corps",

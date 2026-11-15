@@ -4,6 +4,7 @@ export class ActorPjDataModel extends system.Actor.BaseActorDataModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
+            initiativeFixed: new foundry.data.fields.NumberField({initial: -1}),
 
         };
     }
@@ -13,7 +14,7 @@ export class ActorPjDataModel extends system.Actor.BaseActorDataModel {
     ];
 
     _prepareDerivedData() {
-        this.initiative = " (" + (this.initiativeTakeVigilance ? this.aptitudes.vigilant.value : 5) + "d" + this.sens.instinct.dice + "cs>=4)*2";
+        
     }    
 
     async _preCreate(data, options, user) {
