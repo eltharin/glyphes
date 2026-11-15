@@ -518,6 +518,7 @@
             "aptitude": {
                 "addPtsCorps": "Dépenser point(s) de Corps",
                 "addPtsAme": "Dépenser point(s) d'Ame",
+                "choixCompSens": "Choix de la compétence / du Sens",
                 "error": {
                     "ptsCorps": "Pas assez de points de corps",
                     "ptsAme": "Pas assez de points d'ame",
