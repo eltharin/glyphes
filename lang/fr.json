@@ -523,7 +523,7 @@
                 "nb_des_rituels": "Nombre de dé(s) de rituel à lancer",
                 "result":{
                     "lancerEffet": "Lancer l'effet",
-                    "appliqueTempete": "Appliquer tempete"
+                    "appliqueTempete": "Appliquer {nbPts} pts de tempete"
                 }
             },
             "aptitude": {

@@ -398,6 +398,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       ,{}, {
         title: "coucou",
         actor: this.document.uuid,
+        difficulte: dialogData.typeDifficulte,
     });
 
     myRoll.toMessage({

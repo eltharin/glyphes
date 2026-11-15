@@ -17,8 +17,11 @@ export class GlypheRoll extends system.DiceRoller.BaseRoll{
 
     async _prepareChatRenderContext({flavor, isPrivate=false, ...options}={}) {
         let ret = await super._prepareChatRenderContext({flavor, isPrivate, ...options});
+
+        ret.difficulte = `${this.options.difficulte} - ${game.i18n.format("glyphes.common.difficulte." + system.Common.Difficultes.getKey(this.options.difficulte))}`;
         
         ret.echecs = this.dice[0].results.length - this.dice[0].total;
+        ret.nbTempete = this.getNbTempete();
         ret.canAffectTempete = ret.echecs > 0 && fromUuidSync(this.options.actor).testUserPermission(game.user, "canUpdate");
         ret.alreadyAffectTempete = this.options.alreadyAffectTempete;
 
@@ -28,6 +31,8 @@ export class GlypheRoll extends system.DiceRoller.BaseRoll{
         ret.alreadyRollEffect = this.options.alreadyRollEffect;        
 
         ret.actor = this.options.actor;
+
+        ret.totalpts = ret.total * ((this.options.difficulte -2) /2);
 
         return ret;
     }
@@ -49,6 +54,11 @@ export class GlypheRoll extends system.DiceRoller.BaseRoll{
         });
 
         return ret;
+    }
+
+    getNbTempete()
+    {
+        return Math.max(this.total == 0 ? this.options.difficulte : 0, this.dice[0].results.length - this.dice[0].total);
     }
 
     async getTooltip() {

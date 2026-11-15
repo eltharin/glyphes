@@ -3,19 +3,18 @@
         <div class="dice-formula">{{title}} ({{competence.titre}})</div>
         {{{tooltip}}}
         
+        <div class="dice-formula">{{localize "glyphes.roll.result.difficulte" difficulte=difficulte}}</div>
         
-       <div class="dice-formula">{{localize "glyphes.roll.result.difficulte" difficulte=difficulte}}</div>
-        
-        
-        <h4 class="dice-total">{{result}}</h4>
-        <h4 class="dice-total">{{total}} Réussite(s)</h4>
-        <h4 class="dice-total">{{echecs}} Echec(s)</h4>
-        <h4 class="dice-formula">{{nbdepairimpair.pair}} dés pairs</h4>
-        <h4 class="dice-formula">{{nbdepairimpair.impair}} dés impaires</h4>
+        <div class="dice-total">{{total}} Réussite(s)</div>
+        <div class="dice-total">{{echecs}} Echec(s)</div>
+        <div class="dice-formula">{{nbdepairimpair.pair}} dés pairs</div>
+        <div class="dice-formula">{{nbdepairimpair.impair}} dés impaires</div>
+
+        <h4 class="dice-total">{{totalpts}} pts d'immersion</h4>
 
         {{#if canAffectTempete}}
             {{#if (not alreadyAffectTempete)}}
-                <div class="button" data-action="affectTempete" data-nbechecs="{{echecs}}" data-actor="{{actor}}">{{localizeSystem 'roll.glyphe.result.appliqueTempete'}}</div>
+                <div class="button" data-action="affectTempete" data-nbechecs="{{echecs}}" data-actor="{{actor}}">{{localizeSystem 'roll.glyphe.result.appliqueTempete' nbPts=nbTempete}}</div>
             {{/if}}
         {{/if}}
 
