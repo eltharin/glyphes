@@ -142,7 +142,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             this.competences[key].dice = ValeurDe.getVal(this.competences[key].value);
         });
 
-        this.initiative = this.initiativeFixed >= 0 ? this.initiativeFixed : " (" + (this.initiativeTakeVigilance ? this.aptitudes.vigilant.value : 5) + "d" + this.sens.instinct.dice + "cs>=4)*2";
+        this.initiative = this.initiativeFixed >= 0 ? this.initiativeFixed : " (" + (this.initiativeTakeVigilance ? this.aptitudes.vigilant.value : 1) + "d" + this.sens.instinct.dice + "cs>=4)*2";
 
         this.getSacrificesCards();
         this._prepareDerivedData();

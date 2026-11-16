@@ -45,8 +45,8 @@
   },
   "socket": false,
   "grid": {
-    "distance": 1.5,
-    "units": "m"
+    "distance": 5,
+    "units": "f"
   },
   "initiative": "@initiative",
   "url": "#{URL}#",
