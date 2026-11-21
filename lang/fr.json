@@ -383,6 +383,12 @@
                         "ajoutbtn": "Piocher"
                     }
                 },
+                "aptitude": {
+                    "choixcompetence": {
+                        "select" : "Choix des competences associées",
+                        "selecthelper": "laisser vide pour valeur par défaut"
+                    }
+                },
                 "evocation": {
                     "glyphes": {
                         "title": "Glyphes",

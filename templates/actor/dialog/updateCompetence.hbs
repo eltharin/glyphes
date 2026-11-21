@@ -1,0 +1,20 @@
+<form>
+        <div class="">
+            <div>
+                <label>{{localize 'glyphes.sheet.actor.aptitude.choixcompetence.select'}}</label>
+            </div>
+            <div>
+                <span class="helper">({{localize 'glyphes.sheet.actor.aptitude.choixcompetence.selecthelper'}})</span>
+            </div>
+            {{#each competences as  |comp|}}
+                <div>
+                    <input type="checkbox" 
+                           name="rollcomp" 
+                           {{#ifIn comp ../aptitude.competences}}checked="checked"{{/ifIn}}
+                           value="{{comp}}" 
+                           id="comp_{{comp}}">
+                    <label for="comp_{{comp}}">{{localizeSystem (concat "competences." comp ".long") }}</label>
+                </div>
+            {{/each}}
+        </div>
+</form>

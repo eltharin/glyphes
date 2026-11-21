@@ -75,10 +75,16 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
                 })
             }),
 
+            hasFlux: new foundry.data.fields.BooleanField({initial: true}),
+
             aptitudes: new foundry.data.fields.TypedObjectField(
                 new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({ initial: 1 }),
-                    bonus: new foundry.data.fields.NumberField({ initial: 0 })
+                    bonus: new foundry.data.fields.NumberField({ initial: 0 }),
+                    competences: new foundry.data.fields.ArrayField(
+                                   new foundry.data.fields.StringField({}),
+                                   {initial: []}     
+                                )
                 })
                 ,
                 {
@@ -111,12 +117,10 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
 
     prepareDerivedData() {
 
-        this.initiative = "0";
-
         this.sens = {
             vue: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
             ouie: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
-            flux: {value : Math.max(0, this.competences.esprit.value -1 ), dice: -1},
+            flux: {value : this.hasFlux ? Math.max(0, this.competences.esprit.value -1 ) : null, dice: -1},
             instinct: {value : Math.min(this.competences.esprit.value, this.competences.foi.value), dice: -1},
         }
 
@@ -131,9 +135,10 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             if(!this.aptitudes[key]) {this.aptitudes[key] = {}};
             if(!this.aptitudes[key].value)  {this.aptitudes[key].value = 1;}
             if(!this.aptitudes[key].bonus)  {this.aptitudes[key].bonus = 0;}
+            
+            this.aptitudes[key].rollcompetences = (this.aptitudes[key].competences != undefined && this.aptitudes[key].competences.length  > 0) ? this.aptitudes[key].competences :  val.competences;
         });
-        
-        
+
         Object.keys(this.competences).forEach(key => {
             if(this.competences[key].value < 0 || this.competences[key].value > ValeurDe.dices.length) {
                 console.error(`Compétence ${key} a une valeur invalide (${this.competences[key].value}). Réinitialisation à 0.`);

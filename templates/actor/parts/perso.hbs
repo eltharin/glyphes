@@ -46,43 +46,9 @@
                     </span>
                 </legend>
                 
-
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.puissance.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.puissance.value }}">
-                        </svg>
-                        <label>D{{ system.competences.puissance.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="puissance" data-sens="+"></span>
-                </div>
-                
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.souplesse.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="souplesse" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.souplesse.value }}"/>
-                        </svg>
-                        <label>D{{ system.competences.souplesse.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="souplesse" data-sens="+"></span>
-                </div>
-                
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.constitution.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.constitution.value }}"/>
-                        </svg>
-                        <label>D{{ system.competences.constitution.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="constitution" data-sens="+"></span>
-                </div>
-
+                {{> competence competence="puissance" }}
+                {{> competence competence="souplesse" }}
+                {{> competence competence="constitution" }}
                 
             </div>
             
@@ -105,41 +71,9 @@
                     </span>
                 </legend>
                 
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.foi.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="foi" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.foi.value }}"/>
-                        </svg>
-                        <label>D{{ system.competences.foi.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="foi" data-sens="+"></span>
-                </div>
-                
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.social.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="social" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.social.value }}"/>
-                        </svg>
-                        <label>D{{ system.competences.social.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="social" data-sens="+"></span>
-                </div>
-                
-                <div class="competence">
-                    <label>{{localize "glyphes.competences.esprit.court"}}</label>
-                    <span class="moins" data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="-"></span>
-                    <div class="diceVal">
-                        <svg width="50" height="50" viewBox="0 0 100 100">
-                            <use href="{{ callMethod ValeurDe "getIcon" system.competences.esprit.value }}"/>
-                        </svg>
-                        <label>D{{ system.competences.esprit.dice}}</label>
-                    </div>
-                    <span class="plus" data-action="addRemoveDeCompetence" data-competence="esprit" data-sens="+"></span>
-                </div>
+                {{> competence competence="foi" }}
+                {{> competence competence="social" }}
+                {{> competence competence="esprit" }}
 
             </div>
         </div>
@@ -195,3 +129,17 @@
 </div>
 
 </section>
+
+{{#*inline "competence"}}
+    <div class="competence">
+        <label>{{localize (concat "glyphes.competences."  competence  ".court") }} ({{malus (lookup (lookup system.competences competence) "malus") }})</label>
+        {{#if (not isVerrou)}}<span class="moins" data-action="addRemoveDeCompetence" data-competence="{{competence}}" data-sens="-"></span>{{/if}}
+        <div class="diceVal">
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <use href="{{ callMethod ValeurDe "getIcon" (lookup (lookup system.competences competence) "value")}}">
+            </svg>
+            <label>D{{ lookup (lookup system.competences competence) "dice" }}</label>
+        </div>
+        {{#if (not isVerrou)}}<span class="plus" data-action="addRemoveDeCompetence" data-competence="{{competence}}" data-sens="+"></span>{{/if}}
+    </div>
+{{/inline}}

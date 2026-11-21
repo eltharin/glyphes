@@ -12,7 +12,6 @@ export class AptitudeRoller
         
         let CompSens = null;
         let msgTitle = null;
-        let aptitudeValue = null;
 
         options.document.sheet.render(false);
         
@@ -20,23 +19,29 @@ export class AptitudeRoller
             const aptitude = system.Common.Aptitudes.getApt(options.aptitude);
         
             CompSens = [
-            ...(aptitude.competences ?? []).map(c => ({titre: game.i18n.format("glyphes.competences." + c + ".long"), val : options.document.system.competences[c].value})),
-            ...(aptitude.sens ?? []).map(s => ({titre: game.i18n.format("glyphes.sens." + s), val : options.document.system.sens[s].value})),
+            ...(options.document.system.aptitudes[options.aptitude].rollcompetences ?? []).map(c => ({
+                titre: game.i18n.format("glyphes.competences." + c + ".long"), 
+                faces : options.document.system.competences[c].value,
+                nb: options.document.system.aptitudes[options.aptitude].value - options.document.system.competences[c].malus
+            })),
+            ...(aptitude.sens ?? []).map(s => ({
+                titre: game.i18n.format("glyphes.sens." + s), 
+                faces : options.document.system.sens[s].value,
+                nb: options.document.system.aptitudes[options.aptitude].value
+            })),
             ];
             
-            if((aptitude.mustChoose || false) == false) {
-                CompSens = CompSens.reduce((max, obj) =>
-                    obj.val > max.val ? obj : max
-                );
-            }
+            CompSens.sort((b, a) => a.faces * 1000 + a.nb - b.faces * 1000 - b.nb );
             
-            aptitudeValue = options.document.system.aptitudes[options.aptitude].value;
             msgTitle = game.i18n.format("glyphes.roll.title.aptitude" , {aptitude: game.i18n.format("glyphes.aptitudes." + options.aptitude + ".name")});
 
         } else if(options.type == "sens") {
             msgTitle = game.i18n.format("glyphes.roll.title.sens" , {sens: game.i18n.format("glyphes.sens." + options.sens)}),
-            CompSens = {titre: game.i18n.format("glyphes.sens." + options.sens), val: options.document.system.sens[options.sens].value};
-            aptitudeValue = 1 + (foundry.utils.getProperty(Races.get(options.document.system.race), "modificateurs.sens." + options.sens + ".nb") || 0);
+            CompSens = [{
+                titre: game.i18n.format("glyphes.sens." + options.sens), 
+                faces: options.document.system.sens[options.sens].value,
+                nb: 1 + (foundry.utils.getProperty(Races.get(options.document.system.race), "modificateurs.sens." + options.sens + ".nb") || 0)
+            }];
         } else {
             console.error("cas non géré");
             return;
@@ -87,7 +92,7 @@ export class AptitudeRoller
                 CompSens = CompSens[dialogData.idcompsens];
             }
 
-            let nbDe = aptitudeValue + dialogData.nbDeBonus;
+            let nbDe = CompSens.nb + dialogData.nbDeBonus;
             
             if(dialogData.addPtsCorps > 0 || dialogData.addPtsAme > 0) {
 
@@ -101,7 +106,7 @@ export class AptitudeRoller
                     return;
                 }
                 
-                if(CompSens.val + dialogData.addPtsCorps + dialogData.addPtsAme >= ValeurDe.dices.length) {
+                if(CompSens.faces + dialogData.addPtsCorps + dialogData.addPtsAme >= ValeurDe.dices.length) {
                     ui.notifications.error(game.i18n.format("glyphes.roll.aptitude.error.toomuch"));
                     return;
                 }
@@ -113,10 +118,10 @@ export class AptitudeRoller
                     "system.points.ame.value" : data.actor.system.points.ame.value - dialogData.addPtsAme + data.actor.system.points.ame.bonus - Math.max(0, data.actor.system.points.ame.bonus - dialogData.addPtsAme),
                 });
 
-                CompSens.val += dialogData.addPtsCorps + dialogData.addPtsAme;
+                CompSens.faces += dialogData.addPtsCorps + dialogData.addPtsAme;
             }
 
-            const nbFace = ValeurDe.getVal(CompSens.val);
+            const nbFace = ValeurDe.getVal(CompSens.faces);
 
             let modifiers = "";
 

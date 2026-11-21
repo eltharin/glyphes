@@ -12,18 +12,6 @@
             {{/if}}
         {{/if}}
 
-        {{#if mustChoose}}
-            <div class="flexrow-beryllium roll-threshold">
-                <label>{{localize 'glyphes.roll.aptitude.choixCompSens'}}</label>
-                <select name="idcompsens">
-                    {{#each competences as |comp| }}
-                        <option value="{{@index}}" {{#if comp.isDefault}}selected{{/if}}>{{ comp.titre}} (D{{ callMethod ../ValeurDe "getVal" comp.val }})</option>
-                    {{/each}}
-                    
-                </select>
-            </div>
-        {{/if}}
-
 
         {{#if isReposneMJ}}
             <input type="hidden" name="typeDifficulte" value="{{typeDifficulte}}" />
@@ -44,6 +32,18 @@
             </div>
         {{/if}}
 
+
+        
+        <div class="flexrow-beryllium roll-threshold">
+            <label>{{localize 'glyphes.roll.aptitude.choixCompSens'}}</label>
+            <select name="idcompsens">
+                {{#each competences as |comp| }}
+                    <option value="{{@index}}" {{#if comp.isDefault}}selected{{/if}}>{{ comp.titre}} ({{comp.nb}}D{{ callMethod ../ValeurDe "getVal" comp.faces }})</option>
+                {{/each}}
+                
+            </select>
+        </div>
+        
         <div class="flexrow-beryllium roll-threshold">
             <label>{{localize 'glyphes.roll.common.ajout_de_bonus'}}</label>
             <input type="number" name="nbDeBonus" value="0" step="1" />

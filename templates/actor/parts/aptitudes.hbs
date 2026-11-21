@@ -11,14 +11,14 @@
             {{#if aptitude }}
                 <div class="field">
                     
-                    <label data-action="aptitudeRoll" data-aptitude="{{ aptitude }}">
-                        <span>{{ localize (concat "glyphes.aptitudes." aptitude ".name") }}</span></br>
+                    <label data-action="{{#if ../../isVerrou }}aptitudeRoll{{else}}aptitudeUpdate{{/if}}" data-aptitude="{{ aptitude }}">
+                        <span>{{ localize (concat "glyphes.aptitudes." aptitude ".name") }} + {{isVerrou}}</span></br>
                         <span>(
                             {{#with (lookup ../../lists.aptitudes aptitude ) as |apt| }}
                                 {{#if apt.competencesText }}
                                     {{ localizeSystem apt.competencesText }}
                                 {{else}}
-                                    {{#each apt.competences as |competence| }}
+                                    {{#each (lookup (lookup ../../../system.aptitudes aptitude) "rollcompetences") as |competence| }}
                                         {{ localize (concat "glyphes.competences." competence ".court") }}{{#unless @last}}, {{/unless}}
                                     {{/each}}
                                     

@@ -86,6 +86,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
       addRemoveDeCompetence: this.onAddRemoveDeCompetence,
       addRemoveDePts: this.onAddRemovePts,
       aptitudeRoll: this.onAptitudeRoll,
+      aptitudeUpdate: this.aptitudeUpdate,
       glypheRoll: this.onGlypheRoll,
       sensRoll: this.onSensRoll,
       ajoutDon: this.onAjoutDon,
@@ -351,6 +352,31 @@ export class BaseActorSheet extends system.Base.BaseSheet (
 
   }
 
+  static async aptitudeUpdate(event, target)
+  {
+    const aptitudeId = target.dataset.aptitude;
+
+    const dialogData = await system.Base.Dialog.input({
+        content: await foundry.applications.handlebars.renderTemplate(system.Consts.TEMPLATES_PATH + "/actor/dialog/updateCompetence.hbs", {
+          aptitude: this.document.system.aptitudes[aptitudeId],
+          competences: ["souplesse", "puissance", "foi", "constitution"],
+        }),
+        window: {title: game.i18n.format("glyphes.roll.common.title")},
+        ok: {
+            label: game.i18n.format("glyphes.roll.common.rolldice"),
+            default: true,
+            icon: "fa-solid fa-dice",
+        }
+    });
+
+    if(dialogData == null) {return;}
+
+    let update = {};
+    update["system.aptitudes." + aptitudeId + ".competences"] = dialogData.rollcomp.filter(x => x !== null);
+    await this.actor.update(update);
+
+  }
+  
   static async onSensRoll(event, target)
   {
     
@@ -396,7 +422,7 @@ export class BaseActorSheet extends system.Base.BaseSheet (
         dice => `{ ${dice.dice}d${nbFace}cs>=${dialogData.typeDifficulte} }[${dice.text}]`
       ).join(' + ')   
       ,{}, {
-        title: "coucou",
+        title: "",
         actor: this.document.uuid,
         difficulte: dialogData.typeDifficulte,
     });
