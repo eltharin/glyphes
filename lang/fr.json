@@ -525,11 +525,6 @@
             },
             "difficulte": {
                 "select_type" : "Type de difficulté",
-                "commun" : "Commun",
-                "heroique" : "Héroïque",
-                "grandiose" : "Grandiose",
-                "legendaire" : "Légendaire",
-                "mythique" : "Mythique",
                 "select_rang" : "Rang de difficulté"
             },
             "result" : {

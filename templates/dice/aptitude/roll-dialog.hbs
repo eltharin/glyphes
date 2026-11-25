@@ -21,7 +21,7 @@
                 <label>{{localize 'glyphes.roll.difficulte.select_type'}}</label>
                 <select name="typeDifficulte">
                     {{#each difficultes as |difficulte| }}
-                        <option value="{{difficulte.value}}" {{#if difficulte.isDefault}}selected{{/if}}>{{localize (concat 'glyphes.roll.difficulte.' @key)}}</option>
+                        <option value="{{difficulte.value}}" {{#if difficulte.isDefault}}selected{{/if}}>{{localize (concat 'glyphes.common.difficulte.' @key)}}</option>
                     {{/each}}
                 </select>
             </div>
