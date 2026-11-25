@@ -37,6 +37,10 @@ class CombattantDon extends Don {
     _id = "combattant";
 }
 
+class CharniereDon extends Don {
+    _id = "charniere";
+}
+
 class FidelecompagnonDon extends Don {
     _id = "fidelecompagnon";
 }
@@ -48,10 +52,10 @@ class CourageradiantDon extends Don {
 class ChoisiDon extends Don {
     _id = "choisi";
 }
-
+/*
 class ToujourspretDon extends Don {
     _id = "toujourspret";
-}
+}*/
 
 class EvocateurofficielDon extends Don {
     _id = "evocateurofficiel";
@@ -89,6 +93,10 @@ class InsaisissableDon extends Don {
     _id = "insaisissable";
 }
 
+class SenssurdeveloppesDon extends Don {
+    _id = "senssurdeveloppes";
+}
+
 
 
 
@@ -100,7 +108,7 @@ export class Dons {
         fidelecompagnon: FidelecompagnonDon,
         courageradiant: CourageradiantDon,
         choisi: ChoisiDon,
-        toujourspret: ToujourspretDon,
+        //toujourspret: ToujourspretDon,
         evocateurofficiel: EvocateurofficielDon,
         evocateursauvage: EvocateursauvageDon,
         marque: MarqueDon,
@@ -110,6 +118,8 @@ export class Dons {
         linguiste: LinguisteDon,
         expertcreature: ExpertcreatureDon,
         insaisissable: InsaisissableDon,
+        charniere: CharniereDon,
+        senssurdeveloppes: SenssurdeveloppesDon,
     };
 
     static get(donId) {

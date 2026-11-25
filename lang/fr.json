@@ -213,67 +213,77 @@
         "dons": {
             "stratege" : {
                 "name": "Stratège",
-                "description": "Le personnage est un stratège né. Il possède la capacité de s'adapter à n'importe quelle situations, même les plus imprévues. Il peut offrir ses propres réussites à l'épreuve d'initiative à une ou plusieurs créatures consentantes."
+                "description": "Le personnage est un stratège né. Il possède la capacité de s’adapter à n’importe quelle situation, même les plus imprévues. Il utilise son aptitude de vigilance (avec n'importe quel sens) pour les épreuves d'initiative, et il peut céder ses réussites aux créatures qu'il considère comme alliées dans un rayon de 30ft lors de ces mêmes épreuves."
             },
             "ecorcheur" : {
                 "name": "Écorcheur",
-                "description": "Le personnage est assoiffé de sang, et prompt à une violence désinhibée. Lorsqu'il obtient un succès d'une épreuve d'attaque de mêlée contre une créature, il la force à tirer un jeton de sacrifice"
+                "description": "Le personnage est assoiffé de sang et prompt à une violence désinhibée. Lorsqu’il obtient un succès lors d’une épreuve d’attaque de mêlée contre une créature, il la force à tirer un jeton de sacrifice."
             },
             "combattant" : {
                 "name": "Combattant",
-                "description": "Le personnage est un combattant efficace. Lorsqu'il effectue un coup d'éclat sur une épreuve d'attaque, le coût de cette dernière est réduit d'un point d'action."
+                "description": "Le personnage est un combattant efficace. Lorsqu'il effectue un coup d’éclat sur une épreuve d’attaque, le coût de cette dernière est réduit d’un point d’action."
             },
-            "fidelecompagnon" : {
-                "name": "Fidèle compagnon",
-                "description": "Le personnage est accompagné d'un compagnon loyal. Ce dernier ne peut participer au combat. Le compagnon possède un aptitude de niveau 4 et une de niveau 2. Il possède 1D4 dans toutes ses caractéristiques et 1D6 dans une au choix"
-            },
-            "courageradiant" : {
-                "name": "Courage radiant",
-                "description": "Le personnage rayonne de courage et de confiance en lui, ou en la cause qu'il porte. Il peut offrir ses propres réussites de courage ou de résistance à la peur à une ou plusieurs créatures consentantes"
-            },
-            "choisi" : {
-                "name": "Choisi",
-                "description": "le personnage a été choisi par une divinité. change la caractéristique de référence de deux de ses aptitudes en foi. Il peut lier un autre don à la foi, comme évocateur par exemple, au lieu d'une aptitude."
-            },
-            "toujourspret" : {
-                "name": "Toujours prêt",
-                "description": "Le personnage est prévoyant, et possède une habitude à rationner ses possessions de manière presque automatique, consciente ou non. Il commence chaque journée avec deux ingrédients supplémentaires dans son inventaire."
+            "charniere" : {
+                "name": "Charnière",
+                "description": "Le personnage est la clé de voûte de son groupe. La portée du déclenchement de combo de ses actions héroïques est de 60 ft"
             },
             "evocateurofficiel" : {
                 "name": "Évocateur officiel",
-                "description": "L'évocateur officiel possède un cursus d'apprentissage des glyphes. Il peut ou a pu appartenir à un ordre ou un chapitre d'un culte qui possède la capacité d'enseigner un tel art. Il peut évoquer des glyphes en utilisant la table d'immersion. Attention : S'il ne fait plus partie de l'entité qui l'a formé, il est très probable qu'il soit traqué. Un évocateur officiel qui est toujours dans son ordre possède par contre certains passe-droits dans la région d'influence de son ordre, mais peut se trouver pris pour cible dans une zone d'influence adverse. Révéler sa condition d'évocateur possède toujours une part de risque"
+                "description": "L’évocateur officiel possède un cursus d’apprentissage des glyphes. Il peut, ou a pu appartenir à un ordre ou à un chapitre d’un culte qui possède la capacité d’enseigner un tel art. Il peut évoquer des glyphes en utilisant la table d’immersion. Lors d’une immersion, il peut dépenser les réussites obtenues sur ses dés rituels (s’il en a obtenu) pour écarter un dé d’immersion impair. Ce dé n’est alors plus pris en compte pour déterminer la réussite ou l’échec de l’immersion, le gain de tempête, ou le déclenchement d’un événement de flux. Attention : s’il ne fait plus partie de l’entité qui l’a formé, il est très probable qu’il soit traqué. Un évocateur officiel qui est toujours dans son ordre possède, par contre, certains passe-droits dans la région d’influence de son ordre, mais peut se trouver pris pour cible dans une zone d’influence adverse. Révéler sa condition d’évocateur comporte toujours une part de risque."
             },
             "evocateursauvage" : {
                 "name": "Évocateur sauvage",
-                "description": "c'est le terme utilisé pour ceux qui n'ont jamais suivi de cursus d'apprentissage officiel et reconnu par les autorités d'une cité état ou d'un ordre religieux autorisé à de telles pratiques. Lorsqu'il s'immerge, il fait cela de manière instinctive et provoque souvent des événements de flux à son avantage, mais est plus prompt à causer des cataclysmes autour de lui. Il peut évoquer des glyphes en utilisant la table d'immersion. Cependant il évoque avec 2D d'immersion et prend en compte le meilleur dé pour le résultat. Si l'un des deux dé provoque un événement de flux, cet événement se produira. L'événement en question sera compté comme bénéfique si l'épreuve d'immersion est un succès. Attention : un évocateur sauvage sera obligatoirement poursuivi par les autorités s'il est reconnu comme tel"
+                "description": "C'est le terme utilisé pour ceux qui n’ont jamais suivi de cursus d’apprentissage officiel et reconnu par les autorités d’une cité-état ou d’un ordre religieux autorisé à de telles pratiques. Lorsqu’il s’immerge, il fait cela de manière instinctive et provoque souvent des événements de flux à son avantage, mais il est plus prompt à causer des cataclysmes autour de lui. Il peut évoquer des glyphes en utilisant la table d’immersion. L'Évocateur sauvage semble se renforcer et se complaire dans l’euphorie de la tempête spirituelle. Plus ses points de tempête spirituelle sont nombreux, plus ses évocations sont puissantes. Pour chaque deux points de tempête que l’évocateur possède déjà lors de l’immersion, il obtient 1 dé rituel bonus. Attention : un évocateur sauvage sera obligatoirement poursuivi par les autorités s’il est reconnu comme tel."
             },
             "marque" : {
                 "name": "Marqué",
-                "description": "Le marqué est une personne qui a été marquée par un glyphe avec ou contre son gré, lors d'un incident ou d'un rituel. Le marqué n'est pas un évocateur, mais une personne capable d'évoquer le glyphe dont il est le porteur. Contrairement à l'évocateur, le marqué peut choisir la caractéristique d'évocation, entre Foi ou Esprit"
+                "description": "Le marqué est une personne qui a été marquée par un glyphe, avec ou contre son gré, lors d’un incident ou d’un rituel. Le marqué n’est pas un évocateur, mais une personne capable d’évoquer le glyphe dont il est le porteur. Contrairement à l’évocateur, le marqué peut choisir la caractéristique d’évocation, entre Foi, Constitution et Esprit."
             },
             "araignee" : {
                 "name": "Araignée",
-                "description": "Le personnage possède une affinité étrange avec le monde qui l'entoure. Certains peuvent le décrire comme étant “ailleurs” ou distrait, mais sa perception du monde est tout simplement différente. Il voit les liens entre les créatures comme une toile, et possède la capacité de l'exploiter à sa manière. L'araignée peut transférer les points de corps et d'âme entre deux créatures consentantes."
+                "description": "Le personnage possède une affinité étrange avec le monde qui l’entoure. Certains peuvent le décrire comme étant “ailleurs” ou distrait, mais sa perception du monde est tout simplement différente. Il voit les liens entre les créatures comme une toile, et possède la capacité de l’exploiter à sa manière. L’araignée peut transférer les points de corps et d’âme entre deux créatures consentantes dans un rayon de 40ft autour l'araignée."
             },
             "reveur" : {
                 "name": "Réveur",
-                "description": "Le personnage est parasité par un mange songe qui dévore ses rêves. Ce dernier prend les caractéristiques du dernier rêve que le personnage à fait durant son dernier repos complet pour ensuite se matérialiser. Après chaque repos complet, le joueur détermine le type de rêve en lançant un dé. Sur un résultat pair, c'est un rêve doux, et le mange songe se matérialise sous la forme d'un petit animal de compagnie et qui possède les mêmes caractéristiques que le rêveur. L'animal possède la même taille qu'un rongeur ou un oiseau de petite taille. Il peut communiquer mentalement avec et lui donner des ordres pour qu'il effectue des tâches à la place du rêveur. Si le résultat est impair, L'animal n'apparaît pas, mais le rêveur peut entrer en coma quand il le souhaite pour laisser le cauchemar se matérialiser. Le corps inerte du rêveur reste alors sur place et le cauchemar lui peut se déplacer à sa guise et possède une taille moyenne et une forme que le joueur pourra décider. Le cauchemar possède les mêmes caractéristiques que le rêveur, et augmente le niveau d'un de ses dés de 1, et le niveau de deux aptitudes de 1. Lorsque le cauchemar a subi 3 blessures, il disparaît et le rêveur reprend conscience. Si le rêveur est tué alors que le cauchemar est matérialisé, ce dernier disparaît."
+                "description": "Le personnage est parasité par un mange songe qui dévore ses rêves. Ce dernier prend les caractéristiques du dernier rêve que le personnage a fait durant son dernier repos complet pour ensuite se matérialiser. Après chaque repos complet, le joueur détermine le type de rêve en lançant un dé. Sur un résultat pair, c'est un rêve doux, et le mange songe se matérialise sous la forme d’un petit animal de compagnie et qui possède les mêmes caractéristiques que le rêveur. L’animal possède la même taille qu’un rongeur ou un oiseau de petite taille. Il peut communiquer mentalement avec et lui donner des ordres pour qu’il effectue des tâches à la place du rêveur. Si le résultat est impair, L’animal n'apparaît pas, mais le rêveur peut entrer en coma quand il le souhaite pour laisser le cauchemar se matérialiser. Le corps inerte du rêveur reste alors sur place et le cauchemar lui peut se déplacer à sa guise et possède une taille moyenne et une forme que le joueur pourra décider. Le cauchemar possède les mêmes caractéristiques que le rêveur, et augmente le niveau d’un de ses dés de 1, et le niveau de deux aptitudes de 1. Lorsque le cauchemar a subi 3 blessures, il disparaît et le rêveur reprend conscience. Si le rêveur est tué alors que le cauchemar est matérialisé, ce dernier disparaît. Garder un cauchemar stable nécessite une grande force d'âme. Chaque tour, le personnage doit effectuer une épreuve de flux. Sur un échec, il subit un point de tempête spirituelle. Sur une réussite, le lien reste stable et le personnage ne subit aucun dommage. Le personnage peut rompre le lien à tout moment."
             },
             "visage" : {
                 "name": "Visage",
-                "description": "Le personnage est très à l'aise avec les interactions sociales. Il sait captiver son auditoire et adapter son discours si le besoin s'en fait sentir. Lorsqu'il tente une épreuve sociale en rapport avec une aptitude qu'il ne possède pas, il peut à la place utiliser la moitié des niveaux d'une autre aptitude sociale qu'il possède, arrondi à l'inférieur."
-            },
-            "linguiste" : {
-                "name": "Linguiste",
-                "description": "Le personnage est un maître en ce qui concerne les moyens de communication. Il maîtrise parfaitement le Sylvain, la langue commune et le Brume￾langue. Il peut échanger l'un de ces langages pour maîtriser la langue des signes à la place."
-            },
-            "expertcreature" : {
-                "name": "Expert en créature",
-                "description": "Le personnage à eu affaire à un bon nombre de créature. Il a appris à étudier et exploiter leurs faiblesses ou comportements caractéristiques. Ces études ont pu l'amener à faire des prédictions sur des créatures qu'il n'a jamais rencontré. Le personnage peut recevoir une information sur n'importe quelle créature commune ou déjà rencontrée, et sur une épreuve d'instinct pour des créatures rares ou uniques."
+                "description": "Le personnage est très à l’aise avec les interactions sociales. Il sait captiver son auditoire et adapter son discours si le besoin s’en fait sentir. Lorsqu’il tente une épreuve sociale, il peut utiliser la moitié du niveau (arrondi au supérieur) de son aptitude sociale la plus élevée pour définir le nombre de dé lancés."
             },
             "insaisissable" : {
                 "name": "Insaisissable",
-                "description": "Le personnage est d'une agilité déconcertante lorsqu'il s'agit de se dégager de situations compliquées. Il peut se désengager gratuitement d'un corps à corps."
+                "description": "Le personnage est d’une agilité déconcertante lorsqu’il s’agit de se dégager de situations compliquées. Il obtient 5 ft de déplacement supplémentaire par point d’action dépensé (cf. Confrontations) et peut se désengager gratuitement d’un corps-à-corps."
+            },
+            "linguiste" : {
+                "name": "Linguiste",
+                "description": "Le personnage est un maître en ce qui concerne les moyens de communication. Il maîtrise parfaitement le Sylvain, la langue commune et le Brume-langue. Il peut échanger l’un de ces langages pour maîtriser la langue des signes à la place."
+            },
+            "expertcreature" : {
+                "name": "Expert en créature",
+                "description": "Le personnage a eu affaire à un bon nombre de créatures. Il a appris à étudier et à exploiter leurs faiblesses ou comportements caractéristiques. Ces études ont pu l’amener à faire des prédictions sur des créatures qu’il n’a jamais rencontrées. Le personnage peut recevoir une information sur n’importe quelle créature commune ou déjà rencontrée, et sur une épreuve d’instinct pour des créatures rares ou uniques."
+            },
+            "senssurdeveloppes" : {
+                "name": "Sens surdéveloppés",
+                "description": "Le personnage possède des sens acérés et hors du commun. Pour calculer ses dés de sens, le personnage utilise le dé le plus élevé entre les deux caractéristiques demandées, et son dé de Flux est égal à son dé d'Esprit."
+            },
+            "fidelecompagnon" : {
+                "name": "Fidèle compagnon",
+                "description": "Le personnage est accompagné d'un compagnon loyal. Ce dernier ne peut participer au combat. Le compagnon possède un aptitude de niveau 4 et une de niveau 2. Il possède 1D4 dans toutes ses caractéristiques et 1D6 dans une au choix."
+            },
+            "courageradiant" : {
+                "name": "Courage radiant",
+                "description": "Le personnage rayonne de courage et de confiance en lui, ou en la cause qu’il porte. Il peut céder ses propres réussites aux épreuves de courage aux créatures qu'il considère comme alliées dans un rayon de 30 ft."
+            },
+            "choisi" : {
+                "name": "Choisi",
+                "description": "Le personnage a été choisi par une divinité. Il peut changer la caractéristique de référence de deux de ses aptitudes en Foi. Il peut, à la place d’une aptitude, lier un autre don à la Foi, comme les dons d'évocation, par exemple."
+            },
+
+            
+            "toujourspret" : {
+                "name": "Toujours prêt",
+                "description": "Le personnage est prévoyant, et possède une habitude à rationner ses possessions de manière presque automatique, consciente ou non. Il commence chaque journée avec deux ingrédients supplémentaires dans son inventaire."
             }
         },
         "actionsheroiques": {
