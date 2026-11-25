@@ -12,6 +12,9 @@
 
         <h4 class="dice-total">{{totalpts}} pts d'immersion</h4>
 
+    </div>
+</div>
+<div class="dice-roll-actions">
         {{#if canAffectTempete}}
             {{#if (not alreadyAffectTempete)}}
                 <div class="button" data-action="affectTempete" data-nbechecs="{{echecs}}" data-actor="{{actor}}">{{localizeSystem 'roll.glyphe.result.appliqueTempete' nbPts=nbTempete}}</div>
@@ -24,6 +27,4 @@
                 <div class="button" data-action="rollEvocationEffect" data-nbechecs="{{echecs}}" data-actor="{{actor}}">{{localizeSystem 'roll.glyphe.result.lancerEffet'}}</div>
             {{/if}}
         {{/if}}
-
-    </div>
 </div>

@@ -121,6 +121,7 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
 
     prepareDerivedData() {
 
+        this.raceObj = system.Common.Races.get(this.race);
         this.sens = {
             vue: {
                 value : this.calculMinMaxSens(this.competences.esprit.value, this.competences.constitution.value, this.hasSensSurdev), 

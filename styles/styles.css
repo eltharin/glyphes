@@ -1,3 +1,9 @@
+:root{
+    --glyphes-color-button-bg1: #29292c; /*/light-dark(*/
+    --glyphes-color-button-bg2: #716d77;
+    --glyphes-color-button-shadow: rgba(31, 31, 34, 0.35)
+}
+
 .clickable {
     cursor: pointer;
 }
@@ -123,13 +129,15 @@
     height:150px;
 }
 
-.glyphes.actor-sheet .perso > .carac  {
-    display:flex;
-    flex-direction: row;
+.glyphes.actor-sheet .topbar .perso {
+    
+    flex-basis: 300px;
 }
 
-.glyphes.actor-sheet .perso > .carac > div:nth-child(2) {
-    flex: 1 0 350px;
+.glyphes.actor-sheet .perso > .carac {
+    display:flex;
+    flex-direction: row;
+
 }
 
 .glyphes.actor-sheet .perso > .carac > .sens {
@@ -396,8 +404,6 @@
 
 
 
-
-
 .glyphes.item-sheet {
     display:flex;
     flex-direction:row;
@@ -458,12 +464,37 @@ div.competences > div > span {
 
 
 .chat-message .button {
-    border: 1px solid grey;
     text-align: center;
     cursor: pointer;
-    background-color: var(--color-light-3);
+
+    padding: 9px 22px;
+    margin: 5px 0px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--glyphes-color-button-bg1), var(--glyphes-color-button-bg2) );
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px var(--glyphes-color-button-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        box-shadow: 0 8px 25px var(--glyphes-color-button-shadow);
+    }
+
+        /* Effet d'enfoncement au clic */
+    &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 10px var(--glyphes-color-button-shadow);
+    }
+
 }
 
+.chat-message .dice-roll-actions {
+    margin-top: 10px;
+
+    
+}
 
 .combat-tracker-header > .combat-tracker-header-objectifs {
     header {

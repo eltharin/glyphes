@@ -9,9 +9,12 @@
         {{/if}}
         
         <h4 class="dice-total">{{result}}</h4>
-
-        {{#if (gt ptHeroisme 0)}}
-        <button data-action="gainHeroisme" data-nbpoint="{{ptHeroisme}}">Gagner {{ptHeroisme}} Pts d'héroisme</button>
-        {{/if}}
     </div>
+</div>
+<div class="dice-roll-actions">
+
+    {{#if (gt ptHeroisme 0)}}
+    <div  class="button" data-action="gainHeroisme" data-nbpoint="{{ptHeroisme}}">Gagner {{ptHeroisme}} Pts d'héroisme</div>
+    {{/if}}
+
 </div>
