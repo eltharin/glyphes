@@ -444,7 +444,9 @@
                             "bonus": "Points de blessure bonus"
                         }
                     },
-                    "initiative": "Fixer l'initiative (*2-1)"
+                    "initiative": "Fixer l'initiative (*2-1)",
+                    "hasFlux": "Possède du flux",
+                    "hasSensSurdev": "Sens sur-développé"
                 }
             },
             "effet": {

@@ -97,6 +97,10 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             dons: new foundry.data.fields.ArrayField(
                 new foundry.data.fields.StringField({}),      
             ),
+            
+            hasSensSurdev: new foundry.data.fields.BooleanField({initial: false}),
+
+
             sacrificeDeckId: new foundry.data.fields.StringField({initial: ""}),
             fabrication: new foundry.data.fields.SchemaField({
                 aptitude: new foundry.data.fields.StringField({initial: ""}),
@@ -118,10 +122,22 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
     prepareDerivedData() {
 
         this.sens = {
-            vue: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
-            ouie: {value : Math.min(this.competences.esprit.value, this.competences.constitution.value), dice: -1},
-            flux: {value : this.hasFlux ? Math.max(0, this.competences.esprit.value -1 ) : null, dice: -1},
-            instinct: {value : Math.min(this.competences.esprit.value, this.competences.foi.value), dice: -1},
+            vue: {
+                value : this.calculMinMaxSens(this.competences.esprit.value, this.competences.constitution.value, this.hasSensSurdev), 
+                dice: -1
+            },
+            ouie: {
+                value : this.calculMinMaxSens(this.competences.esprit.value, this.competences.constitution.value, this.hasSensSurdev), 
+                dice: -1
+            },
+            flux: {
+                value : this.calculMinMaxSens(this.hasFlux, this.competences.esprit.value, this.hasSensSurdev ), 
+                dice: -1
+            },
+            instinct: {
+                value : this.calculMinMaxSens(this.competences.esprit.value, this.competences.foi.value, this.hasSensSurdev), 
+                dice: -1
+            },
         }
 
         this.sens.vue.dice = ValeurDe.getVal(this.sens.vue.value);
@@ -227,4 +243,25 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             }
         }
     }
+
+    calculMinMaxSens(competence1, competence2, hasSensSurdev)
+    {
+        if(hasSensSurdev) {
+            return Math.max(competence1, competence2);
+        } else {
+            return Math.min(competence1, competence2);
+        }
+    }
+
+    calculSensFlux(hasFlux, competenceEsprit, hasSensSurdev)
+    {
+        if(hasFlux) {
+            return null;
+        } else if(hasSensSurdev) {
+            return Math.max(0, competenceEsprit );
+        } else {
+            return Math.max(0, competenceEsprit -1 );
+        }
+    }
+
 }

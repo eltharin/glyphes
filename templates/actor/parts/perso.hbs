@@ -18,8 +18,8 @@
         <div class="sensinstinctlabel" data-action="sensRoll" data-sens="instinct"><label>{{localize "glyphes.sens.instinct"}}</label></div>
         <div class="sensinstinctvalue">D{{ system.sens.instinct.dice }}</div>
 
-        <div class="sensfluxlabel" data-action="sensRoll" data-sens="flux"><label>{{localize "glyphes.sens.flux"}}</label></div>
-        <div class="sensfluxvalue">D{{ system.sens.flux.dice }}</div>
+        <div class="sensfluxlabel"{{#if system.hasFlux}} data-action="sensRoll"{{/if}} data-sens="flux"><label>{{localize "glyphes.sens.flux"}}</label></div>
+        <div class="sensfluxvalue">{{#if system.hasFlux}}D{{ system.sens.flux.dice }}{{ else }} - {{/if}}</div>
 
 
     </div>

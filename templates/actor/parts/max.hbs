@@ -101,4 +101,16 @@
         </div>
     </div>
 
+    <div class="flextabs">
+        <div class="field">
+            <label>{{localize "glyphes.sheet.actor.max.hasFlux" type="boolean" class="pj-sheet-input"}}</label>
+            <div>{{#fieldOrInput "system.hasFlux" class="pj-sheet-input"}}<input type="checkbox" name="system.hasFlux" {{#if ../system.hasFlux}} checked="checked" {{/if}}>{{/fieldOrInput}}</div>
+        </div>
+
+        <div class="field">
+            <label>{{localize "glyphes.sheet.actor.max.hasSensSurdev" type="boolean" class="pj-sheet-input"}}</label>
+            <div>{{#fieldOrInput "system.hasSensSurdev" class="pj-sheet-input"}}<input type="checkbox" name="system.hasSensSurdev" {{#if ../system.hasSensSurdev}} checked="checked" {{/if}}>{{/fieldOrInput}}</div>
+        </div>
+    </div>
+
 </section>
